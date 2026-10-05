@@ -14,7 +14,11 @@ import { ConfirmModal, ErrorModal, SuccessModal } from "./ui/FeedbackModal";
 import { MenuModal } from "./ui/MenuModal";
 import { SearchModal } from "./ui/SearchModal";
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
