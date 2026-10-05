@@ -1,0 +1,82 @@
+.modify > .instituitions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.modify > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modify > .instituitions > .edit {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.modify > .instituitions > .edit img {
+  border-radius: 50%;
+  box-shadow: var(--box-shadow);
+}
+
+.modify > .instituitions > .edit input[type="file"] {
+  display: none;
+}
+
+.modify > .instituitions > .edit > div {
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  padding: 1rem;
+  border-radius: 20px;
+}
+
+.modify > .instituitions > .edit label span {
+  margin-top: -2rem;
+  margin-left: 5rem;
+  z-index: 2;
+  position: relative;
+  background-color: var(--modal-bg);
+}
+
+.modify > .instituitions > .edit textarea {
+  min-height: 0;
+  text-align: center;
+  border: none;
+  width: 100%;
+}
+
+.modify > .instituitions > .edit input {
+  text-align: center;
+  text-transform: capitalize;
+  border: none;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.modify > .instituitions > .edit > div.edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modify > .instituitions > .edit input.editing {
+  border: var(--border);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.modify > .instituitions > .edit textarea.editing {
+  border: var(--border);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.modify > .instituitions > .edit label {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,16 @@
+.pastQuestions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.pastQuestions > form > .btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  border-radius: 50px;
+}

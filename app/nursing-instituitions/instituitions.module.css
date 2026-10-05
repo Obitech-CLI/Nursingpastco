@@ -1,0 +1,51 @@
+.Nursing_Instituitions > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin-top: -1rem;
+}
+
+.Nursing_Instituitions > h3 {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.instituitions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+.instituitions > article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.instituitions > article h2 {
+  text-transform: uppercase;
+  color: var(--bg-txt);
+}
+
+.instituitions > article h3 {
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  border-radius: 30px;
+}
+
+.instituitions > article img {
+  object-fit: contain;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.instituitions > article p {
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  border-radius: 30px;
+}
