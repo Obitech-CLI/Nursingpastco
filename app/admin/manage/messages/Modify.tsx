@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { MessageType } from "./Messages";
 import { Delete, X } from "lucide-react";
 import { DeleteButton } from "./Delete";
+import { MessageType } from "@/app/types/types";
 
 type Props = {
   message: MessageType;

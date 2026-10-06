@@ -20,7 +20,7 @@ export const getPastQuestions = async (
       return { error: "choose a course to see past questions" };
     }
 
-    const key = `pastQuestions:${instituition}:${level}:${level}`;
+    const key = `pastQuestions:${instituition}:${level}:${course}`;
     const cached = await redis.get<PastQuestionType[]>(key);
     if (cached) {
       return { pastQuestions: cached };

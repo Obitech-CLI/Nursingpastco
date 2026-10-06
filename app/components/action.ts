@@ -1,6 +1,7 @@
 "use server";
 
 import { transporter } from "../config/mailer";
+import { redis } from "../lib/redis";
 import { supabase } from "../lib/supabase/supabase";
 
 export const Subscribe = async (prevState: any, formData: FormData) => {
@@ -54,6 +55,8 @@ export const Subscribe = async (prevState: any, formData: FormData) => {
   
     </div>`,
     });
+
+    await redis.del("subscribers");
 
     return { msg: "subscribed successfully", ok: true };
   } catch (err) {

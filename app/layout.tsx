@@ -20,6 +20,7 @@ import {
   Montserrat,
   Raleway,
 } from "next/font/google";
+import { Vibration } from "./ui/Vibrate";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -70,6 +71,7 @@ export default function RootLayout({
                   <SearchProvider>
                     <Header />
                     {children}
+                    <Vibration />
                     <SearchModal />
                     <MenuModal />
                     <SuccessModal />

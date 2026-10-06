@@ -1,11 +1,15 @@
 "use server";
 
+import { Admin } from "@/app/lib/admin";
+import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const addCourse = async (prevData: any, formData: FormData) => {
   const instituition = formData.get("instituition") as string;
   const course = formData.get("course") as string;
   const level = formData.get("level") as string;
+
+  await Admin();
 
   try {
     if (!instituition || !course || !level) {
@@ -40,6 +44,11 @@ export const addCourse = async (prevData: any, formData: FormData) => {
     if (insertError) {
       return { err: "failed to add course, try again", msg: "" };
     }
+
+    await redis.del("allCourses");
+    await redis.del(`courses:${instituition}`);
+    await redis.del(`courses:${level}`);
+    await redis.del(`courses:${instituition}:${level}`);
 
     return { msg: "course added success", err: "" };
   } catch (err) {

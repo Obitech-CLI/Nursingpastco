@@ -1,5 +1,6 @@
 "use server";
 
+import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const updatePastQuestion = async (prevData: any, formData: FormData) => {
@@ -69,6 +70,9 @@ export const updatePastQuestion = async (prevData: any, formData: FormData) => {
         return { err: "failed to update pastQuestion, try again", msg: "" };
       }
 
+      const key = `pastQuestions:${instituition}:${level}:${course}`;
+      await redis.del(key);
+
       return { msg: "pastQuestions update success", err: "" };
     }
 
@@ -85,6 +89,9 @@ export const updatePastQuestion = async (prevData: any, formData: FormData) => {
       return { err: "failed to update pastQuestion, try again", msg: "" };
     }
 
+    const key = `pastQuestions:${instituition}:${level}:${course}`;
+    await redis.del(key);
+
     return { msg: "pastQuestions update success", err: "" };
   } catch (err) {
     console.error(err);
@@ -100,8 +107,18 @@ export const deletePastQuestion = async (prevData: any, formData: FormData) => {
       return { err: "invalid request", msg: "" };
     }
 
-    if (confirm !== "i want to delete") {
+    if (confirm.toLowerCase().trim() !== "i want to delete") {
       return { err: "invalid confirm message", msg: "" };
+    }
+
+    const { data, error } = await supabase
+      .from("pastQuestions")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (error) {
+      return { err: "something went wrong, try again", msg: "" };
     }
 
     const { data: pdfUrl, error: pdfUrlError } = await supabase
@@ -135,6 +152,9 @@ export const deletePastQuestion = async (prevData: any, formData: FormData) => {
         err: "",
       };
     }
+
+    const key = `pastQuestions:${data?.instituition}:${data?.level}:${data?.course}`;
+    await redis.del(key);
 
     return { msg: "pastQuestions deleted success", err: "" };
   } catch (err) {

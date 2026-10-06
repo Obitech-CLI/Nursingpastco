@@ -1,14 +1,7 @@
 import { getMessages } from "@/app/lib/messages";
 import { RetryButton } from "@/app/ui/Retry";
 import { ModifyMessages } from "./Modify";
-
-export interface MessageType {
-  id: number;
-  fullname: string;
-  email: string;
-  message: string;
-  created_at: string;
-}
+import { MessageType } from "@/app/types/types";
 
 type Type = {
   messages?: MessageType[];

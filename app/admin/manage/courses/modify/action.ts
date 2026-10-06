@@ -1,5 +1,6 @@
 "use server";
 
+import { Admin } from "@/app/lib/admin";
 import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 import { revalidatePath } from "next/cache";
@@ -11,6 +12,8 @@ export const updateCourse = async (prevData: any, formData: FormData) => {
   const level = formData.get("level") as string;
 
   const updated = await redis.hget("cUpdated", "updated");
+
+  await Admin();
 
   try {
     if (updated) {
@@ -54,6 +57,11 @@ export const updateCourse = async (prevData: any, formData: FormData) => {
       newLevel: level,
     });
 
+    await redis.del("allCourses");
+    await redis.del(`courses:${data?.instituition}`);
+    await redis.del(`courses:${data?.level}`);
+    await redis.del(`courses:${data?.instituition}:${data?.level}`);
+
     return { msg: "course update success", err: "" };
   } catch (err) {
     console.error(err);
@@ -66,6 +74,9 @@ export const deleteCourse = async (prevData: any, formData: FormData) => {
   const confirm = formData.get("confirm") as string;
 
   const deleted = await redis.hget("cDeleted", "deleted");
+
+  await Admin();
+
   try {
     if (deleted) {
       return { err: "resolve previous delete to continue", msg: "" };
@@ -75,7 +86,7 @@ export const deleteCourse = async (prevData: any, formData: FormData) => {
       return { err: "invalid request", msg: "" };
     }
 
-    if (confirm !== "i want to delete") {
+    if (confirm.toLowerCase().trim() !== "i want to delete") {
       return { err: "invalid confirm message", msg: "" };
     }
 
@@ -104,6 +115,11 @@ export const deleteCourse = async (prevData: any, formData: FormData) => {
       course: data?.course,
       level: data?.level,
     });
+
+    await redis.del("allCourses");
+    await redis.del(`courses:${data?.instituition}`);
+    await redis.del(`courses:${data?.level}`);
+    await redis.del(`courses:${data?.instituition}:${data?.level}`);
 
     return { msg: "course deleted success", err: "" };
   } catch (err) {

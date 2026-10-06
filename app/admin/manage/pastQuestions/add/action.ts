@@ -62,7 +62,7 @@ export const addPastQuestion = async (prevData: any, formData: FormData) => {
       return { err: "failed to add pastQuestion, try again", msg: "" };
     }
 
-    const key = `pastQuestions:${instituition}:${level}:${level}`;
+    const key = `pastQuestions:${instituition}:${level}:${course}`;
     await redis.del(key);
 
     return { msg: "pastQuestion added success", err: "" };

@@ -46,3 +46,11 @@ export interface CourseType {
   level: string;
   created_at: string;
 }
+
+export interface MessageType {
+  id: number;
+  fullname: string;
+  email: string;
+  message: string;
+  created_at: string;
+}

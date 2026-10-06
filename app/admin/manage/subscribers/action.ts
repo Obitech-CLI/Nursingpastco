@@ -1,6 +1,7 @@
 "use server";
 
 import { transporter } from "@/app/config/mailer";
+import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const UnSubscribeUser = async (prevData: any, formData: FormData) => {
@@ -12,7 +13,7 @@ export const UnSubscribeUser = async (prevData: any, formData: FormData) => {
       return { err: "invalid request", msg: "" };
     }
 
-    if (confirm !== "i want to unsubscribe") {
+    if (confirm.toLowerCase().trim() !== "i want to unsubscribe") {
       return { err: "invalid confirm message", msg: "" };
     }
 
@@ -42,6 +43,8 @@ export const UnSubscribeUser = async (prevData: any, formData: FormData) => {
   
     </div>`,
     });
+
+    await redis.del("subscribers");
 
     return { msg: "unsubscribed successfully", err: "" };
   } catch (err) {

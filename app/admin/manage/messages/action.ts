@@ -1,5 +1,6 @@
 "use server";
 
+import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const DeleteMessage = async (prevData: any, formData: FormData) => {
@@ -10,7 +11,7 @@ export const DeleteMessage = async (prevData: any, formData: FormData) => {
       return { err: "invalid request", msg: "" };
     }
 
-    if (confirm !== "i want to delete") {
+    if (confirm.toLowerCase().trim() !== "i want to delete") {
       return { err: "invalid confirm message", msg: "" };
     }
 
@@ -19,6 +20,9 @@ export const DeleteMessage = async (prevData: any, formData: FormData) => {
     if (error) {
       return { err: "failed to delete message. try again", msg: "" };
     }
+
+    await redis.del("contact-messages");
+
     return { msg: "message deleted successfully", err: "" };
   } catch (err) {
     console.error(err);

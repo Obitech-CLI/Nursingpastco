@@ -1,11 +1,17 @@
 "use server";
 
+import { MessageType } from "../types/types";
 import { Admin } from "./admin";
+import { redis } from "./redis";
 import { supabase } from "./supabase/supabase";
 
 export const getMessages = async () => {
   await Admin();
   try {
+    const cached = await redis.get<MessageType[]>("contact-messeges");
+    if (cached) {
+      return { messages: cached };
+    }
     let query = supabase
       .from("messages")
       .select("*")
@@ -20,6 +26,8 @@ export const getMessages = async () => {
     if (data.length === 0) {
       return { error: "no message found" };
     }
+
+    await redis.set("contact-messages", data);
 
     return { messages: data };
   } catch (err) {

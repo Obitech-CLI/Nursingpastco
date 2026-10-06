@@ -141,7 +141,8 @@ button {
 }
 
 button:active {
-  opacity: 0.5;
+  opacity: 0.2;
+  box-shadow: 2px 2px var(--bg-txt);
 }
 
 a:hover {

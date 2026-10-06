@@ -1,5 +1,6 @@
 "use server";
 
+import { redis } from "../lib/redis";
 import { supabase } from "../lib/supabase/supabase";
 
 export const SendMessage = async (prevData: any, formData: FormData) => {
@@ -20,6 +21,8 @@ export const SendMessage = async (prevData: any, formData: FormData) => {
     if (error) {
       return { err: "something went wrong. try again", msg: "" };
     }
+
+    await redis.del("contact-messages");
 
     return { msg: "message sent successfully", err: "" };
   } catch (err) {

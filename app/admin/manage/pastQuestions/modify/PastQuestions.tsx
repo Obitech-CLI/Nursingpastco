@@ -1,7 +1,6 @@
 import { getPastQuestions } from "@/app/lib/pastQuestions";
 import { ModifyPastQuestion } from "./Modify";
 import { RetryButton } from "@/app/ui/Retry";
-import { getAdminPastQuestions } from "@/app/lib/adminPastQuestions";
 
 export interface PastQuestionType {
   id: number;
@@ -27,7 +26,7 @@ export default async function PastQuestions({
   }>;
 }) {
   const { instituition, course, level } = await searchParams;
-  const res: Type = await getAdminPastQuestions(instituition, course, level);
+  const res: Type = await getPastQuestions(instituition, course, level);
   return (
     <div className="pastQuestions">
       {res.pastQuestions && (
