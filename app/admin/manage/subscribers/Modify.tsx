@@ -32,6 +32,7 @@ export function ModifySubscribers({ subscriber, index }: Props) {
               <UnSubscribe
                 id={subscriber.id}
                 setUnsubscribing={setUnsubscribing}
+                email={subscriber.email}
               />
             )}
           </>

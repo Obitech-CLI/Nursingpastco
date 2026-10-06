@@ -26,11 +26,11 @@ export const CreateAdmin = async (prevData: any, formData: FormData) => {
       .maybeSingle();
 
     if (error) {
-      return { error: "something went wrong" };
+      return { err: "something went wrong", msg: "" };
     }
 
     if (data) {
-      return { error: "invalid credentials" };
+      return { err: "invalid credentials", msg: "" };
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -46,7 +46,7 @@ export const CreateAdmin = async (prevData: any, formData: FormData) => {
       .single();
 
     if (insertError) {
-      return { error: "failed to create account. try again" };
+      return { err: "failed to create account. try again", msg: "" };
     }
 
     const token = jwt.sign({ id: admin.id }, SECRET, { expiresIn: "1h" });
@@ -58,10 +58,9 @@ export const CreateAdmin = async (prevData: any, formData: FormData) => {
       maxAge: 60 * 60,
       path: "/",
     });
+    return { msg: "account created success", err: "" };
   } catch (err) {
     console.error(err);
-    return { error: "server error" };
+    return { err: "server error", msg: "" };
   }
-
-  redirect("/admin/dashboard");
 };

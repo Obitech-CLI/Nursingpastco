@@ -14,10 +14,11 @@ const initialState = {
 
 type Props = {
   id: number;
+  email: string;
   setUnsubscribing: React.Dispatch<SetStateAction<boolean>>;
 };
 
-export function UnSubscribe({ id, setUnsubscribing }: Props) {
+export function UnSubscribe({ id, setUnsubscribing, email }: Props) {
   const [state, action, pending] = useActionState(
     UnSubscribeUser,
     initialState,
@@ -49,6 +50,7 @@ export function UnSubscribe({ id, setUnsubscribing }: Props) {
             <X />
           </button>
           <input type="hidden" name="id" defaultValue={id} />
+          <input type="hidden" name="email" defaultValue={email} />
           <label>
             type in <strong>"i want to UnSubscribe"</strong>
             <input

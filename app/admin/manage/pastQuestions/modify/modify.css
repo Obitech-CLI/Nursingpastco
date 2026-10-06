@@ -14,3 +14,31 @@
   padding: 1rem;
   border-radius: 50px;
 }
+
+.pastQuestions > form {
+  border-radius: 50px;
+  width: 100%;
+}
+
+.pastQuestions > form > .det {
+  width: 100%;
+}
+
+.pastQuestions > form > .det label > button {
+  background-color: transparent;
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pastQuestions > form > .det {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pastQuestions > form.editing {
+  padding: 0;
+  width: 100%;
+  border-radius: 0;
+}

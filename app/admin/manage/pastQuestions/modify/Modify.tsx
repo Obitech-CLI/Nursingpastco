@@ -119,159 +119,169 @@ export function ModifyPastQuestion({ pastQuestion }: Props) {
 
   return (
     <>
-      <form key={pastQuestion.id} action={action}>
+      <form
+        key={pastQuestion.id}
+        action={action}
+        className={editing ? "editing" : ""}
+      >
         <h3>{pastQuestion.title}</h3>
-        <input
-          type="hidden"
-          name="pastQuestion-id"
-          value={editing ? Number(pastQuestion.id) : ""}
-        />
-        <label>
-          <input
-            type="hidden"
-            name="instituition"
-            defaultValue={selectedInstituition || pastQuestion.instituition}
-          />
-          <button
-            type="button"
-            onClick={() => {
-              if (editing) {
-                setShowInstituitions(!showInstituitions);
-              }
-            }}
-          >
-            {selectedInstituition
-              ? selectedInstituition
-              : pastQuestion.instituition}
-            {editing && <ChevronDown />}
-          </button>
-          {showInstituitions && (
-            <div className="select">
-              {iLoading ? (
-                <div className="loading">
-                  <p>loading instituitions...</p>
-                  <RetryButton />
-                </div>
-              ) : (
-                <>
-                  {instituitions.length > 0 && (
+        {editing && (
+          <div className="det">
+            <input
+              type="hidden"
+              name="pastQuestion-id"
+              value={editing ? Number(pastQuestion.id) : ""}
+            />
+            <label>
+              <input
+                type="hidden"
+                name="instituition"
+                defaultValue={selectedInstituition || pastQuestion.instituition}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (editing) {
+                    setShowInstituitions(!showInstituitions);
+                  }
+                }}
+              >
+                {selectedInstituition
+                  ? selectedInstituition
+                  : pastQuestion.instituition}
+                {editing && <ChevronDown />}
+              </button>
+              {showInstituitions && (
+                <div className="select">
+                  {iLoading ? (
+                    <div className="loading">
+                      <p>loading instituitions...</p>
+                      <RetryButton />
+                    </div>
+                  ) : (
                     <>
-                      <h2>select instituition</h2>
-                      <ul>
-                        {instituitions.map((i) => (
-                          <li
-                            key={i.id}
-                            onClick={() => setSelectedInstituition(i.name)}
-                          >
-                            {i.name}
-                          </li>
-                        ))}
-                      </ul>
+                      {instituitions.length > 0 && (
+                        <>
+                          <h2>select instituition</h2>
+                          <ul>
+                            {instituitions.map((i) => (
+                              <li
+                                key={i.id}
+                                onClick={() => setSelectedInstituition(i.name)}
+                              >
+                                {i.name}
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                      {instituitionError && (
+                        <div className="retry">
+                          <p>{instituitionError}</p>
+                          <button type="button" onClick={fetchInstituitions}>
+                            retry
+                          </button>
+                        </div>
+                      )}
                     </>
                   )}
-                  {instituitionError && (
-                    <div className="retry">
-                      <p>{instituitionError}</p>
-                      <button type="button" onClick={fetchInstituitions}>
-                        retry
-                      </button>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          )}
-        </label>
-        <label>
-          <input
-            type="hidden"
-            name="level"
-            defaultValue={selectedLevel || pastQuestion.level}
-          />
-          <button
-            type="button"
-            onClick={() => {
-              if (editing) {
-                setShowLevels(!showLevels);
-              }
-            }}
-          >
-            {selectedLevel ? selectedLevel : pastQuestion.level}
-            {editing && <ChevronDown />}
-          </button>
-          {showLevels && (
-            <div className="select">
-              <h2>select level</h2>
-              <ul>
-                {selectLevels.map((l) => (
-                  <li key={l.id} onClick={() => setSelectedLevel(l.level)}>
-                    {l.level}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </label>
-        <label>
-          <input
-            type="hidden"
-            name="course"
-            defaultValue={selectedCourse || pastQuestion.course}
-          />
-          <button
-            type="button"
-            onClick={() => {
-              if (
-                selectedInstituition ||
-                (pastQuestion.instituition && selectLevels) ||
-                pastQuestion.level
-              ) {
-                if (!editing) return;
-                setShowCourses(!showCourses);
-              }
-            }}
-          >
-            {selectedCourse ? selectedCourse : pastQuestion.course}
-            {editing && <ChevronDown />}
-          </button>
-          {showCourses && (
-            <div className="select">
-              {cLoading ? (
-                <div className="loading">
-                  <p>loading courses...</p>
-                  <ClipLoader size={50} color="var(--bg-txt)" />
                 </div>
-              ) : (
-                <>
-                  {courses.length > 0 && (
+              )}
+            </label>
+            <label>
+              <input
+                type="hidden"
+                name="level"
+                defaultValue={selectedLevel || pastQuestion.level}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (editing) {
+                    setShowLevels(!showLevels);
+                  }
+                }}
+              >
+                {selectedLevel ? selectedLevel : pastQuestion.level}
+                {editing && <ChevronDown />}
+              </button>
+              {showLevels && (
+                <div className="select">
+                  <h2>select level</h2>
+                  <ul>
+                    {selectLevels.map((l) => (
+                      <li key={l.id} onClick={() => setSelectedLevel(l.level)}>
+                        {l.level}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </label>
+            <label>
+              <input
+                type="hidden"
+                name="course"
+                defaultValue={selectedCourse || pastQuestion.course}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (
+                    selectedInstituition ||
+                    (pastQuestion.instituition && selectLevels) ||
+                    pastQuestion.level
+                  ) {
+                    if (!editing) return;
+                    setShowCourses(!showCourses);
+                  }
+                }}
+              >
+                {selectedCourse ? selectedCourse : pastQuestion.course}
+                {editing && <ChevronDown />}
+              </button>
+              {showCourses && (
+                <div className="select">
+                  {cLoading ? (
+                    <div className="loading">
+                      <p>loading courses...</p>
+                      <ClipLoader size={50} color="var(--bg-txt)" />
+                    </div>
+                  ) : (
                     <>
-                      <h2>select courses</h2>
-                      <ul>
-                        {courses.map((c) => (
-                          <li
-                            key={c.id}
-                            onClick={() => setSelectedCourse(c.course)}
-                          >
-                            {c.course}
-                          </li>
-                        ))}
-                      </ul>
+                      {courses.length > 0 && (
+                        <>
+                          <h2>select courses</h2>
+                          <ul>
+                            {courses.map((c) => (
+                              <li
+                                key={c.id}
+                                onClick={() => setSelectedCourse(c.course)}
+                              >
+                                {c.course}
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                      {courseError && (
+                        <div className="retry">
+                          <p>{courseError}</p>
+                          <button type="button" onClick={fetchCourses}>
+                            retry
+                          </button>
+                        </div>
+                      )}
                     </>
                   )}
-                  {courseError && (
-                    <div className="retry">
-                      <p>{courseError}</p>
-                      <button type="button" onClick={fetchCourses}>
-                        retry
-                      </button>
-                    </div>
-                  )}
-                </>
+                </div>
               )}
-            </div>
-          )}
-        </label>
-        {editing && <input type="file" name="pdf" accept="application/pdf" />}
+            </label>
+            {editing && (
+              <input type="file" name="pdf" accept="application/pdf" />
+            )}
+          </div>
+        )}
         <div className="btns">
           <button
             type="button"

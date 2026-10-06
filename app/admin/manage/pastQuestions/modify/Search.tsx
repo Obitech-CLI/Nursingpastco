@@ -39,6 +39,7 @@ export function SearchPastQuestionsAdmin() {
 
   return (
     <fieldset>
+      <h3>search pastQuestions</h3>
       <button type="button" onClick={handleAll}>
         all
       </button>
