@@ -27,7 +27,7 @@ function MenuButton() {
         setShowMenu(!showMenu);
       }}
     >
-      <span>{!showMenu ? <Menu size={25} /> : <X />}</span>
+      {!showMenu ? <Menu size={25} /> : <X />}
     </button>
   );
 }
