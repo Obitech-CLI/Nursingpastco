@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { useSearch } from "../contexts/searchContext";
-import { SearchNursingInstitutions } from "../nursing-instituitions/Search";
 import { SearchNursingCourses } from "../nursing-courses/Search";
 import "./ui.css";
 import { SearchCoursesAdmin } from "../admin/manage/courses/modify/Search";
@@ -18,9 +17,6 @@ export function SearchModal() {
     <>
       {showSearch && (
         <div className="search-modal">
-          {pathname === "/nursing-instituitions" && (
-            <SearchNursingInstitutions />
-          )}
           {pathname === "/nursing-courses" && <SearchNursingCourses />}
           {pathname === "/admin/manage/courses/modify" && (
             <SearchCoursesAdmin />

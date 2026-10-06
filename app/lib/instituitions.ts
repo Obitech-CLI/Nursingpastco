@@ -1,17 +1,19 @@
 "use server";
 
+import { InstitutionType } from "../types/types";
+import { redis } from "./redis";
 import { supabase } from "./supabase/supabase";
 
-export const getInstituitions = async (search?: string) => {
+export const getInstituitions = async () => {
   try {
+    const cached = await redis.get<InstitutionType[]>("instituitions");
+    if (cached) {
+      return { instituitions: cached };
+    }
     let query = supabase
       .from("instituitions")
       .select("*")
       .order("created_at", { ascending: false });
-
-    if (search) {
-      query = query.ilike("name", `%${search}%`);
-    }
 
     const { data, error } = await query;
 
@@ -22,6 +24,8 @@ export const getInstituitions = async (search?: string) => {
     if (data.length === 0) {
       return { error: "no instituition found" };
     }
+
+    await redis.set("instituitions", data);
 
     return { instituitions: data };
   } catch (err) {

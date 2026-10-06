@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PastQuestionType } from "./PastQuestions";
 import { X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { PastQuestionType } from "../types/types";
 
 type Props = {
   pastQuestion: PastQuestionType;

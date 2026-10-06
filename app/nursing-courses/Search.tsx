@@ -1,17 +1,26 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearch } from "../contexts/searchContext";
+import { getInstituitions } from "../lib/instituitions";
+import { InstitutionType } from "../types/types";
+import { ClipLoader } from "react-spinners";
+import { selectLevels } from "../ui/Options";
 
 export function SearchNursingCourses() {
+  const [instituitions, setInstituitions] = useState<InstitutionType[]>([]);
   const [searchInstituition, setSearchInstituition] = useState("");
-  const [searchCourse, setSearchCourse] = useState("");
   const [searchLevel, setSearchLevel] = useState("");
 
   const searchParams = useSearchParams();
   const router = useRouter();
+
+  const [iLoading, setILoading] = useState(false);
+  const [instituitionError, setInstituitionError] = useState("");
+  const [showInstituitions, setShowInstituitions] = useState(false);
+  const [showLevels, setShowLevels] = useState(false);
 
   const { setShowSearch } = useSearch();
 
@@ -19,9 +28,6 @@ export function SearchNursingCourses() {
     const params = new URLSearchParams(searchParams.toString());
     if (searchInstituition) {
       params.set("instituition", searchInstituition);
-    }
-    if (searchCourse) {
-      params.set("course", searchCourse);
     }
     if (searchLevel) {
       params.set("level", searchLevel);
@@ -33,10 +39,31 @@ export function SearchNursingCourses() {
   const handleAll = () => {
     router.push(`/nursing-courses`);
     setSearchInstituition("");
-    setSearchCourse("");
     setSearchLevel("");
     setShowSearch(false);
   };
+
+  const fetchInstituitions = async () => {
+    try {
+      setILoading(true);
+      const res = await getInstituitions();
+      if (res.instituitions) {
+        setInstituitions(res.instituitions);
+        return;
+      }
+      if (res.error) {
+        setInstituitionError(res.error);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setILoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchInstituitions();
+  }, []);
 
   return (
     <fieldset>
@@ -44,24 +71,71 @@ export function SearchNursingCourses() {
       <button type="button" onClick={handleAll}>
         all
       </button>
-      <input
-        type="search"
-        value={searchInstituition}
-        placeholder="enter instituition"
-        onChange={(e) => setSearchInstituition(e.target.value)}
-      />
-      <input
-        type="search"
-        value={searchCourse}
-        placeholder="enter course"
-        onChange={(e) => setSearchCourse(e.target.value)}
-      />
-      <input
-        type="search"
-        value={searchLevel}
-        placeholder="enter level"
-        onChange={(e) => setSearchLevel(e.target.value)}
-      />
+      <label>
+        <button
+          type="button"
+          onClick={() => setShowInstituitions(!showInstituitions)}
+        >
+          {searchInstituition ? searchInstituition : "select instituition"}
+          <ChevronDown />
+        </button>
+        {showInstituitions && (
+          <div className="select">
+            {iLoading ? (
+              <div className="loading">
+                <p>loading instituitions...</p>
+                <ClipLoader size={50} color="var(--bg-txt)" />
+              </div>
+            ) : (
+              <>
+                {instituitions.length > 0 && (
+                  <>
+                    <h2>select instituition</h2>
+                    <ul>
+                      {instituitions.map((i) => (
+                        <li
+                          key={i.id}
+                          onClick={() => setSearchInstituition(i.name)}
+                        >
+                          {i.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {instituitionError && (
+                  <div className="retry">
+                    <p>{instituitionError}</p>
+                    <button type="button" onClick={fetchInstituitions}>
+                      retry
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        )}
+      </label>
+      <label>
+        <button type="button" onClick={() => setShowLevels(!showLevels)}>
+          {searchLevel ? searchLevel : "select level"}
+          <ChevronDown />
+        </button>
+        {showLevels && (
+          <>
+            <div className="select">
+              <h2>select level</h2>
+              <ul>
+                {selectLevels.map((l) => (
+                  <li key={l.id} onClick={() => setSearchLevel(l.level)}>
+                    {l.level}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
+      </label>
       <button type="button" onClick={handleSearch}>
         search <Search />
       </button>

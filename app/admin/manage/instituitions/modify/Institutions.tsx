@@ -1,15 +1,7 @@
 import { getInstituitions } from "@/app/lib/instituitions";
 import { ModifyInstituition } from "./Modify";
 import { RetryButton } from "@/app/ui/Retry";
-import { Suspense } from "react";
-
-export interface InstitutionType {
-  id: number;
-  name: string;
-  abbr: string;
-  about: string;
-  logo: any;
-}
+import { InstitutionType } from "@/app/types/types";
 
 type Type = {
   instituitions?: InstitutionType[];

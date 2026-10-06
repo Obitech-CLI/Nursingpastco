@@ -4,12 +4,12 @@ import { useActionState, useEffect, useState } from "react";
 import { addPastQuestion } from "./action";
 import { getInstituitions } from "@/app/lib/instituitions";
 import { selectLevels } from "@/app/ui/Options";
-import { InstitutionType } from "../../instituitions/modify/Institutions";
 import { CourseType } from "../../courses/modify/Courses";
 import { getCourses } from "@/app/lib/courses";
 import { ChevronDown, Image, List } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { useErrorModal, useSuccessModal } from "@/app/contexts/modalContexts";
+import { InstitutionType } from "@/app/types/types";
 
 const initialState = {
   msg: "",

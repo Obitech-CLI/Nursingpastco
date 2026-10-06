@@ -57,7 +57,6 @@
   color: var(--modal-txt);
 }
 
-.search-modal,
 .app-theme {
   position: fixed;
   z-index: 11;
@@ -69,6 +68,20 @@
   padding: 1rem;
   border-radius: 30px;
   backdrop-filter: blur(50px);
+}
+
+.search-modal {
+  position: absolute;
+  width: 100%;
+}
+
+.search-modal > fieldset {
+  background-color: var(--modal-bg);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  width: 90%;
+  margin: auto;
+  border-radius: 30px;
 }
 
 .search-modal {

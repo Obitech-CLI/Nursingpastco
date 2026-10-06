@@ -1,5 +1,7 @@
 "use server";
 
+import { PastQuestionType } from "../types/types";
+import { redis } from "./redis";
 import { supabase } from "./supabase/supabase";
 
 export const getPastQuestions = async (
@@ -16,6 +18,12 @@ export const getPastQuestions = async (
     }
     if (!course) {
       return { error: "choose a course to see past questions" };
+    }
+
+    const key = `pastQuestions:${instituition}:${level}:${level}`;
+    const cached = await redis.get<PastQuestionType[]>(key);
+    if (cached) {
+      return { pastQuestions: cached };
     }
 
     let query = supabase
@@ -44,6 +52,8 @@ export const getPastQuestions = async (
     if (data.length === 0) {
       return { error: "no pastQuestion found" };
     }
+
+    await redis.set(key, data);
 
     return { pastQuestions: data };
   } catch (err) {

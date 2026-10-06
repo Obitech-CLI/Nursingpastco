@@ -137,6 +137,21 @@ fieldset {
   position: relative;
 }
 
+fieldset .select {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: fixed;
+}
+
+fieldset > label > button {
+  width: 100%;
+  background-color: transparent;
+  box-shadow: var(--box-shadow);
+  justify-content: space-between;
+}
+
 .pastQuestion_pdf {
   display: flex;
   flex-direction: column;
@@ -149,8 +164,8 @@ fieldset {
 
 fieldset > h3 {
   position: absolute;
-  left: 0.5rem;
-  top: 0.5rem;
+  left: 1.5rem;
+  top: 1.5rem;
 }
 
 fieldset > button {

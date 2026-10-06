@@ -47,7 +47,6 @@ export function Header() {
                   <button type="button" onClick={goBack}>
                     <ArrowLeft />
                   </button>
-                  {pathname === "/nursing-instituitions" && <SearchButton />}
                   {pathname === "/nursing-courses" && <SearchButton />}
                   {pathname === "/admin/manage/courses/modify" && (
                     <SearchButton />

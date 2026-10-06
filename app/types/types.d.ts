@@ -20,3 +20,29 @@ export type ConfirmModalType = {
 export type childrenNode = {
   children: ReactNode;
 };
+
+export interface InstitutionType {
+  id: number;
+  name: string;
+  abbr: string;
+  about: string;
+  logo: any;
+  created_at: string;
+}
+
+export interface PastQuestionType {
+  id: number;
+  instituition: string;
+  course: string;
+  level: string;
+  title: string;
+  pdf: any;
+}
+
+export interface CourseType {
+  id: number;
+  instituition: string;
+  course: string;
+  level: string;
+  created_at: string;
+}

@@ -10,14 +10,13 @@ export default async function Page({
 }: {
   searchParams: Promise<{
     instituition?: string;
-    course?: string;
     level?: string;
   }>;
 }) {
   return (
     <main className={styles.Nursing_Courses}>
       <h2>Nursing Courses</h2>
-      <Image src={NursingCourses} alt="" />
+      <Image src={NursingCourses} alt="" loading="eager" />
       <h3>
         here are the list of all available courses with materials on our website
       </h3>

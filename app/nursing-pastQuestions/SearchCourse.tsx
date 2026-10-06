@@ -3,9 +3,9 @@
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { CourseType } from "../nursing-courses/Courses";
 import { getCourses } from "../lib/courses";
 import styles from "./pastQuestions.module.css";
+import { CourseType } from "../types/types";
 
 export function SearchCourse({
   instituition,
@@ -24,7 +24,7 @@ export function SearchCourse({
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const res = await getCourses(instituition, "", level);
+      const res = await getCourses(instituition, level);
       if (res.courses) {
         setCourseError("");
         setCourses(res.courses);

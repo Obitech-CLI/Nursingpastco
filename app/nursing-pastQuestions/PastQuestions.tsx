@@ -1,14 +1,6 @@
 import { getPastQuestions } from "@/app/lib/pastQuestions";
 import { PastQuestion } from "./PastQuestion";
-
-export interface PastQuestionType {
-  id: number;
-  instituition: string;
-  course: string;
-  level: string;
-  title: string;
-  pdf: any;
-}
+import { PastQuestionType } from "../types/types";
 
 type Type = {
   pastQuestions?: PastQuestionType[];
