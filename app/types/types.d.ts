@@ -54,3 +54,9 @@ export interface MessageType {
   message: string;
   created_at: string;
 }
+
+export interface SubscriberType {
+  id: number;
+  email: string;
+  created_at: string;
+}

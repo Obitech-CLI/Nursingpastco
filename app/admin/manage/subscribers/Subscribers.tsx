@@ -1,12 +1,7 @@
 import { getSubscribers } from "@/app/lib/subscribers";
 import { RetryButton } from "@/app/ui/Retry";
 import { ModifySubscribers } from "./Modify";
-
-export interface SubscriberType {
-  id: number;
-  email: string;
-  created_at: string;
-}
+import { SubscriberType } from "@/app/types/types";
 
 type Type = {
   subscribers?: SubscriberType[];

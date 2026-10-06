@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { SubscriberType } from "./Subscribers";
 import { UnSubscribe } from "./UnSubscribe";
+import { SubscriberType } from "@/app/types/types";
 
 type Props = {
   subscriber: SubscriberType;

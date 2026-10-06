@@ -1,5 +1,6 @@
 "use server";
 
+import { SubscriberType } from "../types/types";
 import { Admin } from "./admin";
 import { redis } from "./redis";
 import { supabase } from "./supabase/supabase";
@@ -7,7 +8,7 @@ import { supabase } from "./supabase/supabase";
 export const getSubscribers = async (email?: string) => {
   await Admin();
   try {
-    const cached = await redis.get("subscribers");
+    const cached = await redis.get<SubscriberType[]>("subscribers");
     if (cached) {
       return { subscribers: cached };
     }
