@@ -4,7 +4,12 @@ import { InstitutionType } from "../types/types";
 import { redis } from "./redis";
 import { supabase } from "./supabase/supabase";
 
-export const getInstituitions = async () => {
+type Type = {
+  instituitions?: InstitutionType[];
+  error?: string;
+};
+
+export const getInstituitions = async (): Promise<Type> => {
   try {
     const cached = await redis.get<InstitutionType[]>("instituitions");
     if (cached) {

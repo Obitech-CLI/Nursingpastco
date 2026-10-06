@@ -1,17 +1,17 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { InstitutionType } from "./Institutions";
 import { DeleteForm } from "./Delete";
-import { deleteInstituition, updateInstituition } from "./action";
+import { updateInstituition } from "./action";
 import Image from "next/image";
-import { Delete, PenBox, Plus, PlusCircle, X } from "lucide-react";
+import { Delete, PenBox, PlusCircle, X } from "lucide-react";
 import {
   useConfirmModal,
   useErrorModal,
   useSuccessModal,
 } from "@/app/contexts/modalContexts";
 import { useRouter } from "next/navigation";
+import { InstitutionType } from "@/app/types/types";
 
 type Props = {
   instituition: InstitutionType;

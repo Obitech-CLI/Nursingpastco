@@ -13,7 +13,6 @@ export default async function Page({
 }: {
   searchParams: Promise<{
     instituition?: string;
-    course?: string;
     level?: string;
   }>;
 }) {

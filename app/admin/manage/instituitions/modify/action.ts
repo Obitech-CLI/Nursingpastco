@@ -10,7 +10,7 @@ export const updateInstituition = async (prevData: any, formData: FormData) => {
   const instituitionAbout = formData.get("about-instituition") as string;
   const instituitionLogo = formData.get("instituition-logo") as File;
 
-  const updated = await redis.hget("iUpdate", "updated");
+  const updated = await redis.hget("iUpdated", "updated");
 
   try {
     if (updated) {
@@ -84,11 +84,13 @@ export const updateInstituition = async (prevData: any, formData: FormData) => {
         return { err: "failed to update instituition, try again", msg: "" };
       }
 
-      await redis.hset("iUpdate", {
+      await redis.hset("iUpdated", {
         updated: true,
         old: data?.name,
         new: instituitionName,
       });
+
+      await redis.del("instituitions");
 
       return { err: "instituition update success", msg: "" };
     }
@@ -112,6 +114,8 @@ export const updateInstituition = async (prevData: any, formData: FormData) => {
       new: instituitionName,
     });
 
+    await redis.del("instituitions");
+
     return { msg: "instituition update success", err: "" };
   } catch (err) {
     console.error(err);
@@ -122,7 +126,7 @@ export const updateInstituition = async (prevData: any, formData: FormData) => {
 export const deleteInstituition = async (prevData: any, formData: FormData) => {
   const id = formData.get("id") as string;
   const confirm = formData.get("confirm") as string;
-  const deleted = await redis.hget("iDelete", "deleted");
+  const deleted = await redis.hget("iDeleted", "deleted");
   try {
     if (deleted) {
       return { err: "resolve previous delete to continue", msg: "" };
@@ -170,6 +174,8 @@ export const deleteInstituition = async (prevData: any, formData: FormData) => {
       deleted: true,
       instituition: data?.name,
     });
+
+    await redis.del("instituitions");
 
     return { msg: "instituition deleted success", err: "" };
   } catch (err) {

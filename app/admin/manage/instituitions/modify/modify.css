@@ -12,6 +12,10 @@
   gap: 1rem;
 }
 
+.modify > div > button {
+  height: 45px;
+}
+
 .modify > .instituitions > .edit {
   display: flex;
   align-items: center;

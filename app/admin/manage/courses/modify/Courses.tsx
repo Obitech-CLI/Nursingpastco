@@ -1,30 +1,18 @@
 import { getCourses } from "@/app/lib/courses";
 import { ModifyCourse } from "./Modify";
 import { RetryButton } from "@/app/ui/Retry";
-
-export interface CourseType {
-  id: number;
-  instituition: string;
-  course: string;
-  level: string;
-}
-
-type Type = {
-  courses?: CourseType[];
-  error?: string;
-};
+import { CourseType } from "@/app/types/types";
 
 export default async function Courses({
   searchParams,
 }: {
   searchParams: Promise<{
     instituition?: string;
-    course?: string;
     level?: string;
   }>;
 }) {
-  const { instituition, course, level } = await searchParams;
-  const res: Type = await getCourses(instituition, course, level);
+  const { instituition, level } = await searchParams;
+  const res = await getCourses(instituition, level);
   return (
     <div className="courses">
       {res.courses && (

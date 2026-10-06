@@ -1,6 +1,5 @@
-import { getInstituitions } from "@/app/lib/instituitions";
-import { CourseType } from "./modify/Courses";
 import { getCourses } from "@/app/lib/courses";
+import { CourseType } from "@/app/types/types";
 
 type Type = {
   courses?: CourseType[];

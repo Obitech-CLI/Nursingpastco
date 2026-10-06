@@ -4,7 +4,7 @@ import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const resolveInstituitionsUpdate = async () => {
-  const res = await redis.hgetall("iUpdate");
+  const res = await redis.hgetall("iUpdated");
   const coursesUpdate = await redis.get("coursesUpdate");
   const pastQuestionsUpdate = await redis.get("pastQuestionsUpdate");
   try {
@@ -49,9 +49,10 @@ export const resolveInstituitionsUpdate = async () => {
 };
 
 export const resolveInstituitionsDelete = async () => {
-  const res = await redis.hgetall("iDelete");
+  const res = await redis.hgetall("iDeleted");
   const coursesDelete = await redis.get("coursesDelete");
   const pastQuestionsDelete = await redis.get("pastQuestionsDelete");
+
   try {
     if (!res?.deleted) {
       return { err: "no delete found", msg: "" };

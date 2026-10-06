@@ -4,7 +4,15 @@ import { CourseType } from "../types/types";
 import { redis } from "./redis";
 import { supabase } from "./supabase/supabase";
 
-export const getCourses = async (instituition?: string, level?: string) => {
+type Type = {
+  courses?: CourseType[];
+  error?: string;
+};
+
+export const getCourses = async (
+  instituition?: string,
+  level?: string,
+): Promise<Type> => {
   const cachedAll = await redis.get<CourseType[]>("allCourses");
   const cachedI = await redis.get<CourseType[]>(`courses:${instituition}`);
   const cachedL = await redis.get<CourseType[]>(`courses:${level}`);
@@ -30,7 +38,9 @@ export const getCourses = async (instituition?: string, level?: string) => {
   }
 
   if (instituition && level) {
-    return { courses: cachedBoth };
+    if (cachedBoth) {
+      return { courses: cachedBoth };
+    }
   }
   try {
     let query = supabase

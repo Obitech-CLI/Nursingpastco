@@ -19,7 +19,7 @@ const initialState = {
   err: "",
 };
 
-export function DeleteForm({ id, editing, deleting, setDeleting }: Props) {
+export function DeleteForm({ id, editing, setDeleting }: Props) {
   const { setSuccessMsg } = useSuccessModal();
   const { setErrorMsg } = useErrorModal();
 
@@ -31,13 +31,12 @@ export function DeleteForm({ id, editing, deleting, setDeleting }: Props) {
   const router = useRouter();
 
   useEffect(() => {
-    if (state?.msg) {
+    if (state.msg) {
       setDeleting(false);
       setSuccessMsg(state?.msg);
       router.refresh();
-      return;
     }
-    if (state?.err) {
+    if (state.err) {
       setErrorMsg(state.err);
     }
   }, [state]);
