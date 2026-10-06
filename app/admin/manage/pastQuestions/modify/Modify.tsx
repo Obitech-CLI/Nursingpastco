@@ -2,18 +2,17 @@
 
 import { useActionState, useEffect, useState } from "react";
 import { DeleteForm } from "./Delete";
-import { InstitutionType } from "../../instituitions/modify/Institutions";
 import { getInstituitions } from "@/app/lib/instituitions";
 import { selectLevels } from "@/app/ui/Options";
 import { PastQuestionType } from "./PastQuestions";
 import { updatePastQuestion } from "./action";
-import { CourseType } from "../../courses/modify/Courses";
 import { getCourses } from "@/app/lib/courses";
 import { ChevronDown, Delete, PenBox } from "lucide-react";
 import { RetryButton } from "@/app/ui/Retry";
 import { ClipLoader } from "react-spinners";
 import { useErrorModal, useSuccessModal } from "@/app/contexts/modalContexts";
 import { useRouter } from "next/navigation";
+import { CourseType, InstitutionType } from "@/app/types/types";
 
 type Props = {
   pastQuestion: PastQuestionType;
@@ -77,7 +76,6 @@ export function ModifyPastQuestion({ pastQuestion }: Props) {
       setCLoading(true);
       const res = await getCourses(
         pastQuestion.instituition,
-        "",
         pastQuestion.level,
       );
       if (res.courses) {

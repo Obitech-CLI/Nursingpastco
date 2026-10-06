@@ -1,5 +1,5 @@
 import { getInstituitions } from "@/app/lib/instituitions";
-import { InstitutionType } from "./modify/Institutions";
+import { InstitutionType } from "@/app/types/types";
 
 type Type = {
   instituitions?: InstitutionType[];

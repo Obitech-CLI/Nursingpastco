@@ -4,12 +4,11 @@ import { useActionState, useEffect, useState } from "react";
 import { addPastQuestion } from "./action";
 import { getInstituitions } from "@/app/lib/instituitions";
 import { selectLevels } from "@/app/ui/Options";
-import { CourseType } from "../../courses/modify/Courses";
 import { getCourses } from "@/app/lib/courses";
 import { ChevronDown, Image, List } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { useErrorModal, useSuccessModal } from "@/app/contexts/modalContexts";
-import { InstitutionType } from "@/app/types/types";
+import { CourseType, InstitutionType } from "@/app/types/types";
 
 const initialState = {
   msg: "",
@@ -63,7 +62,7 @@ export function AddForm() {
   const fetchCourses = async () => {
     try {
       setCLoading(true);
-      const res = await getCourses(selectedInstituition, "", selectedLevel);
+      const res = await getCourses(selectedInstituition, selectedLevel);
       if (res.courses) {
         setCourseError("");
         setCourses(res.courses);

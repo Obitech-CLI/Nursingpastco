@@ -18,7 +18,7 @@ export default async function Courses({
   }>;
 }) {
   const { instituition, level } = await searchParams;
-  const res = await getCourses(instituition, level);
+  const res: Type = await getCourses(instituition, level);
   return (
     <div className={styles.courses}>
       {res.courses && (

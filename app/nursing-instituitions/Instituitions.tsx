@@ -16,13 +16,8 @@ type Type = {
   error?: string;
 };
 
-export default async function NursingInstituitions({
-  searchParams,
-}: {
-  searchParams: Promise<{ search?: string }>;
-}) {
-  const { search } = await searchParams;
-  const res: Type = await getInstituitions(search);
+export default async function NursingInstituitions() {
+  const res: Type = await getInstituitions();
   return (
     <div className={styles.instituitions}>
       {res.instituitions && (

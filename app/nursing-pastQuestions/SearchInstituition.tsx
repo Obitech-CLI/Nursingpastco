@@ -45,7 +45,7 @@ export function SearchInstituition({
   const fetchInstituition = async () => {
     try {
       if (!instituition) return;
-      const res = await getInstituitions(instituition);
+      const res = await getInstituitions();
       if (res.instituitions) {
         setSelectedInstituition(res.instituitions);
         return;
