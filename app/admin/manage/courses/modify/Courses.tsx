@@ -1,7 +1,6 @@
 import { getCourses } from "@/app/lib/courses";
 import { ModifyCourse } from "./Modify";
 import { RetryButton } from "@/app/ui/Retry";
-import { CourseType } from "@/app/types/types";
 
 export default async function Courses({
   searchParams,

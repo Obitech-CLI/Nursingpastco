@@ -1,15 +1,14 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { CourseType } from "./Courses";
 import { DeleteForm } from "./Delete";
 import { updateCourse } from "./action";
-import { InstitutionType } from "../../instituitions/modify/Institutions";
 import { getInstituitions } from "@/app/lib/instituitions";
 import { selectLevels } from "@/app/ui/Options";
 import { ChevronDown, Delete, PenBox } from "lucide-react";
 import { useErrorModal, useSuccessModal } from "@/app/contexts/modalContexts";
 import { useRouter } from "next/navigation";
+import { CourseType, InstitutionType } from "@/app/types/types";
 
 type Props = {
   course: CourseType;
