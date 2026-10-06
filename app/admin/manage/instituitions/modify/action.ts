@@ -135,7 +135,7 @@ export const deleteInstituition = async (prevData: any, formData: FormData) => {
       return { err: "invalid request", msg: "" };
     }
 
-    if (confirm !== "i want to delete") {
+    if (confirm.toLowerCase().trim() !== "i want to delete") {
       return { err: "invalid confirm message", msg: "" };
     }
 

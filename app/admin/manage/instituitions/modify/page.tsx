@@ -17,7 +17,7 @@ export default async function Page() {
         <Plus />
         add
       </Link>
-      <div>
+      <div className="resolve">
         <ResolveUpdate />
         <ResolveDelete />
       </div>
