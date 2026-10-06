@@ -1,11 +1,12 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, RotateCcw } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getCourses } from "../lib/courses";
 import styles from "./pastQuestions.module.css";
 import { CourseType } from "../types/types";
+import { ClipLoader } from "react-spinners";
 
 export function SearchCourse({
   instituition,
@@ -56,7 +57,10 @@ export function SearchCourse({
       {instituition && level ? (
         <div className={styles.courses}>
           {Loading ? (
-            <p>loading courses...</p>
+            <div className="loading">
+              <p>loading courses...</p>
+              <ClipLoader size={50} color="var(--bg-txt)" />
+            </div>
           ) : (
             <>
               {courses.length > 0 && (
@@ -70,10 +74,11 @@ export function SearchCourse({
                 </ul>
               )}
               {courseError && (
-                <div>
+                <div className="retry">
                   <p>{courseError}</p>
                   <button type="button" onClick={fetchCourses}>
                     retry
+                    <RotateCcw />
                   </button>
                 </div>
               )}

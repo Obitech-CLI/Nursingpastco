@@ -4,7 +4,7 @@ import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const resolveCoursesUpdate = async () => {
-  const res = await redis.hgetall("cUpdate");
+  const res = await redis.hgetall("cUpdated");
   try {
     if (!res?.updated) {
       return { err: "no update found", msg: "" };
@@ -25,10 +25,10 @@ export const resolveCoursesUpdate = async () => {
       return { err: "something went wrong", msg: "" };
     }
 
-    await redis.del("cUpdate");
+    await redis.del("cUpdated");
 
     return {
-      msg: "successfully resolved updates for course related past-questions",
+      msg: "successfully resolved updates",
       err: "",
     };
   } catch (err) {
@@ -38,7 +38,7 @@ export const resolveCoursesUpdate = async () => {
 };
 
 export const resolveCoursesDelete = async () => {
-  const res = await redis.hgetall("cDelete");
+  const res = await redis.hgetall("cDeleted");
 
   try {
     if (!res?.deleted) {
@@ -56,10 +56,10 @@ export const resolveCoursesDelete = async () => {
       return { err: "something went wrong", msg: "" };
     }
 
-    await redis.del("cDelete");
+    await redis.del("cDeleted");
 
     return {
-      msg: "successfully resolved deletes for related course past-questions",
+      msg: "successfully resolved deletes",
       err: "",
     };
   } catch (err) {

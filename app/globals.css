@@ -60,6 +60,11 @@ h3 {
   color: var(--color-1);
 }
 
+button.cancel {
+  background-color: transparent;
+  color: var(--bg-txt);
+}
+
 h4,
 li,
 label,

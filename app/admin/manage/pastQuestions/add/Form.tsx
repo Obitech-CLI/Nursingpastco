@@ -232,6 +232,7 @@ export function AddForm() {
       </label>
       <button type="submit" disabled={pending}>
         {pending ? "adding..." : "add"}
+        {pending && <ClipLoader size={25} />}
       </button>
     </form>
   );

@@ -16,7 +16,7 @@ export default async function Courses({
     <div className="courses">
       {res.courses && (
         <>
-          <h2>instituitions</h2>
+          <h2>courses</h2>
           {res.courses.length > 0 && (
             <>
               {res.courses.map((course) => (

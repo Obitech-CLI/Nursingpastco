@@ -37,7 +37,7 @@ export function SearchAdminCourses() {
   };
 
   const handleAll = () => {
-    router.push(`/nursing-courses`);
+    router.push(`/admin/manage/courses/modify`);
     setSearchInstituition("");
     setSearchLevel("");
     setShowSearch(false);

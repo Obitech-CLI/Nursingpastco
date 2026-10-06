@@ -3,13 +3,20 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 4rem;
+  gap: 1rem;
 }
 
-.modify > div {
+.modify > .resolve {
   display: flex;
   align-items: center;
   gap: 1rem;
+  border: var(--border);
+  border-radius: 50px;
+  padding: 1rem;
+}
+
+.modify > .resolve > button {
+  height: 45px;
 }
 
 .courses > .edit > .btns {

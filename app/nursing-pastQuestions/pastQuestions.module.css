@@ -78,3 +78,19 @@
 .searchCourses > .courses > ul h3 {
   margin-left: 1rem;
 }
+
+.pdf {
+  position: fixed;
+  inset: 0;
+  padding: 8rem 0 4rem;
+  height: 100%;
+  background-color: var(--modal-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pdf > iframe {
+  border: none;
+}

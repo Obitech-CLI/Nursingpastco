@@ -1,5 +1,6 @@
 "use server";
 
+import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const addPastQuestion = async (prevData: any, formData: FormData) => {
@@ -60,6 +61,9 @@ export const addPastQuestion = async (prevData: any, formData: FormData) => {
     if (insertError) {
       return { err: "failed to add pastQuestion, try again", msg: "" };
     }
+
+    const key = `pastQuestions:${instituition}:${level}:${level}`;
+    await redis.del(key);
 
     return { msg: "pastQuestion added success", err: "" };
   } catch (err) {

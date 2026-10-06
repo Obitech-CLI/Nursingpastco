@@ -1,12 +1,14 @@
 "use client";
 
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, RotateCcw, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { InstitutionType } from "../nursing-instituitions/Instituitions";
 import { getInstituitions } from "../lib/instituitions";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import styles from "./pastQuestions.module.css";
+import { ClipLoader } from "react-spinners";
+import { RetryButton } from "../ui/Retry";
 
 export function SearchInstituition({
   instituition,
@@ -89,13 +91,25 @@ export function SearchInstituition({
       </div>
       {showInstituitions && (
         <div className="select">
+          <button
+            type="button"
+            className="cancel"
+            onClick={() => setShowInstituitions(false)}
+          >
+            <X />
+          </button>
           {Loading ? (
-            <p>loading instituitions...</p>
+            <>
+              <div className="loading">
+                <p>loading instituitions...</p>
+                <ClipLoader size={50} color="var(--bg-txt)" />
+              </div>
+            </>
           ) : (
             <>
               {instituitions.length > 0 && (
                 <ul>
-                  <h3>select instituition</h3>
+                  <h2>select instituition</h2>
                   {instituitions.map((i) => (
                     <li
                       key={i.id}
@@ -110,12 +124,15 @@ export function SearchInstituition({
                 </ul>
               )}
               {instituitionError && (
-                <div>
-                  <p>{instituitionError}</p>
-                  <button type="button" onClick={fetchInstituitions}>
-                    retry
-                  </button>
-                </div>
+                <>
+                  <div className="retry">
+                    <p>{instituitionError}</p>
+                    <button type="button" onClick={fetchInstituitions}>
+                      retry
+                      <RotateCcw />
+                    </button>
+                  </div>
+                </>
               )}
             </>
           )}

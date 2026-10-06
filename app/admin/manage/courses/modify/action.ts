@@ -10,7 +10,7 @@ export const updateCourse = async (prevData: any, formData: FormData) => {
   const course = formData.get("course") as string;
   const level = formData.get("level") as string;
 
-  const updated = await redis.hget("cUpdate", "updated");
+  const updated = await redis.hget("cUpdated", "updated");
 
   try {
     if (updated) {
@@ -44,7 +44,7 @@ export const updateCourse = async (prevData: any, formData: FormData) => {
       return { err: "failed to update course, try again", msg: "" };
     }
 
-    await redis.hset("cUpdate", {
+    await redis.hset("cUpdated", {
       updated: true,
       oldInstituition: data?.instituition,
       oldCourse: data?.course,
@@ -65,7 +65,7 @@ export const deleteCourse = async (prevData: any, formData: FormData) => {
   const id = formData.get("id") as string;
   const confirm = formData.get("confirm") as string;
 
-  const deleted = await redis.hget("cDelete", "deleted");
+  const deleted = await redis.hget("cDeleted", "deleted");
   try {
     if (deleted) {
       return { err: "resolve previous delete to continue", msg: "" };
@@ -98,7 +98,7 @@ export const deleteCourse = async (prevData: any, formData: FormData) => {
       return { err: "failed to delete course. try again", msg: "" };
     }
 
-    await redis.hset("cDelete", {
+    await redis.hset("cDeleted", {
       deleted: true,
       instituition: data?.instituition,
       course: data?.course,

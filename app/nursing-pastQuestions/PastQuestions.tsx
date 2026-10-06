@@ -1,6 +1,7 @@
 import { getPastQuestions } from "@/app/lib/pastQuestions";
 import { PastQuestion } from "./PastQuestion";
 import { PastQuestionType } from "../types/types";
+import styles from "./pastQuestions.module.css";
 
 type Type = {
   pastQuestions?: PastQuestionType[];
@@ -18,28 +19,22 @@ export default async function PastQuestions({
 }) {
   const { instituition, course, level } = await searchParams;
   const res: Type = await getPastQuestions(instituition, course, level);
+
+  console.log(JSON.stringify(res));
   return (
-    <div>
+    <div className={styles.pastQuestions}>
       {res.error && (
         <div className="retry">
           <p>{res.error}</p>
         </div>
       )}
       {res.pastQuestions && (
-        <>
-          <h3>PastQuestions</h3>
+        <div className="select">
+          <h2>PastQuestions</h2>
           {res.pastQuestions.length > 0 && (
-            <>
-              {res.pastQuestions.map((pastQuestion) => (
-                <PastQuestion
-                  key={pastQuestion.id}
-                  pastQuestion={pastQuestion}
-                  course={course}
-                />
-              ))}
-            </>
+            <PastQuestion pastQuestions={res.pastQuestions} course={course} />
           )}
-        </>
+        </div>
       )}
     </div>
   );
