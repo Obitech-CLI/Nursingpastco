@@ -5,11 +5,7 @@ import styles from "./instituitions.module.css";
 import Image from "next/image";
 import { ClipLoader } from "react-spinners";
 
-export default function Page({
-  searchParams,
-}: {
-  searchParams: Promise<{ search?: string }>;
-}) {
+export default function Page() {
   return (
     <main className={styles.Nursing_Instituitions}>
       <h2>Nursing Instituitions</h2>
@@ -26,7 +22,7 @@ export default function Page({
           </div>
         }
       >
-        <Instituitions searchParams={searchParams} />
+        <Instituitions />
       </Suspense>
     </main>
   );
