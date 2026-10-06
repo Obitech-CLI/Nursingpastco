@@ -36,10 +36,12 @@ export const resolveInstituitionsUpdate = async () => {
       await redis.set("pastQuestionsUpdate", true);
     }
 
-    await redis.del("iUpdate");
+    await redis.del("iUpdated");
+    await redis.del("coursesUpdate");
+    await redis.del("pastQuestionsUpdate");
 
     return {
-      msg: "resolved updates for related instituition courses and past-questions success",
+      msg: "update resolved success",
       err: "",
     };
   } catch (err) {
@@ -82,10 +84,12 @@ export const resolveInstituitionsDelete = async () => {
       await redis.set("pastQuestionsDelete", true);
     }
 
-    await redis.del("iDelete");
+    await redis.del("iDeleted");
+    await redis.del("coursesDelete");
+    await redis.del("pastQuestionsDelete");
 
     return {
-      msg: "resolved deletes for related instituition courses and past-questions success",
+      msg: "deletes resolved success",
       err: "",
     };
   } catch (err) {

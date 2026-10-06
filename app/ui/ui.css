@@ -23,6 +23,7 @@
 
 .feedback-modal > div p {
   text-align: center;
+  text-transform: capitalize;
 }
 
 .menu-modal {
