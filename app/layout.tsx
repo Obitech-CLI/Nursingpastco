@@ -13,6 +13,43 @@ import "./globals.css";
 import { ConfirmModal, ErrorModal, SuccessModal } from "./ui/FeedbackModal";
 import { MenuModal } from "./ui/MenuModal";
 import { SearchModal } from "./ui/SearchModal";
+import {
+  Poppins,
+  Playfair,
+  Merriweather,
+  Montserrat,
+  Raleway,
+} from "next/font/google";
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const playfair = Playfair({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const raleway = Raleway({
+  variable: "--font-raleway",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export default function RootLayout({
   children,
@@ -21,7 +58,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body
+        className={`${poppins.variable} ${playfair.variable} 
+        ${merriweather.variable} ${raleway.variable} ${montserrat.variable}`}
+      >
         <AppThemeProvider>
           <SuccessModalProvider>
             <ErrorModalProvider>

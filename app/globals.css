@@ -40,6 +40,47 @@ body {
   color: green;
 }
 
+a,
+button {
+  font-family: var(--font-montserrat);
+  font-weight: 600;
+}
+
+p,
+span,
+legend {
+  font-family: var(--font-poppins);
+  font-weight: 600;
+}
+
+h3 {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  text-transform: capitalize;
+  color: var(--color-1);
+}
+
+h4,
+li,
+label,
+fieldset span,
+div {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+}
+
+h1 {
+  font-family: var(--font-playfair);
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+h2 {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
 h1,
 h2,
 h3 {
@@ -51,7 +92,7 @@ h1 {
 }
 
 h2 {
-  color: var(--color-1);
+  color: var(--color-3);
 }
 
 h4 {
