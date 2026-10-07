@@ -34,6 +34,10 @@ export default async function PastQuestions({
           <h2>PastQuestions</h2>
           {res.pastQuestions.length > 0 && (
             <>
+              <div>
+                <h3>{res.pastQuestions[0]?.instituition}</h3>
+                <h3>{res.pastQuestions[0]?.level}</h3>
+              </div>
               {res.pastQuestions.map((pastQuestion) => (
                 <ModifyPastQuestion
                   key={pastQuestion.id}

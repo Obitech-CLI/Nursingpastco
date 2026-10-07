@@ -1,5 +1,6 @@
 "use server";
 
+import { Admin } from "@/app/lib/admin";
 import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
@@ -8,6 +9,10 @@ export const addPastQuestion = async (prevData: any, formData: FormData) => {
   const level = formData.get("level") as string;
   const course = formData.get("course") as string;
   const pdf = formData.get("pdf") as File;
+
+  const title = pdf.name.slice(0, -3);
+
+  await Admin();
   try {
     if (!instituition || !level || !course) {
       return { err: "empty input detected", msg: "" };
@@ -23,7 +28,7 @@ export const addPastQuestion = async (prevData: any, formData: FormData) => {
       .eq("instituition", instituition)
       .eq("level", level)
       .eq("course", course)
-      .eq("title", pdf.name)
+      .eq("title", title)
       .maybeSingle();
 
     if (existingDataError) {
@@ -54,7 +59,7 @@ export const addPastQuestion = async (prevData: any, formData: FormData) => {
       instituition: instituition,
       course: course,
       level: level,
-      title: pdf.name,
+      title: title,
       pdf: pdfUrl.publicUrl,
     });
 

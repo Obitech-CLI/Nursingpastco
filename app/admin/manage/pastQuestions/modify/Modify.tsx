@@ -124,7 +124,7 @@ export function ModifyPastQuestion({ pastQuestion }: Props) {
         action={action}
         className={editing ? "editing" : ""}
       >
-        <h3>{pastQuestion.title}</h3>
+        <h4>{pastQuestion.title}</h4>
         {editing && (
           <div className="det">
             <input
