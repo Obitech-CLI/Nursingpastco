@@ -4,6 +4,8 @@ import { supabase } from "@/app/lib/supabase/supabase";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
+import { getIP } from "@/app/lib/ip";
+import { redis } from "@/app/lib/redis";
 
 export const LoginAdmin = async (prevData: any, formData: FormData) => {
   const username = formData.get("username") as string;
@@ -12,7 +14,23 @@ export const LoginAdmin = async (prevData: any, formData: FormData) => {
   const cookieStore = await cookies();
   const SECRET = process.env.JWT_SECRET as string;
 
+  const ip = await getIP();
+
   try {
+    if (!ip) {
+      return { err: "unable to identify ip address", msg: "" };
+    }
+
+    const key = `login:${ip}`;
+    const attempts = await redis.incr(key);
+
+    if (attempts === 1) {
+      await redis.expire(key, 180);
+    }
+
+    if (attempts > 5) {
+      return { err: "too many login attempts. try again later", msg: "" };
+    }
     if (!username || !password) {
       return { err: "empty input detected", msg: "" };
     }

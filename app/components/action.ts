@@ -1,12 +1,28 @@
 "use server";
 
 import { transporter } from "../config/mailer";
+import { getIP } from "../lib/ip";
 import { redis } from "../lib/redis";
 import { supabase } from "../lib/supabase/supabase";
 
 export const Subscribe = async (prevState: any, formData: FormData) => {
   const email = formData.get("email") as string;
+  const ip = await getIP();
   try {
+    if (!ip) {
+      return { err: "unable to identify ip address", msg: "" };
+    }
+
+    const key = `subscriber:${ip}`;
+    const attempts = await redis.incr(key);
+
+    if (attempts === 1) {
+      await redis.expire(key, 180);
+    }
+
+    if (attempts > 5) {
+      return { err: "too many subscribe attempts. try again later", msg: "" };
+    }
     if (!email) {
       return { msg: "empty input detected", ok: false };
     }

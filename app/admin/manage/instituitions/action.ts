@@ -12,26 +12,53 @@ export const resolveInstituitionsUpdate = async () => {
       return { err: "no update found", msg: "" };
     }
     if (!coursesUpdate) {
-      const { error } = await supabase
+      const { data, error } = await supabase
+        .from("courses")
+        .select("instituition, level")
+        .eq("instituition", res?.old)
+        .maybeSingle();
+
+      if (error) {
+        return { err: "something went wrong. try again", msg: "" };
+      }
+
+      const { error: updateError } = await supabase
         .from("courses")
         .update({ instituition: res?.new })
         .eq("instituition", res?.old);
 
-      if (error) {
-        return { err: "something went wrong", msg: "" };
+      if (updateError) {
+        return { err: "something went wrong. try again", msg: "" };
       }
+
+      await redis.del("allCourses");
+      await redis.del(`courses:${data?.instituition}`);
+      await redis.del(`courses:${data?.level}`);
+      await redis.del(`courses:${data?.instituition}:${data?.level}`);
 
       await redis.set("coursesUpdate", true);
     }
     if (!pastQuestionsUpdate) {
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from("pastQuestions")
-        .update({ instituition: res?.new })
-        .eq("instituition", res?.old);
+        .select("instituition, level, course")
+        .eq("instituition", res?.old)
+        .maybeSingle();
 
       if (error) {
         return { err: "something went wrong", msg: "" };
       }
+      const { error: updateError } = await supabase
+        .from("pastQuestions")
+        .update({ instituition: res?.new })
+        .eq("instituition", res?.old);
+
+      if (updateError) {
+        return { err: "something went wrong", msg: "" };
+      }
+
+      const key = `pastQuestions:${data?.instituition}:${data?.level}:${data?.course}`;
+      await redis.del(key);
 
       await redis.set("pastQuestionsUpdate", true);
     }
@@ -60,26 +87,53 @@ export const resolveInstituitionsDelete = async () => {
       return { err: "no delete found", msg: "" };
     }
     if (!coursesDelete) {
-      const { error } = await supabase
+      const { data, error } = await supabase
+        .from("courses")
+        .select("instituition, level")
+        .eq("instituition", res?.instituition)
+        .maybeSingle();
+
+      if (error) {
+        return { err: "something went wrong", msg: "" };
+      }
+
+      const { error: deleteError } = await supabase
         .from("courses")
         .delete()
         .eq("instituition", res?.instituition);
 
-      if (error) {
+      if (deleteError) {
         return { err: "something went wrong", msg: "" };
       }
+
+      await redis.del("allCourses");
+      await redis.del(`courses:${data?.instituition}`);
+      await redis.del(`courses:${data?.level}`);
+      await redis.del(`courses:${data?.instituition}:${data?.level}`);
 
       await redis.set("coursesDelete", true);
     }
     if (!pastQuestionsDelete) {
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from("pastQuestions")
-        .delete()
-        .eq("instituition", res?.instituition);
+        .select("instituition, level, course")
+        .eq("instituition", res?.instituition)
+        .maybeSingle();
 
       if (error) {
         return { err: "something went wrong", msg: "" };
       }
+      const { error: deleteError } = await supabase
+        .from("pastQuestions")
+        .delete()
+        .eq("instituition", res?.instituition);
+
+      if (deleteError) {
+        return { err: "something went wrong", msg: "" };
+      }
+
+      const key = `pastQuestions:${data?.instituition}:${data?.level}:${data?.course}`;
+      await redis.del(key);
 
       await redis.set("pastQuestionsDelete", true);
     }
