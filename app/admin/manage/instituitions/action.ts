@@ -31,9 +31,6 @@ export const resolveInstituitionsUpdate = async () => {
         return { err: "something went wrong. try again", msg: "" };
       }
 
-      await redis.del("allCourses");
-      await redis.del(`courses:${data?.instituition}`);
-      await redis.del(`courses:${data?.level}`);
       await redis.del(`courses:${data?.instituition}:${data?.level}`);
 
       await redis.set("coursesUpdate", true);
@@ -106,9 +103,6 @@ export const resolveInstituitionsDelete = async () => {
         return { err: "something went wrong", msg: "" };
       }
 
-      await redis.del("allCourses");
-      await redis.del(`courses:${data?.instituition}`);
-      await redis.del(`courses:${data?.level}`);
       await redis.del(`courses:${data?.instituition}:${data?.level}`);
 
       await redis.set("coursesDelete", true);

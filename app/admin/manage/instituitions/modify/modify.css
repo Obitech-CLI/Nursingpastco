@@ -28,6 +28,7 @@
 .modify > .instituitions > .edit img {
   border-radius: 50%;
   box-shadow: var(--box-shadow);
+  object-fit: contain;
 }
 
 .modify > .instituitions > .edit input[type="file"] {

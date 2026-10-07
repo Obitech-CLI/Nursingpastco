@@ -10,6 +10,8 @@ export const SendMessage = async (prevData: any, formData: FormData) => {
   const message = formData.get("message") as string;
 
   const ip = await getIP();
+
+  console.log(JSON.stringify(ip));
   try {
     if (!ip) {
       return { err: "unable to identify ip address", msg: "" };
@@ -17,6 +19,20 @@ export const SendMessage = async (prevData: any, formData: FormData) => {
 
     if (!fullname || !email || !message) {
       return { err: "empty input detected", msg: "" };
+    }
+
+    const key = `user:${ip}`;
+    const sent = await redis.incr(key);
+
+    if (sent === 1) {
+      await redis.expire(key, 86400);
+    }
+
+    if (sent > 2) {
+      return {
+        err: "message limit exhausted. try again later after 24hours",
+        msg: "",
+      };
     }
 
     const { error } = await supabase.from("messages").insert({
@@ -30,17 +46,6 @@ export const SendMessage = async (prevData: any, formData: FormData) => {
     }
 
     await redis.del("contact-messages");
-
-    const key = `user:${ip}`;
-    const sent = await redis.incr(key);
-
-    if (sent === 1) {
-      await redis.expire(key, 1800);
-    }
-
-    if (sent > 2) {
-      return { err: "message limit exhausted. try again later", msg: "" };
-    }
 
     return { msg: "message sent successfully", err: "" };
   } catch (err) {

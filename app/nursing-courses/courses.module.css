@@ -17,6 +17,10 @@
   width: 100%;
 }
 
+.courses > div h3 {
+  text-align: center;
+}
+
 .courses .course {
   display: flex;
   flex-direction: column;

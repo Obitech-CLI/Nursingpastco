@@ -5,9 +5,11 @@ import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const addCourse = async (prevData: any, formData: FormData) => {
-  const instituition = formData.get("instituition") as string;
-  const course = formData.get("course") as string;
-  const level = formData.get("level") as string;
+  const instituition = (formData.get("instituition") as string)
+    .trim()
+    .toLowerCase();
+  const course = (formData.get("course") as string).trim().toLowerCase();
+  const level = (formData.get("level") as string).trim().toLowerCase();
 
   await Admin();
 

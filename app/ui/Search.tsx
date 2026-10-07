@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useSearch } from "../contexts/searchContext";
 import { useMenu } from "../contexts/menuContext";
 
@@ -18,7 +18,7 @@ function SearchButton() {
         setShowSearch(!showSearch);
       }}
     >
-      <span>{!showSearch ? <Search size={25} /> : <X />}</span>
+      {!showSearch ? <Search size={25} /> : <X />}
     </button>
   );
 }

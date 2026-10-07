@@ -3,13 +3,14 @@
 import { Admin } from "@/app/lib/admin";
 import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
-import { revalidatePath } from "next/cache";
 
 export const updateCourse = async (prevData: any, formData: FormData) => {
   const courseId = formData.get("course-id");
-  const instituition = formData.get("instituition") as string;
-  const course = formData.get("course") as string;
-  const level = formData.get("level") as string;
+  const instituition = (formData.get("instituition") as string)
+    .trim()
+    .toLowerCase();
+  const course = (formData.get("course") as string).trim().toLowerCase();
+  const level = (formData.get("level") as string).trim().toLowerCase();
 
   const updated = await redis.hget("cUpdated", "updated");
 
@@ -57,9 +58,6 @@ export const updateCourse = async (prevData: any, formData: FormData) => {
       newLevel: level,
     });
 
-    await redis.del("allCourses");
-    await redis.del(`courses:${data?.instituition}`);
-    await redis.del(`courses:${data?.level}`);
     await redis.del(`courses:${data?.instituition}:${data?.level}`);
 
     return { msg: "course update success", err: "" };
@@ -116,9 +114,6 @@ export const deleteCourse = async (prevData: any, formData: FormData) => {
       level: data?.level,
     });
 
-    await redis.del("allCourses");
-    await redis.del(`courses:${data?.instituition}`);
-    await redis.del(`courses:${data?.level}`);
     await redis.del(`courses:${data?.instituition}:${data?.level}`);
 
     return { msg: "course deleted success", err: "" };

@@ -25,6 +25,10 @@ export default async function Courses({
         <>
           {res.courses.length > 0 && (
             <>
+              <div>
+                <h3>{res.courses[0]?.instituition}</h3>
+                <h3>{res.courses[0]?.level}</h3>
+              </div>
               {res.courses.map((course) => (
                 <Course key={course.id} course={course} />
               ))}

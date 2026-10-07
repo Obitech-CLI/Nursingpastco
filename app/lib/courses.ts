@@ -13,34 +13,20 @@ export const getCourses = async (
   instituition?: string,
   level?: string,
 ): Promise<Type> => {
-  const cachedAll = await redis.get<CourseType[]>("allCourses");
-  const cachedI = await redis.get<CourseType[]>(`courses:${instituition}`);
-  const cachedL = await redis.get<CourseType[]>(`courses:${level}`);
-  const cachedBoth = await redis.get<CourseType[]>(
+  if (!instituition) {
+    return { error: "select an instituition" };
+  }
+
+  if (!level) {
+    return { error: "select a level" };
+  }
+
+  const cached = await redis.get<CourseType[]>(
     `courses:${instituition}:${level}`,
   );
 
-  if (!instituition && !level) {
-    if (cachedAll) {
-      return { courses: cachedAll };
-    }
-  }
-  if (instituition && !level) {
-    if (cachedI) {
-      return { courses: cachedI };
-    }
-  }
-
-  if (level && !instituition) {
-    if (cachedL) {
-      return { courses: cachedL };
-    }
-  }
-
-  if (instituition && level) {
-    if (cachedBoth) {
-      return { courses: cachedBoth };
-    }
+  if (cached) {
+    return { courses: cached };
   }
   try {
     let query = supabase
@@ -66,20 +52,7 @@ export const getCourses = async (
       return { error: "no course found" };
     }
 
-    if (!instituition && !level) {
-      await redis.set("allCourses", data);
-    }
-    if (instituition && !level) {
-      await redis.set(`courses:${instituition}`, data);
-    }
-
-    if (level && !instituition) {
-      await redis.set(`courses:${level}`, data);
-    }
-
-    if (instituition && level) {
-      await redis.set(`courses:${instituition}:${level}`, data);
-    }
+    await redis.set(`courses:${instituition}:${level}`, data);
 
     return { courses: data };
   } catch (err) {

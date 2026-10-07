@@ -4,9 +4,15 @@ import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 
 export const addInstituition = async (prevData: any, formData: FormData) => {
-  const instituitionName = formData.get("instituition-name") as string;
-  const instituitionAbbr = formData.get("instituition-abbr") as string;
-  const instituitionAbout = formData.get("about-instituition") as string;
+  const instituitionName = (formData.get("instituition-name") as string)
+    .trim()
+    .toLowerCase();
+  const instituitionAbbr = (formData.get("instituition-abbr") as string)
+    .trim()
+    .toLowerCase();
+  const instituitionAbout = (
+    formData.get("about-instituition") as string
+  ).trim();
   const instituitionLogo = formData.get("instituition-logo") as File;
   try {
     if (!instituitionName || !instituitionAbbr || !instituitionAbout) {
@@ -60,7 +66,6 @@ export const addInstituition = async (prevData: any, formData: FormData) => {
       return { msg: "failed to add instuition, try again", ok: false };
     }
 
-    await redis.del("allCourses");
     await redis.del("instituitions");
 
     return { msg: "instituition added success", ok: true };

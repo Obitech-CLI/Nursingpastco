@@ -9,6 +9,7 @@ import { ChevronDown, Delete, PenBox } from "lucide-react";
 import { useErrorModal, useSuccessModal } from "@/app/contexts/modalContexts";
 import { useRouter } from "next/navigation";
 import { CourseType, InstitutionType } from "@/app/types/types";
+import { ClipLoader } from "react-spinners";
 
 type Props = {
   course: CourseType;
@@ -84,90 +85,101 @@ export function ModifyCourse({ course }: Props) {
         />
         <label>
           <input
-            type="hidden"
-            name="instituition"
-            defaultValue={selectedInstituition || course.instituition}
-          />
-          <button
-            type="button"
-            onClick={() => {
-              if (editing) {
-                setShowInstituitions(!showInstituitions);
-              }
-            }}
-          >
-            {selectedInstituition ? selectedInstituition : course.instituition}
-            {editing && <ChevronDown />}
-          </button>
-          {showInstituitions && (
-            <div className="select">
-              {loading ? (
-                <p>loading instituitions...</p>
-              ) : (
-                <>
-                  {instituitions.length > 0 && (
-                    <ul>
-                      {instituitions.map((i) => (
-                        <li
-                          key={i.id}
-                          onClick={() => setSelectedInstituition(i.name)}
-                        >
-                          {i.name}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {instituitionError && (
-                    <div>
-                      <p>{instituitionError}</p>
-                      <button type="button" onClick={fetchInstituitions}>
-                        retry
-                      </button>
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          )}
-        </label>
-        <label>
-          <input
             type="text"
             name="course"
             defaultValue={course.course ?? ""}
             disabled={!editing}
           />
         </label>
-        <label>
-          <input
-            type="hidden"
-            name="level"
-            defaultValue={selectedLevel || course.level}
-          />
-          <button
-            type="button"
-            onClick={() => {
-              if (editing) {
-                setShowLevels(!showLevels);
-              }
-            }}
-          >
-            {selectedLevel ? selectedLevel : course.level}
-            {editing && <ChevronDown />}
-          </button>
-          {showLevels && (
-            <div className="select">
-              <ul>
-                <h2>select level</h2>
-                {selectLevels.map((l) => (
-                  <li key={l.id} onClick={() => setSelectedLevel(l.level)}>
-                    {l.level}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </label>
+        {editing && (
+          <div className="det">
+            <label>
+              <input
+                type="hidden"
+                name="instituition"
+                defaultValue={selectedInstituition || course.instituition}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (editing) {
+                    setShowInstituitions(!showInstituitions);
+                  }
+                }}
+              >
+                {selectedInstituition
+                  ? selectedInstituition
+                  : course.instituition}
+                {editing && <ChevronDown />}
+              </button>
+              {showInstituitions && (
+                <div className="select">
+                  <h2>select instituition</h2>
+                  {loading ? (
+                    <div className="loading">
+                      <p>loading instituitions...</p>
+                      <ClipLoader size={50} color="var(--bg-txt)" />
+                    </div>
+                  ) : (
+                    <>
+                      {instituitions.length > 0 && (
+                        <ul>
+                          {instituitions.map((i) => (
+                            <li
+                              key={i.id}
+                              onClick={() => setSelectedInstituition(i.name)}
+                            >
+                              {i.name}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {instituitionError && (
+                        <div>
+                          <p>{instituitionError}</p>
+                          <button type="button" onClick={fetchInstituitions}>
+                            retry
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              )}
+            </label>
+
+            <label>
+              <input
+                type="hidden"
+                name="level"
+                defaultValue={selectedLevel || course.level}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (editing) {
+                    setShowLevels(!showLevels);
+                  }
+                }}
+              >
+                {selectedLevel ? selectedLevel : course.level}
+                {editing && <ChevronDown />}
+              </button>
+              {showLevels && (
+                <div className="select">
+                  <ul>
+                    <h2>select level</h2>
+                    {selectLevels.map((l) => (
+                      <li key={l.id} onClick={() => setSelectedLevel(l.level)}>
+                        {l.level}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </label>
+          </div>
+        )}
         <div className="btns">
           <button
             type="button"
@@ -186,6 +198,7 @@ export function ModifyCourse({ course }: Props) {
         {editing && (
           <button type="submit" disabled={pending}>
             {pending ? "updating..." : "update"}
+            {pending && <ClipLoader size={25} />}
           </button>
         )}
       </form>
