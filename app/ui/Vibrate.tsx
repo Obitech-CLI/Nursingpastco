@@ -9,9 +9,9 @@ export function Vibration() {
         navigator.vibrate?.(30);
       }
     };
-    document.addEventListener("click", handleClick);
+    document.addEventListener("click", handleClick, true);
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener("click", handleClick, true);
     };
   }, []);
   return null;

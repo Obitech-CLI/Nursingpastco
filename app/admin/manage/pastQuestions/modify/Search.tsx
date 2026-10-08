@@ -5,7 +5,7 @@ import { getCourses } from "@/app/lib/courses";
 import { getInstituitions } from "@/app/lib/instituitions";
 import { CourseType, InstitutionType } from "@/app/types/types";
 import { selectLevels } from "@/app/ui/Options";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, Search, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners";
@@ -245,6 +245,7 @@ export function SearchPastQuestionsAdmin() {
         )}
       </label>
       <button type="button" onClick={handleSearch}>
+        <Search />
         search
       </button>
     </fieldset>
