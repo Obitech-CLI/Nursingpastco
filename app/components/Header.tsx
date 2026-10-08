@@ -8,10 +8,12 @@ import "./components.css";
 import { usePathname, useRouter } from "next/navigation";
 import { LogoWithName } from "../ui/Logo";
 import { useState } from "react";
+import { useMenu } from "../contexts/menuContext";
 
 export function Header() {
   const [nav, openNav] = useState(true);
   const router = useRouter();
+  const { setShowMenu } = useMenu();
   const pathname = usePathname();
   const goBack = () => {
     router.back();
@@ -24,6 +26,7 @@ export function Header() {
     } else {
       router.replace("/");
     }
+    setShowMenu(false);
   };
   return (
     <header>
