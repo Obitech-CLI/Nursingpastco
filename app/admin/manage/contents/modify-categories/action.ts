@@ -1,6 +1,6 @@
 "use server";
 
-import { supabase } from "@/app/lib/supabase/supabase";
+import { supabase0 } from "@/app/lib/supabase/supabase0";
 
 export const updateContentsCategory = async (
   prevData: any,
@@ -13,7 +13,7 @@ export const updateContentsCategory = async (
       return { err: "empty input detected", msg: "" };
     }
 
-    const { error } = await supabase
+    const { error } = await supabase0
       .from("contents_categories")
       .update({ category: category })
       .eq("category", category);
@@ -44,7 +44,7 @@ export const deleteContentsCategory = async (
       return { err: "invalid confirm message", msg: "" };
     }
 
-    const { error } = await supabase
+    const { error } = await supabase0
       .from("contents_categories")
       .delete()
       .eq("id", id);
