@@ -2,7 +2,6 @@ import { Admin } from "@/app/lib/admin";
 import { Suspense } from "react";
 import Link from "next/link";
 import { Plus } from "lucide-react";
-import "./modify.css";
 import { ClipLoader } from "react-spinners";
 import Recommendations from "./Recommendations";
 import "./recommendations.css";
