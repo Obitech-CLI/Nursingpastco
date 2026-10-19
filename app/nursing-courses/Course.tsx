@@ -23,10 +23,10 @@ export function Course({ course }: Props) {
   };
   return (
     <div key={course.id} className={styles.course}>
-      <h3 onClick={() => setShow(!show)}>
+      <button onClick={() => setShow(!show)}>
         {course.course}
         <ChevronDown />
-      </h3>
+      </button>
       {show && (
         <div className="select">
           <button

@@ -4,7 +4,6 @@ import { supabase } from "@/app/lib/supabase/supabase";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export const CreateAdmin = async (prevData: any, formData: FormData) => {
   const username = formData.get("username") as string;

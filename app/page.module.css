@@ -30,6 +30,10 @@
   margin: 3rem 0 2rem;
 }
 
+.offer > section > h2 {
+  color: var(--bg-txt);
+}
+
 .offer > section h3 {
   color: red;
   text-align: center;
@@ -110,6 +114,7 @@
 .sub_offer > div > div {
   box-shadow: var(--box-shadow);
   border-radius: 20px;
+  width: 100%;
 }
 
 .sub_offer > div > div > div {
@@ -192,4 +197,60 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+@media screen and (min-width: 300px) and (max-width: 400px) {
+  .offer > div > p {
+    font-size: 0.8rem;
+  }
+
+  .offer > div > a {
+    font-size: 0.7rem;
+  }
+
+  .offer > div > h3 {
+    font-size: 1rem;
+  }
+  .offer > section > h2 {
+    font-size: 1.1rem;
+  }
+
+  .offer > section h3 {
+    font-size: 1rem;
+  }
+  .sub_offer > div > div h2 {
+    font-size: 1rem;
+  }
+
+  .sub_offer > div > div ul {
+    font-size: 0.6rem;
+  }
+
+  .sub_offer > div > div > p {
+    font-size: 0.9rem;
+  }
+
+  .sub_offer > div > div ul li {
+    font-size: 0.6rem;
+  }
+
+  .sub_offer > h3 {
+    font-size: 1rem;
+  }
+
+  .sub_offer > p {
+    font-size: 1rem;
+  }
+
+  .instituitionsHero > h2 {
+    font-size: 1.1rem;
+  }
+
+  .instituitionsHero > a {
+    font-size: 0.7rem;
+  }
+
+  .instituitionsHero > div {
+    font-size: 1.3rem;
+  }
 }

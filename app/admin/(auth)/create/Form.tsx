@@ -31,7 +31,7 @@ export function CreateForm() {
   }, [state]);
 
   return (
-    <form action={action}>
+    <form action={action} className="auth">
       <h3>become an admin</h3>
       <label>
         <User2 />

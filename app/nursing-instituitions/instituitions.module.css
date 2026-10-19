@@ -34,6 +34,16 @@
   box-shadow: var(--box-shadow);
   padding: 1rem;
   border-radius: 30px;
+  text-align: center;
+}
+
+.instituitions > article > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .instituitions > article img {
@@ -41,6 +51,7 @@
   border-radius: 50%;
   height: 150px;
   width: 150px;
+  box-shadow: var(--box-shadow);
 }
 
 .instituitions > article p {
@@ -48,4 +59,34 @@
   box-shadow: var(--box-shadow);
   padding: 1rem;
   border-radius: 30px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 400px) {
+  .instituitions > article h2 {
+    font-size: 1.2rem;
+  }
+
+  .instituitions > article h3 {
+    font-size: 0.9rem;
+  }
+
+  .instituitions > article p {
+    font-size: 0.8rem;
+  }
+
+  .instituitions > article img {
+    height: 80px;
+    width: 80px;
+  }
+
+  .instituitions > article > div > button {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .Nursing_Instituitions {
+    width: 500px;
+    margin: 8rem auto 5rem;
+  }
 }

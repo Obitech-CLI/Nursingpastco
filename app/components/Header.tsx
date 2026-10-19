@@ -57,7 +57,19 @@ export function Header() {
                   {pathname === "/admin/manage/pastQuestions/modify" && (
                     <SearchButton />
                   )}
+                  {pathname === "/admin/manage/contents/modify" && (
+                    <SearchButton />
+                  )}
+                  {pathname === "/admin/manage/recommendations/modify" && (
+                    <SearchButton />
+                  )}
+                  {pathname === "/admin/manage/news&updates/modify" && (
+                    <SearchButton />
+                  )}
                   {pathname === "/admin/manage/subscribers" && <SearchButton />}
+                  {pathname === "/nursing-contents" && <SearchButton />}
+                  {pathname === "/nursing-news&updates" && <SearchButton />}
+                  {pathname === "/nursing-recommendations" && <SearchButton />}
                 </>
               )}
             </>

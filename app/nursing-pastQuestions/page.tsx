@@ -14,13 +14,13 @@ export default async function Page({
     level?: string;
   }>;
 }) {
-  const params = await searchParams;
+  const { instituition, level } = await searchParams;
   return (
     <main>
       <h2>Nursing PastQuestions</h2>
-      <SearchInstituition instituition={params.instituition} />
-      <SearchLevel level={params.level} />
-      <SearchCourse instituition={params.instituition} level={params.level} />
+      <SearchInstituition instituition={instituition} />
+      <SearchLevel level={level} />
+      <SearchCourse instituition={instituition} level={level} />
       <Suspense
         fallback={
           <div className="loading">

@@ -67,9 +67,9 @@ export function SearchCourse({
                 <ul>
                   <h3>courses</h3>
                   {courses.map((c) => (
-                    <li key={c.id} onClick={() => handleSearch(c.course)}>
+                    <button key={c.id} onClick={() => handleSearch(c.course)}>
                       {c.course} <ChevronDown />
-                    </li>
+                    </button>
                   ))}
                 </ul>
               )}

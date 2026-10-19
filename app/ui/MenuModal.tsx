@@ -5,10 +5,13 @@ import { usePathname } from "next/navigation";
 import "./ui.css";
 import {
   BadgeCheck,
+  Book,
   BookOpen,
   ClipboardList,
   FileText,
   Inbox,
+  Notebook,
+  NotebookPenIcon,
   RefreshCw,
   School,
   User2,
@@ -69,7 +72,44 @@ function MenuModal() {
                     </span>
                     nursing pastQuestions
                   </Link>
+                  <Link
+                    onClick={ResetMenu}
+                    href="/nursing-nmcnpastQuestions"
+                    className={
+                      pathname === "/nursing-nmcnpastQuestions" ? "active" : ""
+                    }
+                  >
+                    <span>
+                      <ClipboardList size={25} />
+                    </span>
+                    nmcn pastQuestions
+                  </Link>
 
+                  <Link
+                    onClick={ResetMenu}
+                    href="/nursing-notes"
+                    className={pathname === "/nursing-notes" ? "active" : ""}
+                  >
+                    <span>
+                      <NotebookPenIcon size={25} />
+                    </span>
+                    nursing notes
+                  </Link>
+
+                  <Link
+                    onClick={ResetMenu}
+                    href="/nursing-textbooks"
+                    className={
+                      pathname === "/nursing-textbooks" ? "active" : ""
+                    }
+                  >
+                    <span>
+                      <Book size={25} />
+                    </span>
+                    nursing textbooks
+                  </Link>
+
+                  {/*
                   <Link
                     onClick={ResetMenu}
                     href="/nursing-contents"
@@ -106,6 +146,7 @@ function MenuModal() {
                     </span>
                     nursing recommendations
                   </Link>
+                  */}
                 </>
               )}
 

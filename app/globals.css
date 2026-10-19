@@ -50,12 +50,12 @@ p,
 span,
 legend {
   font-family: var(--font-poppins);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 h3 {
-  font-family: var(--font-raleway);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
   text-transform: capitalize;
   color: var(--color-1);
 }
@@ -65,12 +65,45 @@ button.cancel {
   color: var(--bg-txt);
 }
 
+@media screen and (min-width: 550px) {
+  .select ul li {
+    width: 500px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 400px) {
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  .retry {
+    padding: 1rem 1rem;
+  }
+
+  li {
+    font-size: 0.8rem;
+  }
+}
+
 h4,
 li,
 label,
 fieldset span,
 div {
-  font-family: var(--font-raleway);
+  font-family: var(--font-merriweather);
   font-weight: 700;
 }
 
@@ -81,7 +114,7 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-poppins);
+  font-family: var(--font-playfair);
   font-weight: 700;
   text-transform: capitalize;
 }
@@ -192,6 +225,14 @@ fieldset .select {
   position: fixed;
 }
 
+fieldset > label {
+  width: 100%;
+}
+
+fieldset > h4 {
+  align-self: flex-start;
+}
+
 fieldset > label > button {
   width: 100%;
   background-color: transparent;
@@ -283,8 +324,20 @@ textarea {
   width: 100%;
 }
 
-label {
+form > label > button {
+  color: var(--bg-txt);
+}
+
+form > label {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+form.auth > label {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
@@ -304,7 +357,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   order: -1;
 }
 
@@ -358,7 +411,7 @@ main > nav > a {
   border: var(--border);
   text-align: center;
   padding: 1rem;
-  text-transform: capitalize;
+  text-transform: lowercase;
   border-radius: 50px;
 }
 

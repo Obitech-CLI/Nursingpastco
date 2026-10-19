@@ -60,3 +60,58 @@ export interface SubscriberType {
   email: string;
   created_at: string;
 }
+
+export interface CategoryType {
+  id: number;
+  category: string;
+}
+
+export interface ContentType {
+  id: number;
+  category: string;
+  title: string;
+  author: string;
+  file: string;
+  content: string;
+  created_at: string;
+}
+
+export interface NewsType {
+  id: number;
+  category: string;
+  title: string;
+  author: string;
+  image: string;
+  news: string;
+  created_at: string;
+}
+
+export interface RecommendationType {
+  id: number;
+  category: string;
+  title: string;
+  author: string;
+  image: string;
+  recommendation: string;
+  link: string;
+  created_at: string;
+}
+
+export interface TextbookType {
+  id: number;
+  title: string;
+  cover: string;
+  pdf: string;
+}
+
+export interface NotesType {
+  id: number;
+  title: string;
+  pdf: string;
+}
+
+export interface NMCNType {
+  id: number;
+  title: string;
+  pdf: string;
+}

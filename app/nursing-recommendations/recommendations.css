@@ -1,0 +1,81 @@
+.nursing-recommendations > .recommendations {
+  width: 100%;
+}
+
+.nursing-recommendations > .select-categories > .categories {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nursing-recommendations > .select-categories > .cat-retry {
+  display: flex;
+  align-items: center;
+}
+
+.nursing-recommendations > .select-categories > .cat-retry > button {
+  background-color: transparent;
+  padding: 0;
+}
+
+.nursing-recommendations > .select-categories > .cat-loading {
+  display: flex;
+  align-items: center;
+}
+
+.nursing-recommendations > .select-categories {
+  overflow: auto;
+  width: 100%;
+  scrollbar-width: none;
+  display: flex;
+  align-items: center;
+  border: var(--border);
+  padding: 0.5rem;
+  height: 55px;
+  border-radius: 50px;
+}
+
+.nursing-recommendations .categories > button {
+  background-color: transparent;
+  border: var(--border);
+  color: var(--bg-txt);
+}
+
+.nursing-recommendations .categories > button.active {
+  border: none;
+}
+
+.nursing-recommendations > .recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.nursing-recommendations > .recommendations article span {
+  align-self: flex-start;
+  padding: 0.3rem 1rem;
+  border-radius: 10px;
+  color: var(--bg-txt);
+  box-shadow: var(--box-shadow);
+  text-transform: capitalize;
+}
+
+.nursing-recommendations > .recommendations article p {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.nursing-recommendations > .recommendations article {
+  box-shadow: var(--box-shadow);
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nursing-recommendations > .recommendations article img {
+  width: 100%;
+  object-fit: cover;
+}

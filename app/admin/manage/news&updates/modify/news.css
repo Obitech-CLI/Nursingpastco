@@ -1,0 +1,94 @@
+article span {
+  align-self: flex-start;
+  padding: 0.3rem 1rem;
+  border-radius: 10px;
+  color: var(--bg-txt);
+  box-shadow: var(--box-shadow);
+  text-transform: capitalize;
+}
+
+article p {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+article {
+  box-shadow: var(--box-shadow);
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+article img {
+  width: 100%;
+  object-fit: cover;
+}
+
+form.edit-form {
+  position: fixed;
+  width: 100%;
+  inset: 0;
+  backdrop-filter: blur(5px);
+  padding: 7rem 1rem 5rem;
+  background-color: var(--modal-bg);
+  overflow: auto;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  gap: 1rem;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.select-categories > .categories {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.select-categories > .cat-retry {
+  display: flex;
+  align-items: center;
+}
+
+.select-categories > .cat-retry > button {
+  background-color: transparent;
+  padding: 0;
+}
+
+.select-categories > .cat-loading {
+  display: flex;
+  align-items: center;
+}
+
+.select-categories {
+  overflow: auto;
+  width: 100%;
+  scrollbar-width: none;
+  display: flex;
+  align-items: center;
+  border: var(--border);
+  padding: 0.5rem;
+  height: 55px;
+  border-radius: 50px;
+}
+
+.categories > button {
+  background-color: transparent;
+  border: var(--border);
+  color: var(--bg-txt);
+}
+
+.categories > button.active {
+  border: none;
+}

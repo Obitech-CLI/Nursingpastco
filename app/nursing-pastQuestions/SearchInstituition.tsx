@@ -8,17 +8,17 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import styles from "./pastQuestions.module.css";
 import { ClipLoader } from "react-spinners";
-import { RetryButton } from "../ui/Retry";
+import { getInstituition } from "../lib/instituition";
 
 export function SearchInstituition({
   instituition,
 }: {
   instituition?: string;
 }) {
+  console.log(instituition);
   const [instituitions, setInstituitions] = useState<InstitutionType[]>([]);
-  const [selectedInstituition, setSelectedInstituition] = useState<
-    InstitutionType[]
-  >([]);
+  const [selectedInstituition, setSelectedInstituition] =
+    useState<InstitutionType | null>(null);
   const [Loading, setLoading] = useState(false);
   const [instituitionError, setInstituitionError] = useState("");
   const [showInstituitions, setShowInstituitions] = useState(false);
@@ -45,19 +45,17 @@ export function SearchInstituition({
   };
 
   const fetchInstituition = async () => {
-    try {
-      if (!instituition) return;
-      const res = await getInstituitions();
-      if (res.instituitions) {
-        setSelectedInstituition(res.instituitions);
-        return;
-      }
-    } catch (err) {
-      console.error(err);
+    if (!instituition) return;
+    const res = await getInstituition(instituition);
+    console.log(res);
+    if (res.instituition) {
+      setSelectedInstituition(res.instituition);
+      return;
     }
   };
 
   useEffect(() => {
+    console.log("effect");
     fetchInstituition();
   }, [instituition]);
 
@@ -73,13 +71,13 @@ export function SearchInstituition({
   return (
     <div className={styles.searchInstituition}>
       <div className={styles.instituition}>
-        <div onClick={() => setShowInstituitions(!showInstituitions)}>
+        <h3 onClick={() => setShowInstituitions(!showInstituitions)}>
           {instituition ? instituition : "select instituition"}
           <ChevronDown />
-        </div>
-        {instituition && selectedInstituition.length ? (
+        </h3>
+        {selectedInstituition ? (
           <Image
-            src={selectedInstituition[0].logo}
+            src={selectedInstituition.logo}
             alt=""
             width={200}
             height={200}

@@ -17,6 +17,18 @@ export function Nav() {
         <Settings2 size={30} />
         manage pastQuestions
       </Link>
+      <Link href="/admin/manage/textbooks">
+        <Settings2 size={30} />
+        manage textbooks
+      </Link>
+      <Link href="/admin/manage/notes">
+        <Settings2 size={30} />
+        manage notes
+      </Link>
+      <Link href="/admin/manage/nmcn">
+        <Settings2 size={30} />
+        manage nmcn pastQuestions
+      </Link>
       <Link href="/admin/manage/contents">
         <Settings2 size={30} />
         manage contents

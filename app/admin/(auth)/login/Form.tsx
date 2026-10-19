@@ -55,7 +55,7 @@ export function LoginForm() {
   }, []);
 
   return (
-    <form action={action}>
+    <form action={action} className="auth">
       <h3>welcome back</h3>
       <label>
         <User2 />

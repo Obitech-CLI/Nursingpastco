@@ -20,7 +20,6 @@ export default async function PastQuestions({
   const { instituition, course, level } = await searchParams;
   const res: Type = await getPastQuestions(instituition, course, level);
 
-  console.log(JSON.stringify(res));
   return (
     <div className={styles.pastQuestions}>
       {res.error && (

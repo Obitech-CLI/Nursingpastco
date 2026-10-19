@@ -110,6 +110,8 @@ footer > .info .bottom {
 
 footer > .info .bottom p {
   text-align: center;
+  margin: 0;
+  width: 100%;
 }
 
 footer > .info .sponsor span {
@@ -177,4 +179,35 @@ p {
 
 .subscribe-form > form input {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 300px) and (max-width: 400px) {
+  .subscribe-form > form > div {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .subscribe-form > form input {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .subscribe-form > form > div > button {
+    font-size: 0.8rem;
+    height: 40px;
+  }
+  .subscribe-form > h3 {
+    font-size: 1rem;
+  }
+  .subscribe-form > p {
+    font-size: 0.8rem;
+  }
+
+  footer > .info > nav a {
+    font-size: 0.8rem;
+  }
+
+  footer > .info > .bottom > p {
+    font-size: 0.8rem;
+  }
 }

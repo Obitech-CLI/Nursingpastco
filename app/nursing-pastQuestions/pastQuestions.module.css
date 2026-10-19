@@ -30,8 +30,7 @@
   align-items: center;
 }
 
-.searchInstituition .instituition > div {
-  font-size: 1.3rem;
+.searchInstituition .instituition > h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,6 +41,8 @@
   width: 100px;
   height: 100px;
   object-fit: contain;
+  box-shadow: var(--box-shadow);
+  border-radius: 50%;
 }
 
 .searchCourses {
@@ -64,7 +65,7 @@
   list-style-type: none;
 }
 
-.searchCourses > .courses > ul li {
+.searchCourses > .courses > ul button {
   box-shadow: var(--box-shadow);
   padding: 0.7rem 1rem;
   border-radius: 20px;
@@ -73,6 +74,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: transparent;
 }
 
 .searchCourses > .courses > ul h3 {
@@ -93,4 +95,15 @@
 
 .pdf > iframe {
   border: none;
+}
+
+@media screen and (min-width: 550px) {
+  .searchLevels {
+    align-items: center;
+    width: fit-content;
+  }
+
+  .searchCourses {
+    width: 500px;
+  }
 }

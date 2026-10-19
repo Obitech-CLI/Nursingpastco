@@ -4,6 +4,7 @@ import Image from "next/image";
 import NursingCourses from "@/public/NursingCourses.png";
 import styles from "./courses.module.css";
 import { ClipLoader } from "react-spinners";
+import { SearchNursingCourses } from "./Search";
 
 export default async function Page({
   searchParams,

@@ -109,3 +109,14 @@
   align-items: center;
   gap: 0.5rem;
 }
+
+@media screen and (min-width: 300px) and (max-width: 400px) {
+  .menu-modal > nav {
+    width: 300px;
+  }
+
+  .menu-modal > nav a {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+}

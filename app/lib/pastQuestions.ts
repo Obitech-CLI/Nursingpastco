@@ -29,7 +29,7 @@ export const getPastQuestions = async (
     let query = supabase
       .from("pastQuestions")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: true });
 
     if (instituition) {
       query = query.ilike("instituition", `%${instituition}%`);
