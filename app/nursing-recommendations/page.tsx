@@ -15,7 +15,6 @@ export default function Page({
   return (
     <main className="nursing-recommendations">
       <h2>nursing recommendations</h2>
-      <SelectCategories />
       <Suspense
         fallback={
           <div className="loading">
@@ -24,6 +23,7 @@ export default function Page({
           </div>
         }
       >
+        <SelectCategories />
         <Recommendations searchParams={searchParams} />
       </Suspense>
     </main>

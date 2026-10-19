@@ -15,7 +15,6 @@ export default function Page({
   return (
     <main className="nursing-news">
       <h2>nursing news&updates</h2>
-      <SelectCategories />
       <Suspense
         fallback={
           <div className="loading">
@@ -24,6 +23,7 @@ export default function Page({
           </div>
         }
       >
+        <SelectCategories />
         <News searchParams={searchParams} />
       </Suspense>
     </main>
