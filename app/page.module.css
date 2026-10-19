@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .hero > h1 {
@@ -103,6 +104,7 @@
   text-align: center;
   gap: 0.5rem;
   width: 100%;
+  margin-top: 3rem;
 }
 
 .sub_offer > div {
@@ -115,6 +117,13 @@
   box-shadow: var(--box-shadow);
   border-radius: 20px;
   width: 100%;
+}
+
+main.home > h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .sub_offer > div > div > div {
@@ -252,5 +261,66 @@
 
   .instituitionsHero > div {
     font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .hero {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  main.home {
+    width: 600px;
+    margin: 8rem auto 5rem;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  main.home {
+    width: 800px;
+    margin: 8rem auto 5rem;
+  }
+
+  .hero {
+    flex-direction: row;
+  }
+
+  .hero > h1 {
+    font-size: 2.6rem;
+  }
+
+  .offer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: -0.5rem;
+    gap: 1.5rem;
+  }
+
+  .offer > section {
+    grid-column: span 2;
+    text-align: center;
+  }
+
+  .sub_offer > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  main.home {
+    width: 1000px;
+    margin: 8rem auto 5rem;
+  }
+
+  .hero > h1 {
+    font-size: 3.6rem;
+  }
+
+  .instituitionsHero > img {
+    height: 250px;
   }
 }

@@ -4,7 +4,7 @@ import { supabase2 } from "@/app/lib/supabase/supabase2";
 
 export const addTextBook = async (prevData: any, formData: FormData) => {
   const pdf = formData.get("pdf") as File;
-  const image = formData.get("image") as File;
+  const image = formData.get("cover") as File;
   try {
     if (!pdf.size || !pdf) {
       return { err: "no file uploaded", msg: "" };

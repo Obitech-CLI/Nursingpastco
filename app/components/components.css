@@ -211,3 +211,10 @@ p {
     font-size: 0.8rem;
   }
 }
+
+@media screen and (min-width: 600px) {
+  .subscribe-form {
+    width: 580px;
+    margin: 0 auto 3rem;
+  }
+}

@@ -20,12 +20,13 @@ import {
   StethoscopeIcon,
   TrendingUp,
   Unlock,
+  Verified,
 } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
+    <main className={styles.home}>
       <div className={styles.hero}>
         <Image src={HeroImage} alt="" loading="eager" />
         <h1>study for your nursing level exams with confidence.</h1>
@@ -104,6 +105,12 @@ export default function Home() {
           </Link>
         </div>
       </div>
+
+      <h3>
+        <Unlock color="tomato" size={40} />
+        100% free access
+      </h3>
+
       <div className={styles.instituitionsHero}>
         <h2>we cover a wide range of nursing instituitions across africa</h2>
         <Image src={InstituitionsHero} alt="" />
@@ -325,8 +332,8 @@ export default function Home() {
           </div>
         </div>
         <h3>
-          <Unlock color="tomato" size={40} />
-          100% free access
+          <Verified color="green" size={40} />
+          100% verified
         </h3>
       </div>
     </main>
