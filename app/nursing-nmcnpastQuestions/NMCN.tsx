@@ -29,7 +29,7 @@ export function NMCN({ nmcn, category }: Prop) {
     };
   }, [category]);
   return (
-    <div className="select nmc">
+    <div className="pdf-overlay nmc">
       {!showPdf && (
         <button type="button" className="cancel" onClick={handleAll}>
           <X />
