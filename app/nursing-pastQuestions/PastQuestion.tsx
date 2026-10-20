@@ -19,8 +19,6 @@ export function PastQuestion({ pastQuestions, course }: Props) {
 
   const [showPdf, setShowPdf] = useState(0);
 
-  const [pdfLoading, setPDFLoading] = useState(true);
-
   const handleExit = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("course", "");
@@ -38,31 +36,36 @@ export function PastQuestion({ pastQuestions, course }: Props) {
     <div className="pdf-overlay">
       {pastQuestions.length > 0 && (
         <>
-          <button type="button" onClick={handleExit} className="cancel">
-            <X />
-          </button>
+          {!showPdf && (
+            <button type="button" onClick={handleExit} className="cancel">
+              <X />
+            </button>
+          )}
           <ul>
             {pastQuestions.map((pastQuestion) => (
-              <div key={pastQuestion.id}>
+              <div
+                key={pastQuestion.id}
+                className={showPdf === pastQuestion.id ? "selected" : ""}
+              >
                 {!showPdf && (
                   <li onClick={() => setShowPdf(pastQuestion.id)}>
                     {pastQuestion.title}
                   </li>
                 )}
                 {showPdf === pastQuestion.id && (
-                  <div className={styles.pdf}>
+                  <>
                     <button
                       type="button"
                       onClick={() => {
                         setShowPdf(0);
-                        setPDFLoading(true);
                       }}
                       className="cancel"
+                      style={{ margin: "auto" }}
                     >
                       <X />
                     </button>
                     <PdfViewerWrapper url={pastQuestion.pdf} />
-                  </div>
+                  </>
                 )}
               </div>
             ))}

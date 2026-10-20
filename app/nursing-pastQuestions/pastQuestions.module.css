@@ -82,22 +82,6 @@
   margin-left: 1rem;
 }
 
-.pdf {
-  position: fixed;
-  inset: 0;
-  height: 100%;
-  background-color: var(--modal-bg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 60;
-  padding: 7.5rem 0 3rem;
-}
-
-.pdf > iframe {
-  border: none;
-}
-
 @media screen and (min-width: 550px) {
   .searchLevels {
     align-items: center;

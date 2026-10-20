@@ -83,13 +83,18 @@ button.cancel {
   border-radius: 50px;
 }
 
+.selected {
+  order: -1;
+}
+
 .pdf-overlay {
   backdrop-filter: blur(10px);
   position: fixed;
   inset: 0;
-  padding: 7rem 0 4rem;
+  padding: 7rem 0 3.7rem;
   display: flex;
   flex-direction: column;
+  height: 100dvh;
   overflow: auto;
 }
 
