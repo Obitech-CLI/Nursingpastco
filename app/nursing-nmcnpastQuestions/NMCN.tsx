@@ -49,27 +49,11 @@ export function NMCN({ nmcn, category }: Prop) {
       {nmcn.length && (
         <ul>
           {nmcn.map((nmc) => (
-            <div key={nmc.id}>
+            <div key={nmc.id} className={showPdf === nmc.id ? "selected" : ""}>
               {!showPdf && (
                 <li onClick={() => setShowPdf(nmc.id)}>{nmc.title}</li>
               )}
-              {showPdf === nmc.id && (
-                <>
-                  {/*{pdfLoading && (
-                    <div className="loading">
-                      <p>loading pdf...</p>
-                      <ClipLoader size={50} color="var(--bg-txt)" />
-                    </div>
-                  )}*/}
-                  <PdfViewerWrapper url={nmc.pdf} />
-                  {/*<iframe
-                    src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(nmc.pdf)}`}
-                    width="100%"
-                    height="100%"
-                    onLoad={() => setPDFLoading(false)}
-                  />*/}
-                </>
-              )}
+              {showPdf === nmc.id && <PdfViewerWrapper url={nmc.pdf} />}
             </div>
           ))}
         </ul>

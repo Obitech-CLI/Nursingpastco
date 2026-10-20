@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { PastQuestionType } from "../types/types";
 import styles from "./pastQuestions.module.css";
 import { ClipLoader } from "react-spinners";
+import PdfViewerWrapper from "../components/PdfViewerWrapper";
 
 type Props = {
   pastQuestions: PastQuestionType[];
@@ -58,20 +59,7 @@ export function PastQuestion({ pastQuestions, course }: Props) {
                     >
                       <X />
                     </button>
-                    <>
-                      {pdfLoading && (
-                        <div className="loading">
-                          <p>loading pdf...</p>{" "}
-                          <ClipLoader size={50} color="var(--bg-txt)" />
-                        </div>
-                      )}
-                      <iframe
-                        src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pastQuestion.pdf)}`}
-                        width="100%"
-                        height="100%"
-                        onLoad={() => setPDFLoading(false)}
-                      />
-                    </>
+                    <PdfViewerWrapper url={pastQuestion.pdf} />
                   </div>
                 )}
               </div>

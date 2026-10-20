@@ -36,6 +36,10 @@
   padding: 1rem;
 }
 
+.selected {
+  order: -1;
+}
+
 @media screen and (min-width: 600px) {
   .nursing-nmcn {
     width: 580px;
