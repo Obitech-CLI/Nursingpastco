@@ -62,9 +62,8 @@ export function NMCN({ nmcn, category }: Prop) {
                       <ClipLoader size={50} color="var(--bg-txt)" />
                     </div>
                   )}
-                  <p>{nmc.title}</p>
                   <iframe
-                    src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(nmc.pdf)}`}
+                    src={nmc.pdf}
                     width="100%"
                     height="100%"
                     onLoad={() => setPDFLoading(false)}
