@@ -27,12 +27,12 @@ export default function AddTextBookForm() {
   return (
     <form action={action}>
       <label>
-        uplaod textbook cover image
+        upload textbook cover image
         <input type="file" name="cover" accept="image/*" />
       </label>
       <label>
-        upload textbook pdf
-        <input type="file" name="pdf" accept="application/pdf" />
+        textbook public url
+        <input type="text" name="url" placeholder="enter pdf public url" />
       </label>
       <button type="submit" disabled={pending}>
         {pending ? "adding..." : "add"}

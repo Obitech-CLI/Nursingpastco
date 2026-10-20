@@ -12,6 +12,10 @@ export default async function Page() {
           <Plus size={30} />
           add nmcn
         </Link>
+        <Link href="/admin/manage/nmcn/add-category">
+          <Plus size={30} />
+          add nmcn categories
+        </Link>
         {/*}
         <Link href="/admin/manage/nmcn/modify">
           <Settings2 size={30} />

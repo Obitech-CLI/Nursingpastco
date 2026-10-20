@@ -4,7 +4,11 @@ import { supabase1 } from "@/app/lib/supabase/supabase1";
 
 export const addNMCN = async (prevData: any, formData: FormData) => {
   const pdf = formData.get("pdf") as File;
+  const category = formData.get("category") as string;
   try {
+    if (!category) {
+      return { err: "no category selected", msg: "" };
+    }
     if (!pdf.size || !pdf) {
       return { err: "no file uploaded", msg: "" };
     }
@@ -28,6 +32,7 @@ export const addNMCN = async (prevData: any, formData: FormData) => {
       .getPublicUrl(`NMCN/${pdfName}`);
 
     const { error: insertError } = await supabase1.from("nmcn").insert({
+      category: category,
       title: title,
       pdf: pdfUrl.publicUrl,
     });
