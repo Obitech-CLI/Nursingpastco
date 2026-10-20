@@ -5,6 +5,7 @@ import { CategoryType, NMCNType } from "../types/types";
 import { X } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { useEffect, useState } from "react";
+import PdfViewerWrapper from "../components/PdfViewerWrapper";
 
 type Prop = {
   nmcn: NMCNType[];
@@ -15,7 +16,6 @@ export function NMCN({ nmcn, category }: Prop) {
   const router = useRouter();
 
   const [showPdf, setShowPdf] = useState(0);
-  const [pdfLoading, setPDFLoading] = useState(true);
 
   const handleAll = () => {
     router.replace(`/nursing-nmcnpastQuestions`);
@@ -40,7 +40,6 @@ export function NMCN({ nmcn, category }: Prop) {
           type="button"
           onClick={() => {
             setShowPdf(0);
-            setPDFLoading(true);
           }}
           className="cancel"
         >
@@ -56,18 +55,19 @@ export function NMCN({ nmcn, category }: Prop) {
               )}
               {showPdf === nmc.id && (
                 <>
-                  {pdfLoading && (
+                  {/*{pdfLoading && (
                     <div className="loading">
                       <p>loading pdf...</p>
                       <ClipLoader size={50} color="var(--bg-txt)" />
                     </div>
-                  )}
-                  <iframe
-                    src={nmc.pdf}
+                  )}*/}
+                  <PdfViewerWrapper url={nmc.pdf} />
+                  {/*<iframe
+                    src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(nmc.pdf)}`}
                     width="100%"
                     height="100%"
                     onLoad={() => setPDFLoading(false)}
-                  />
+                  />*/}
                 </>
               )}
             </div>

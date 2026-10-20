@@ -24,7 +24,6 @@
 .nmcn iframe {
   height: 100dvh;
   border: none;
-  margin-top: -2rem;
 }
 
 .nmcn {
@@ -35,4 +34,11 @@
 
 .nmcn > .retry {
   padding: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .nursing-nmcn {
+    width: 580px;
+    margin: 8rem auto 5rem;
+  }
 }

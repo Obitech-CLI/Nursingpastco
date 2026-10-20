@@ -1,7 +1,8 @@
 .textbook {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: center;
+  justify-content: center;
   gap: 3rem;
 }
 
