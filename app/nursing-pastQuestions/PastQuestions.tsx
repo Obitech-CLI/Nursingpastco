@@ -28,12 +28,11 @@ export default async function PastQuestions({
         </div>
       )}
       {res.pastQuestions && (
-        <div className="select">
-          <h2>PastQuestions</h2>
+        <>
           {res.pastQuestions.length > 0 && (
             <PastQuestion pastQuestions={res.pastQuestions} course={course} />
           )}
-        </div>
+        </>
       )}
     </div>
   );

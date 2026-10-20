@@ -18,12 +18,8 @@
   box-shadow: var(--box-shadow);
   display: flex;
   align-items: center;
+  color: var(--bg-txt);
   justify-content: space-between;
-}
-
-.nmcn iframe {
-  height: 100dvh;
-  border: none;
 }
 
 .nmcn {

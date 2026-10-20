@@ -100,7 +100,7 @@ button.cancel {
   }
 }
 
-@media screen and (min-width: 300px) and (max-width: 400px) {
+@media screen and (min-width: 300px) and (max-width: 350px) {
   h2 {
     font-size: 1.2rem;
   }
@@ -123,6 +123,32 @@ button.cancel {
 
   li {
     font-size: 0.8rem;
+  }
+}
+
+@media screen and (min-width: 3510px) and (max-width: 400px) {
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .retry {
+    padding: 1rem 1rem;
+  }
+
+  li {
+    font-size: 0.9rem;
   }
 }
 

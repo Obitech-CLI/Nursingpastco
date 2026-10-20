@@ -35,7 +35,7 @@ export function PastQuestion({ pastQuestions, course }: Props) {
     };
   }, [course]);
   return (
-    <>
+    <div className="pdf-overlay">
       {pastQuestions.length > 0 && (
         <>
           <button type="button" onClick={handleExit} className="cancel">
@@ -44,9 +44,11 @@ export function PastQuestion({ pastQuestions, course }: Props) {
           <ul>
             {pastQuestions.map((pastQuestion) => (
               <div key={pastQuestion.id}>
-                <li onClick={() => setShowPdf(pastQuestion.id)}>
-                  {pastQuestion.title}
-                </li>
+                {!showPdf && (
+                  <li onClick={() => setShowPdf(pastQuestion.id)}>
+                    {pastQuestion.title}
+                  </li>
+                )}
                 {showPdf === pastQuestion.id && (
                   <div className={styles.pdf}>
                     <button
@@ -67,7 +69,7 @@ export function PastQuestion({ pastQuestions, course }: Props) {
           </ul>
         </>
       )}
-    </>
+    </div>
   );
 }
 

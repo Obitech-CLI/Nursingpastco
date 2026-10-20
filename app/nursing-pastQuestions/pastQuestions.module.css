@@ -75,6 +75,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
+  color: var(--bg-txt);
 }
 
 .searchCourses > .courses > ul h3 {
