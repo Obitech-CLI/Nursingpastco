@@ -1,10 +1,18 @@
 import { Suspense } from "react";
 import { ClipLoader } from "react-spinners";
 import NMCNs from "./NMCNs";
+import "./nmcn.css";
 
-export default function Page() {
+export default function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    category?: string;
+    search?: string;
+  }>;
+}) {
   return (
-    <main>
+    <main className="nursing-nmcn">
       <h2>nursing nmcn pastquestions</h2>
       <Suspense
         fallback={
@@ -14,7 +22,7 @@ export default function Page() {
           </div>
         }
       >
-        <NMCNs />
+        <NMCNs searchParams={searchParams} />
       </Suspense>
     </main>
   );

@@ -2,11 +2,15 @@
 
 import { supabase1 } from "./supabase/supabase1";
 
-export const getNMCN = async () => {
+export const getNMCN = async (category?: string) => {
   try {
+    if (!category) {
+      return { error: "choose a course to see past questions" };
+    }
     const { data, error } = await supabase1
       .from("nmcn")
-      .select("id, title, pdf")
+      .select("id, title, category, pdf")
+      .eq("category", category)
       .order("created_at", { ascending: true });
 
     if (error) {

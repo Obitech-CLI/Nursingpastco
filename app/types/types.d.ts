@@ -113,5 +113,6 @@ export interface NotesType {
 export interface NMCNType {
   id: number;
   title: string;
+  category: string;
   pdf: string;
 }

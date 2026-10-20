@@ -1,0 +1,37 @@
+.nursing-nmcn > .nmcn {
+  width: 100%;
+}
+
+.select-categories {
+  width: 100%;
+}
+
+.select-categories > .categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.select-categories > .categories > button {
+  background-color: transparent;
+  border: 1.5px solid var(--color-2);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nmcn iframe {
+  height: 100dvh;
+  border: none;
+}
+
+.nmcn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nmcn > .retry {
+  padding: 1rem;
+}

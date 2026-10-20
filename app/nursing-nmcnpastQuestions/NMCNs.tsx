@@ -1,23 +1,37 @@
 import { getNMCN } from "../lib/nmcn";
+import { NMCNType } from "../types/types";
 import { RetryButton } from "../ui/Retry";
+import SelectCategories from "./Categories";
 import { NMCN } from "./NMCN";
 
-export default async function NMCNs() {
-  const res = await getNMCN();
+type Prop = {
+  nmcn?: NMCNType[];
+  error?: string;
+};
+
+export default async function NMCNs({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    category?: string;
+    search?: string;
+  }>;
+}) {
+  const { category } = await searchParams;
+  const res: Prop = await getNMCN(category);
   return (
-    <div>
+    <div className="nmcn">
       {res.error && (
         <div className="retry">
           <p>{res.error}</p>
-          <RetryButton />
         </div>
       )}
+      <SelectCategories />
+
       {res.nmcn?.length && (
-        <div>
-          {res.nmcn.map((nmc) => (
-            <NMCN key={nmc.id} nmc={nmc} />
-          ))}
-        </div>
+        <>
+          <NMCN nmcn={res?.nmcn} category={category} />
+        </>
       )}
     </div>
   );
