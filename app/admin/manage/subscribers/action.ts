@@ -1,7 +1,6 @@
 "use server";
 
 import { UnsubscribedEmailTemplate } from "@/app/components/Email-Template";
-import { transporter } from "@/app/config/mailer";
 import { redis } from "@/app/lib/redis";
 import { supabase } from "@/app/lib/supabase/supabase";
 import { Resend } from "resend";

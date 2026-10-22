@@ -29,7 +29,7 @@ export function UnsubscribedEmailTemplate() {
         you want to subscribe again in the future, you can do so at any time.
       </h3>
       <p>Best regards, The Nursingpastco Team</p>
-      <p>© ${new Date().getFullYear()} nursingpastco. All rights reserved.</p>
+      <p>© {new Date().getFullYear()} nursingpastco. All rights reserved.</p>
     </div>
   );
 }
