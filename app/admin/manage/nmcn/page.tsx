@@ -1,5 +1,5 @@
 import { Admin } from "@/app/lib/admin";
-import { Plus, Settings2 } from "lucide-react";
+import { Plus } from "lucide-react";
 import Link from "next/link";
 
 export default async function Page() {
