@@ -54,7 +54,7 @@ export default function Home() {
             we provide examination past questions from different nursing
             insttuitions.
           </p>
-          <Link href="/">
+          <Link href="/nursing-pastQuestions">
             past questions <Link2 />
           </Link>
         </div>
@@ -70,7 +70,7 @@ export default function Home() {
             we post updated content about nursing related events like jobs,
             certifications etc.
           </p>
-          <Link href="/">
+          <Link href="/coming-soon">
             nursing contents
             <Link2 />
           </Link>
@@ -88,7 +88,7 @@ export default function Home() {
             nursing fields.
           </p>
 
-          <Link href="/">
+          <Link href="/coming-soon">
             news and updates
             <Link2 />
           </Link>
@@ -103,7 +103,7 @@ export default function Home() {
           </h3>
           <p>we recommend career development and essential tools.</p>
 
-          <Link href="/recommendations">
+          <Link href="/coming-soon">
             recommendations
             <Link2 />
           </Link>
@@ -151,8 +151,8 @@ export default function Home() {
             nursing notes
           </h3>
 
-          <Link href="/nmcnpastQuestions">
-            nmcn questions
+          <Link href="/coming-soon">
+            nursing-notes
             <Link2 />
           </Link>
         </div>
@@ -166,7 +166,7 @@ export default function Home() {
       <div className={styles.instituitionsHero}>
         <h2>we cover a wide range of nursing instituitions across africa</h2>
         <Image src={InstituitionsHero} alt="" />
-        <Link href="">
+        <Link href="/nursing-instituitions">
           available instituitions <Link2 />
         </Link>
         <div>

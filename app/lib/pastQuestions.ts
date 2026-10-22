@@ -20,12 +20,6 @@ export const getPastQuestions = async (
       return { error: "choose a course to see past questions" };
     }
 
-    const key = `pastQuestions:${instituition}:${level}:${course}`;
-    const cached = await redis.get<PastQuestionType[]>(key);
-    if (cached) {
-      return { pastQuestions: cached };
-    }
-
     let query = supabase
       .from("pastQuestions")
       .select("*")
@@ -52,8 +46,6 @@ export const getPastQuestions = async (
     if (data.length === 0) {
       return { error: "no pastQuestion found" };
     }
-
-    await redis.set(key, data);
 
     return { pastQuestions: data };
   } catch (err) {

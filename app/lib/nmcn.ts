@@ -10,11 +10,6 @@ export const getNMCN = async (category?: string) => {
       return { error: "choose a course to see past questions" };
     }
 
-    const cached = await redis.get<NMCNType[]>(`nmcnQuestions:${category}`);
-
-    if (cached) {
-      return { nmcn: cached };
-    }
     const { data, error } = await supabase1
       .from("nmcn")
       .select("id, title, category, pdf")
@@ -28,8 +23,6 @@ export const getNMCN = async (category?: string) => {
     if (data.length === 0) {
       return { error: "no nmcn pastquestion found" };
     }
-
-    await redis.set(`nmcnQuestions:${category}`, data);
 
     return { nmcn: data };
   } catch (err) {

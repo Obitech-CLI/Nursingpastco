@@ -127,8 +127,8 @@ export default function PdfViewer({ url }: PdfViewerProps) {
                 pageNumber={page}
                 width={width}
                 scale={zoom}
-                renderTextLayer
-                renderAnnotationLayer
+                renderTextLayer={false}
+                renderAnnotationLayer={false}
                 loading={<p className="pdf-message">Rendering page...</p>}
               />
             )}

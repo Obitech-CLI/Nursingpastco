@@ -135,12 +135,6 @@
 }
 
 @media screen and (min-width: 650px) {
-  .search-modal {
-    width: 600px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   .feedback-modal > div {
     width: 600px;
   }

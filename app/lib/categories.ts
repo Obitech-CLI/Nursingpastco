@@ -72,11 +72,7 @@ export const getRecommendationsCategories = async () => {
 };
 
 export const getNMCNCategories = async () => {
-  const cached = await redis.get<CategoryType[]>("nmcnCategories");
   try {
-    if (cached) {
-      return { categories: cached };
-    }
     const { data, error } = await supabase1
       .from("nmcn_categories")
       .select("*")
@@ -89,8 +85,6 @@ export const getNMCNCategories = async () => {
     if (data.length === 0) {
       return { error: "no category found" };
     }
-
-    await redis.set("nmcnCategories", data);
 
     return { categories: data };
   } catch (err) {

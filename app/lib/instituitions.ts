@@ -11,14 +11,10 @@ type Type = {
 
 export const getInstituitions = async (): Promise<Type> => {
   try {
-    const cached = await redis.get<InstitutionType[]>("instituitions");
-    if (cached) {
-      return { instituitions: cached };
-    }
     let query = supabase
       .from("instituitions")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: true });
 
     const { data, error } = await query;
 

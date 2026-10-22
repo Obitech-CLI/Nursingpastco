@@ -15,7 +15,6 @@ export function SearchInstituition({
 }: {
   instituition?: string;
 }) {
-  console.log(instituition);
   const [instituitions, setInstituitions] = useState<InstitutionType[]>([]);
   const [selectedInstituition, setSelectedInstituition] =
     useState<InstitutionType | null>(null);
@@ -47,7 +46,6 @@ export function SearchInstituition({
   const fetchInstituition = async () => {
     if (!instituition) return;
     const res = await getInstituition(instituition);
-    console.log(res);
     if (res.instituition) {
       setSelectedInstituition(res.instituition);
       return;
@@ -55,7 +53,6 @@ export function SearchInstituition({
   };
 
   useEffect(() => {
-    console.log("effect");
     fetchInstituition();
   }, [instituition]);
 
