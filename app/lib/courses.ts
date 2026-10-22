@@ -21,11 +21,8 @@ export const getCourses = async (
     const cachedInstituition = await redis.get<CourseType[]>(
       `courses:${instituition}`,
     );
-    const cachedAll = await redis.get<CourseType[]>("allCourses");
 
-    if (cachedAll) {
-      return { courses: cachedAll };
-    }
+    const cachedAll = await redis.get<CourseType[]>("allCourses");
 
     if (cachedBoth) {
       return { courses: cachedBoth };
@@ -37,6 +34,10 @@ export const getCourses = async (
 
     if (cachedInstituition) {
       return { courses: cachedInstituition };
+    }
+
+    if (cachedAll) {
+      return { courses: cachedAll };
     }
     let query = supabase
       .from("courses")
