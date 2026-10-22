@@ -3,12 +3,12 @@
 import { ChevronDown, RotateCcw, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { InstitutionType } from "../nursing-instituitions/Instituitions";
-import { getInstituitions } from "../lib/instituitions";
+import { getInstituitions } from "../../lib/instituitions";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import styles from "./pastQuestions.module.css";
 import { ClipLoader } from "react-spinners";
-import { getInstituition } from "../lib/instituition";
+import { getInstituition } from "../../lib/instituition";
 
 export function SearchInstituition({
   instituition,

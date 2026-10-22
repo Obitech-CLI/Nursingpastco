@@ -35,6 +35,9 @@ export const getInstituitions = async (): Promise<Type> => {
     return { instituitions: data };
   } catch (err) {
     console.error(err);
-    return { error: "server error" };
+    return {
+      error:
+        "something went wrong. please check your internet connection and try again.",
+    };
   }
 };

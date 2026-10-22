@@ -1,8 +1,8 @@
 import { getCourses } from "@/app/lib/courses";
 import { Course } from "./Course";
 import styles from "./courses.module.css";
-import { RetryButton } from "../ui/Retry";
-import { CourseType } from "../types/types";
+import { RetryButton } from "../../ui/Retry";
+import { CourseType } from "../../types/types";
 
 type Type = {
   courses?: CourseType[];
@@ -25,10 +25,25 @@ export default async function Courses({
         <>
           {res.courses.length > 0 && (
             <>
-              <div>
-                <h4>{res.courses[0]?.instituition}</h4>
-                <h4>{res.courses[0]?.level}</h4>
-              </div>
+              {instituition && level ? (
+                <div>
+                  <h4>{res.courses[0]?.instituition}</h4>
+                  <h4>{res.courses[0]?.level}</h4>
+                  <h4>all courses</h4>
+                </div>
+              ) : null}
+              {instituition && !level ? (
+                <div>
+                  <h4>{res.courses[0]?.instituition}</h4>
+                  <h4>all courses</h4>
+                </div>
+              ) : null}
+              {!instituition && level ? (
+                <div>
+                  <h4>{res.courses[0]?.level}</h4>
+                  <h4>all courses</h4>
+                </div>
+              ) : null}
               {res.courses.map((course) => (
                 <Course key={course.id} course={course} />
               ))}

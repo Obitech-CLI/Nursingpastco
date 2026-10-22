@@ -3,9 +3,9 @@
 import { ChevronDown, RotateCcw } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { getCourses } from "../lib/courses";
+import { getCourses } from "../../lib/courses";
 import styles from "./pastQuestions.module.css";
-import { CourseType } from "../types/types";
+import { CourseType } from "../../types/types";
 import { ClipLoader } from "react-spinners";
 
 export function SearchCourse({

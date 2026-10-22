@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { PastQuestionType } from "../types/types";
+import { PastQuestionType } from "../../types/types";
 import styles from "./pastQuestions.module.css";
 import { ClipLoader } from "react-spinners";
-import PdfViewerWrapper from "../components/PdfViewerWrapper";
+import PdfViewerWrapper from "../../components/PdfViewerWrapper";
 
 type Props = {
   pastQuestions: PastQuestionType[];
@@ -64,7 +64,9 @@ export function PastQuestion({ pastQuestions, course }: Props) {
                     >
                       <X />
                     </button>
-                    <PdfViewerWrapper url={pastQuestion.pdf} />
+                    <div className="viewer">
+                      <PdfViewerWrapper url={pastQuestion.pdf} />
+                    </div>
                   </>
                 )}
               </div>

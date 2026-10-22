@@ -1,11 +1,11 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { CategoryType, NMCNType } from "../types/types";
+import { CategoryType, NMCNType } from "../../types/types";
 import { X } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { useEffect, useState } from "react";
-import PdfViewerWrapper from "../components/PdfViewerWrapper";
+import PdfViewerWrapper from "../../components/PdfViewerWrapper";
 
 type Prop = {
   nmcn: NMCNType[];
@@ -53,7 +53,11 @@ export function NMCN({ nmcn, category }: Prop) {
               {!showPdf && (
                 <li onClick={() => setShowPdf(nmc.id)}>{nmc.title}</li>
               )}
-              {showPdf === nmc.id && <PdfViewerWrapper url={nmc.pdf} />}
+              {showPdf === nmc.id && (
+                <div className="viewer">
+                  <PdfViewerWrapper url={nmc.pdf} />
+                </div>
+              )}
             </div>
           ))}
         </ul>

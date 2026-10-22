@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useSearch } from "../contexts/searchContext";
-import { SearchNursingCourses } from "../nursing-courses/Search";
+import { SearchNursingCourses } from "../(ads)/nursing-courses/Search";
 import "./ui.css";
 import { SearchPastQuestionsAdmin } from "../admin/manage/pastQuestions/modify/Search";
 import { SearchSubscribersAdmin } from "../admin/manage/subscribers/Search";

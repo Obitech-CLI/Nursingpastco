@@ -1,5 +1,6 @@
 "use server";
 
+import { redis } from "@/app/lib/redis";
 import { supabase2 } from "@/app/lib/supabase/supabase2";
 
 export const addTextBook = async (prevData: any, formData: FormData) => {
@@ -37,6 +38,8 @@ export const addTextBook = async (prevData: any, formData: FormData) => {
     if (insertError) {
       return { err: "failed to upload textbook. try again", msg: "" };
     }
+
+    await redis.del("alltextbooks");
 
     return { msg: "textbook uploaded successfully", err: "" };
   } catch (err) {

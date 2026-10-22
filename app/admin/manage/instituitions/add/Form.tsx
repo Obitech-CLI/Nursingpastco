@@ -28,7 +28,7 @@ export function AddForm() {
     }
   }, [state]);
   return (
-    <form action={action}>
+    <form action={action} className="auth">
       <label>
         <PenBox size={30} />
         <input

@@ -3,8 +3,17 @@ import Contents from "./Contents";
 import SelectCategories from "./Categories";
 import "./contents.css";
 import { ClipLoader } from "react-spinners";
+import type { Metadata } from "next";
+import { Admin } from "../lib/admin";
 
-export default function Page({
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
+export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<{
@@ -12,6 +21,7 @@ export default function Page({
     search?: string;
   }>;
 }) {
+  await Admin();
   return (
     <main className="nursing-contents">
       <h2>nursing contents</h2>

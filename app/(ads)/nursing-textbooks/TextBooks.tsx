@@ -1,5 +1,5 @@
-import { getTextbooks } from "../lib/textbooks";
-import { RetryButton } from "../ui/Retry";
+import { getTextbooks } from "../../lib/textbooks";
+import { RetryButton } from "../../ui/Retry";
 import { TextBook } from "./TextBook";
 
 export default async function TextBooks() {

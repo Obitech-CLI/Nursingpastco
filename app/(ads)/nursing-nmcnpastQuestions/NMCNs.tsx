@@ -1,6 +1,6 @@
-import { getNMCN } from "../lib/nmcn";
-import { NMCNType } from "../types/types";
-import { RetryButton } from "../ui/Retry";
+import { getNMCN } from "../../lib/nmcn";
+import { NMCNType } from "../../types/types";
+import { RetryButton } from "../../ui/Retry";
 import SelectCategories from "./Categories";
 import { NMCN } from "./NMCN";
 

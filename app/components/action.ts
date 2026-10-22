@@ -1,13 +1,15 @@
 "use server";
 
-import { transporter } from "../config/mailer";
+import { Resend } from "resend";
 import { getIP } from "../lib/ip";
 import { redis } from "../lib/redis";
 import { supabase } from "../lib/supabase/supabase";
+import { SubscribedEmailTemplate } from "./Email-Template";
 
 export const Subscribe = async (prevState: any, formData: FormData) => {
   const email = formData.get("email") as string;
   const ip = await getIP();
+  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     if (!ip) {
       return { err: "unable to identify ip address", msg: "" };
@@ -49,27 +51,11 @@ export const Subscribe = async (prevState: any, formData: FormData) => {
       return { msg: "something went wrong", ok: false };
     }
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+    await resend.emails.send({
+      from: "NursingPastco <support@nursingpastco.com>",
       to: email,
       subject: "Subscribed Successfully",
-      html: `<div
-      style="
-        padding: 1rem;
-      "
-    >
-        <h3>Thank you for subscribing to our newsletter.<br> We're glad to have you with
-        us.</h3>
-      
-        From time to time, we'll send you useful notifications updates, <br>and
-        other content we think you'll find valuable.<br><br>
-      
-        We appreciate you being here and look forward to staying connected.<br><br>
-
-        Best regards, The Nursingpastco Team
-        <p>© ${new Date().getFullYear()} nursingpastco. All rights reserved.</p>
-  
-    </div>`,
+      react: SubscribedEmailTemplate(),
     });
 
     await redis.del("subscribers");

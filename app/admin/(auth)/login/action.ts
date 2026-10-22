@@ -8,8 +8,8 @@ import { getIP } from "@/app/lib/ip";
 import { redis } from "@/app/lib/redis";
 
 export const LoginAdmin = async (prevData: any, formData: FormData) => {
-  const username = formData.get("username") as string;
-  const password = formData.get("password") as string;
+  const username = (formData.get("username") as string).trim().toLowerCase();
+  const password = (formData.get("password") as string).trim();
 
   const cookieStore = await cookies();
   const SECRET = process.env.JWT_SECRET as string;
@@ -63,6 +63,9 @@ export const LoginAdmin = async (prevData: any, formData: FormData) => {
     return { msg: "login success", err: "" };
   } catch (error) {
     console.error(error);
-    return { err: "server error", msg: "" };
+    return {
+      err: "something went wrong. please check your internet connection and try again.",
+      msg: "",
+    };
   }
 };

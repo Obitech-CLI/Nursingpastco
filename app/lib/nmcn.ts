@@ -1,11 +1,18 @@
 "use server";
 
+import { redis } from "./redis";
 import { supabase1 } from "./supabase/supabase1";
 
 export const getNMCN = async (category?: string) => {
   try {
     if (!category) {
       return { error: "choose a course to see past questions" };
+    }
+
+    const cached = await redis.get(`nmcnQuestions:${category}`);
+
+    if (cached) {
+      return { nmcn: cached };
     }
     const { data, error } = await supabase1
       .from("nmcn")
@@ -21,9 +28,14 @@ export const getNMCN = async (category?: string) => {
       return { error: "no nmcn pastquestion found" };
     }
 
+    await redis.set(`nmcnQuestions:${category}`, data);
+
     return { nmcn: data };
   } catch (err) {
     console.error(err);
-    return { err: "server error", msg: "" };
+    return {
+      err: "something went wrong. please check your internet connection and try again.",
+      msg: "",
+    };
   }
 };

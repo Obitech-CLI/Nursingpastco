@@ -101,7 +101,7 @@ export function AddForm() {
   }, [state]);
 
   return (
-    <form action={action}>
+    <form action={action} className="auth">
       <label>
         <List size={30} />
         <input

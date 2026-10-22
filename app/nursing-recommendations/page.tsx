@@ -3,8 +3,17 @@ import SelectCategories from "./Categories";
 import Recommendations from "./Recommendations";
 import { ClipLoader } from "react-spinners";
 import "./recommendations.css";
+import type { Metadata } from "next";
+import { Admin } from "../lib/admin";
 
-export default function Page({
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
+export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<{
@@ -12,6 +21,7 @@ export default function Page({
     search?: string;
   }>;
 }) {
+  await Admin();
   return (
     <main className="nursing-recommendations">
       <h2>nursing recommendations</h2>

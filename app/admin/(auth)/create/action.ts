@@ -6,9 +6,9 @@ import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 
 export const CreateAdmin = async (prevData: any, formData: FormData) => {
-  const username = formData.get("username") as string;
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
+  const username = (formData.get("username") as string).trim().toLowerCase();
+  const email = (formData.get("email") as string).trim().toLowerCase();
+  const password = (formData.get("password") as string).trim();
 
   const cookieStore = await cookies();
   const SECRET = process.env.JWT_SECRET as string;

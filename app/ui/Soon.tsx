@@ -6,7 +6,7 @@ export function ComingSoon() {
   return (
     <div className="coming-soon">
       <h1>Coming Soon</h1>
-      <Clock3 size={100} color="var(--bg-txt)" />
+      <Clock3 size={100} color="#f59e0b" />
       <div>
         stay tuned
         <Rocket size={30} />

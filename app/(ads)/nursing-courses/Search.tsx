@@ -3,11 +3,11 @@
 import { ChevronDown, Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useSearch } from "../contexts/searchContext";
-import { getInstituitions } from "../lib/instituitions";
-import { InstitutionType } from "../types/types";
+import { useSearch } from "../../contexts/searchContext";
+import { getInstituitions } from "../../lib/instituitions";
+import { InstitutionType } from "../../types/types";
 import { ClipLoader } from "react-spinners";
-import { selectLevels } from "../ui/Options";
+import { selectLevels } from "../../ui/Options";
 
 export function SearchNursingCourses() {
   const [instituitions, setInstituitions] = useState<InstitutionType[]>([]);

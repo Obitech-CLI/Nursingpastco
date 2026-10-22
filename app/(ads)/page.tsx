@@ -14,7 +14,9 @@ import {
   LibraryBig,
   Link2,
   Newspaper,
+  Notebook,
   PenBox,
+  PlusCircle,
   School,
   Stethoscope,
   StethoscopeIcon,
@@ -23,20 +25,22 @@ import {
   Verified,
 } from "lucide-react";
 import Link from "next/link";
+import TawkChat from "../ui/TawkChat";
 
 export default function Home() {
   return (
     <main className={styles.home}>
+      <TawkChat />
       <div className={styles.hero}>
         <Image src={HeroImage} alt="" loading="eager" />
         <h1>study for your nursing level exams with confidence.</h1>
       </div>
       <div className={styles.offer}>
         <section>
-          <h3>
+          <h3 style={{ color: "red" }}>
             we <span>offer</span>
           </h3>
-          <h2>all african nursing</h2>
+          <h3>all african nursing</h3>
         </section>
 
         <div>
@@ -101,6 +105,54 @@ export default function Home() {
 
           <Link href="/recommendations">
             recommendations
+            <Link2 />
+          </Link>
+        </div>
+      </div>
+
+      <div className={styles.additionally}>
+        <h3>
+          additionally <span>we also offer</span>
+        </h3>
+
+        <div>
+          <h3>
+            <span>
+              <Book size={35} color="#22c55e" />
+            </span>
+            nursing textbooks
+          </h3>
+
+          <Link href="/textbook">
+            textbooks
+            <Link2 />
+          </Link>
+        </div>
+
+        <div>
+          <h3>
+            <span>
+              <ClipboardList size={35} color="orange" />
+            </span>
+            nmcn past questions
+          </h3>
+
+          <Link href="/nmcnpastQuestions">
+            nmcn questions
+            <Link2 />
+          </Link>
+        </div>
+
+        <div>
+          <h3>
+            <span>
+              <Notebook size={35} color="#3b82f6" />
+            </span>
+            nursing notes
+          </h3>
+
+          <Link href="/nmcnpastQuestions">
+            nmcn questions
             <Link2 />
           </Link>
         </div>

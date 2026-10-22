@@ -4,7 +4,7 @@ import { useState } from "react";
 import styles from "./courses.module.css";
 import { ChevronDown, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { CourseType } from "../types/types";
+import { CourseType } from "../../types/types";
 
 type Props = {
   course: CourseType;

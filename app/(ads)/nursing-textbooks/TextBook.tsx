@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { TextbookType } from "../types/types";
+import { TextbookType } from "../../types/types";
 import { BookOpen, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import PdfViewerWrapper from "../components/PdfViewerWrapper";
+import PdfViewerWrapper from "../../components/PdfViewerWrapper";
 
 type Prop = {
   textbook: TextbookType;
@@ -41,9 +41,9 @@ export function TextBook({ textbook }: Prop) {
             >
               <X />
             </button>
-            <>
+            <div className="viewer">
               <PdfViewerWrapper url={textbook.pdf} />
-            </>
+            </div>
           </div>
         </div>
       )}

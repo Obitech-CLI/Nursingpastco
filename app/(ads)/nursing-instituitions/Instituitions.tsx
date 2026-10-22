@@ -1,7 +1,7 @@
 import { getInstituitions } from "@/app/lib/instituitions";
 import { Instituition } from "./Instituition";
 import styles from "./instituitions.module.css";
-import { RetryButton } from "../ui/Retry";
+import { RetryButton } from "../../ui/Retry";
 
 export interface InstitutionType {
   id: number;

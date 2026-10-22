@@ -36,7 +36,7 @@
 }
 
 .offer > section h3 {
-  color: red;
+  color: var(--bg-txt);
   text-align: center;
 }
 
@@ -181,31 +181,67 @@ main.home > h3 {
 }
 
 .sub_offer .card1 {
-  background-image: url("../public/RealQuestions.png");
+  background-image: url("../../public/RealQuestions.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .sub_offer .card2 {
-  background-image: url("../public/UpdatedContent.png");
+  background-image: url("../../public/UpdatedContent.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .sub_offer .card3 {
-  background-image: url("../public//NewsUpdates.png");
+  background-image: url("../../public//NewsUpdates.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .sub_offer .card4 {
-  background-image: url("../public/StudyMaterials.png");
+  background-image: url("../../public/StudyMaterials.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.additionally {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.additionally > h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.additionally > h3 > span {
+  font-size: 1rem;
+  color: brown;
+}
+
+.additionally > div {
+  box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  border-radius: 100px;
+}
+
+.additionally > div > h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (min-width: 300px) and (max-width: 400px) {
@@ -314,6 +350,18 @@ main.home > h3 {
   main.home {
     width: 1000px;
     margin: 8rem auto 5rem;
+  }
+
+  .additionally {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 2rem;
+  }
+
+  .additionally > h3 {
+    grid-column: span 3;
+    width: fit-content;
+    margin: auto;
   }
 
   .hero > h1 {

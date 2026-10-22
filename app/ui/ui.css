@@ -47,8 +47,21 @@
   overflow: auto;
 }
 
+.menu-modal > nav a h6 {
+  background-color: #f59e0b;
+  padding: 0.3rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 1.5rem;
+  top: 0;
+  border-radius: 40px;
+}
+
 .menu-modal > nav a {
   color: var(--modal-txt);
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -118,5 +131,17 @@
   .menu-modal > nav a {
     font-size: 0.8rem;
     padding: 0.5rem 1rem;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .search-modal {
+    width: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .feedback-modal > div {
+    width: 600px;
   }
 }

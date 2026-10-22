@@ -58,6 +58,9 @@ export const getPastQuestions = async (
     return { pastQuestions: data };
   } catch (err) {
     console.error(err);
-    return { error: "server error" };
+    return {
+      error:
+        "something went wrong. please check your internet connection and try again.",
+    };
   }
 };

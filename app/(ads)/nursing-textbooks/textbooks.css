@@ -48,3 +48,7 @@
 .textbook > div > .pdf > iframe {
   border: none;
 }
+
+.textbooks {
+  width: 100%;
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { selectLevels } from "../ui/Options";
+import { selectLevels } from "../../ui/Options";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./pastQuestions.module.css";
 

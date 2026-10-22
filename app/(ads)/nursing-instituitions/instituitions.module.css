@@ -90,3 +90,24 @@
     margin: 8rem auto 5rem;
   }
 }
+
+@media screen and (min-width: 850px) {
+  .Nursing_Instituitions {
+    width: 830px;
+    margin: 8rem auto 5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .Nursing_Instituitions > h2 {
+    grid-column: span 2;
+  }
+
+  .Nursing_Instituitions > h3 {
+    font-size: 1.8rem;
+  }
+
+  .Nursing_Instituitions > .instituitions {
+    grid-column: span 2;
+  }
+}

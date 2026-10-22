@@ -1,6 +1,6 @@
 import { getPastQuestions } from "@/app/lib/pastQuestions";
 import { PastQuestion } from "./PastQuestion";
-import { PastQuestionType } from "../types/types";
+import { PastQuestionType } from "../../types/types";
 import styles from "./pastQuestions.module.css";
 
 type Type = {

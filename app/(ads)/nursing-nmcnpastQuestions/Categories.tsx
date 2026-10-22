@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CategoryType, NMCNType } from "../types/types";
-import { getNMCNCategories } from "../lib/categories";
+import { CategoryType, NMCNType } from "../../types/types";
+import { getNMCNCategories } from "../../lib/categories";
 import { ChevronDown, RotateCcw } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { useRouter, useSearchParams } from "next/navigation";

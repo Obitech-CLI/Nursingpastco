@@ -8,6 +8,7 @@ import {
   Book,
   BookOpen,
   ClipboardList,
+  Clock,
   FileText,
   Inbox,
   Notebook,
@@ -87,17 +88,6 @@ function MenuModal() {
 
                   <Link
                     onClick={ResetMenu}
-                    href="/nursing-notes"
-                    className={pathname === "/nursing-notes" ? "active" : ""}
-                  >
-                    <span>
-                      <NotebookPenIcon size={25} />
-                    </span>
-                    nursing notes
-                  </Link>
-
-                  <Link
-                    onClick={ResetMenu}
                     href="/nursing-textbooks"
                     className={
                       pathname === "/nursing-textbooks" ? "active" : ""
@@ -109,44 +99,61 @@ function MenuModal() {
                     nursing textbooks
                   </Link>
 
-                  {/*
                   <Link
                     onClick={ResetMenu}
-                    href="/nursing-contents"
-                    className={pathname === "/nursing-contents" ? "active" : ""}
+                    href="/coming-soon"
+                    className={pathname === "" ? "active" : ""}
+                  >
+                    <span>
+                      <NotebookPenIcon size={25} />
+                    </span>
+                    nursing notes
+                    <h6>
+                      coming soon <Clock size={10} />
+                    </h6>
+                  </Link>
+
+                  <Link
+                    onClick={ResetMenu}
+                    href="/coming-soon"
+                    className={pathname === "" ? "active" : ""}
                   >
                     <span>
                       <FileText size={25} />
                     </span>
                     nursing contents
+                    <h6>
+                      coming soon <Clock size={10} />
+                    </h6>
                   </Link>
 
                   <Link
                     onClick={ResetMenu}
-                    href="/nursing-news&updates"
-                    className={
-                      pathname === "/nursing-news&updates" ? "active" : ""
-                    }
+                    href="/coming-soon"
+                    className={pathname === "" ? "active" : ""}
                   >
                     <span>
                       <RefreshCw size={25} />
                     </span>
                     nursing news & updates
+                    <h6>
+                      coming soon <Clock size={10} />
+                    </h6>
                   </Link>
 
                   <Link
                     onClick={ResetMenu}
-                    href="/nursing-recommendations"
-                    className={
-                      pathname === "/nursing-recommendations" ? "active" : ""
-                    }
+                    href="/coming-soon"
+                    className={pathname === "" ? "active" : ""}
                   >
                     <span>
                       <BadgeCheck size={25} />
                     </span>
                     nursing recommendations
+                    <h6>
+                      coming soon <Clock size={10} />
+                    </h6>
                   </Link>
-                  */}
                 </>
               )}
 

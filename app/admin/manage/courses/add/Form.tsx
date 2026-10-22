@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useState } from "react";
 import { addCourse } from "./action";
-import { InstitutionType } from "@/app/nursing-instituitions/Instituitions";
+import { InstitutionType } from "@/app/(ads)/nursing-instituitions/Instituitions";
 import { getInstituitions } from "@/app/lib/instituitions";
 import { selectLevels } from "@/app/ui/Options";
 import { ChevronDown, List, PenBox } from "lucide-react";
@@ -64,7 +64,7 @@ export function AddForm() {
   }, [state]);
 
   return (
-    <form action={action}>
+    <form action={action} className="auth">
       <label>
         <List size={30} />
         <input

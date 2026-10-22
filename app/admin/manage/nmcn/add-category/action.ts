@@ -1,5 +1,6 @@
 "use server";
 
+import { redis } from "@/app/lib/redis";
 import { supabase1 } from "@/app/lib/supabase/supabase1";
 
 export const AddNMCNCategories = async (prevData: any, formData: FormData) => {
@@ -35,6 +36,8 @@ export const AddNMCNCategories = async (prevData: any, formData: FormData) => {
     if (error) {
       return { err: "something went wrong. try again", msg: "" };
     }
+
+    await redis.del("nmcnCategories");
 
     return { msg: "category added success", err: "" };
   } catch (err) {

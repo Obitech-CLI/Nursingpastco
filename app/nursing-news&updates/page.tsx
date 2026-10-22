@@ -4,7 +4,17 @@ import News from "./News";
 import "./news.css";
 import { ClipLoader } from "react-spinners";
 
-export default function Page({
+import type { Metadata } from "next";
+import { Admin } from "../lib/admin";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
+export default async function Page({
   searchParams,
 }: {
   searchParams: Promise<{
@@ -12,6 +22,7 @@ export default function Page({
     search?: string;
   }>;
 }) {
+  await Admin();
   return (
     <main className="nursing-news">
       <h2>nursing news&updates</h2>

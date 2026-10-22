@@ -23,17 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: "https://nursingpastco.com/nursing-contents",
+      url: "https://nursingpastco.com/nursing-textbooks",
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
-      url: "https://nursingpastco.com/nursing-news&updates",
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: "https://nursingpastco.com/nursing-recommendations",
+      url: "https://nursingpastco.com/nursing-nmcnpastQuestions",
       changeFrequency: "daily",
       priority: 0.8,
     },

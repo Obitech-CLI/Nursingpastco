@@ -8,6 +8,10 @@
   height: 100%;
 }
 
+.pdf-viewer span {
+  color: black;
+}
+
 .pdf-toolbar {
   display: flex;
   align-items: center;
@@ -17,13 +21,16 @@
   padding: 10px;
   border-bottom: 1px solid #ddd;
   background: #f8f8f8;
+  color: var(--bg-txt);
 }
 
 .pdf-controls {
+  color: var(--bg-txt);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  color: var(--bg-txt);
 }
 
 .pdf-controls button {

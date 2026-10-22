@@ -1,5 +1,6 @@
 "use server";
 
+import { redis } from "@/app/lib/redis";
 import { supabase1 } from "@/app/lib/supabase/supabase1";
 
 export const addNMCN = async (prevData: any, formData: FormData) => {
@@ -40,6 +41,7 @@ export const addNMCN = async (prevData: any, formData: FormData) => {
     if (insertError) {
       return { err: "failed to upload nmcn. try again", msg: "" };
     }
+    await redis.del(`nmcnQuestions:${category}`);
     return { msg: "nmcn uplaoded successfully", err: "" };
   } catch (err) {
     console.error(err);
