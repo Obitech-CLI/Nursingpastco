@@ -36,6 +36,7 @@ export function Course({ course }: Props) {
               padding: "0",
               backgroundColor: "transparent",
             }}
+            className="cancel"
           >
             <X />
           </button>
