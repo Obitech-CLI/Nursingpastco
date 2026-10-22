@@ -1,5 +1,6 @@
 "use server";
 
+import { CategoryType } from "../types/types";
 import { redis } from "./redis";
 import { supabase0 } from "./supabase/supabase0";
 import { supabase1 } from "./supabase/supabase1";
@@ -71,7 +72,7 @@ export const getRecommendationsCategories = async () => {
 };
 
 export const getNMCNCategories = async () => {
-  const cached = await redis.get("nmcnCategories");
+  const cached = await redis.get<CategoryType[]>("nmcnCategories");
   try {
     if (cached) {
       return { categories: cached };

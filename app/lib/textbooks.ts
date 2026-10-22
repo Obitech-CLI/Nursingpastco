@@ -1,11 +1,12 @@
 "use server";
 
+import { TextbookType } from "../types/types";
 import { redis } from "./redis";
 import { supabase2 } from "./supabase/supabase2";
 
 export const getTextbooks = async () => {
   try {
-    const cached = await redis.get("alltextbooks");
+    const cached = await redis.get<TextbookType[]>("alltextbooks");
     if (cached) {
       return { textbooks: cached };
     }

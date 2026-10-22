@@ -21,8 +21,8 @@ export default function SelectCategories() {
     try {
       setLoading(true);
       const res = await getNMCNCategories();
-      if (res.categories?.length) {
-        setCategories(res.categories);
+      if (res.categories) {
+        setCategories(res?.categories);
       } else if (res.error) {
         setError(res.error);
       }

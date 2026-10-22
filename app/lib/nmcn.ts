@@ -1,5 +1,6 @@
 "use server";
 
+import { NMCNType } from "../types/types";
 import { redis } from "./redis";
 import { supabase1 } from "./supabase/supabase1";
 
@@ -9,7 +10,7 @@ export const getNMCN = async (category?: string) => {
       return { error: "choose a course to see past questions" };
     }
 
-    const cached = await redis.get(`nmcnQuestions:${category}`);
+    const cached = await redis.get<NMCNType[]>(`nmcnQuestions:${category}`);
 
     if (cached) {
       return { nmcn: cached };
