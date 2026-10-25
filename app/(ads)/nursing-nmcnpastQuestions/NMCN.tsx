@@ -28,8 +28,12 @@ export function NMCN({ nmcn, category }: Prop) {
       document.body.style.overflow = "auto";
     };
   }, [category]);
+
+  const handleView = (title: string, url: string) => {
+    router.push(`/read-pdf?title=${title}&url=${encodeURIComponent(url)}`);
+  };
   return (
-    <div className="pdf-overlay nmc">
+    <div className="select nmc">
       {!showPdf && (
         <button type="button" className="cancel" onClick={handleAll}>
           <X />
@@ -49,15 +53,10 @@ export function NMCN({ nmcn, category }: Prop) {
       {nmcn.length && (
         <ul>
           {nmcn.map((nmc) => (
-            <div key={nmc.id} className={showPdf === nmc.id ? "selected" : ""}>
-              {!showPdf && (
-                <li onClick={() => setShowPdf(nmc.id)}>{nmc.title}</li>
-              )}
-              {showPdf === nmc.id && (
-                <div className="viewer">
-                  <PdfViewerWrapper url={nmc.pdf} />
-                </div>
-              )}
+            <div key={nmc.id}>
+              <li onClick={() => handleView(nmc.title, nmc.pdf)}>
+                {nmc.title}
+              </li>
             </div>
           ))}
         </ul>

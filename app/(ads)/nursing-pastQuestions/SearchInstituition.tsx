@@ -68,10 +68,10 @@ export function SearchInstituition({
   return (
     <div className={styles.searchInstituition}>
       <div className={styles.instituition}>
-        <h2 onClick={() => setShowInstituitions(!showInstituitions)}>
+        <h3 onClick={() => setShowInstituitions(!showInstituitions)}>
           {instituition ? instituition : "select instituition"}
           <ChevronDown />
-        </h2>
+        </h3>
         {selectedInstituition ? (
           <Image
             src={selectedInstituition.logo}

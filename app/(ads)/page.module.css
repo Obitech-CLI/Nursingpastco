@@ -139,6 +139,7 @@ main.home > h3 {
   position: relative;
   z-index: 6;
   color: white;
+  text-align: left;
 }
 
 .sub_offer > div > div ul {

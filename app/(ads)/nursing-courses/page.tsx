@@ -16,11 +16,11 @@ export default async function Page({
 }) {
   return (
     <main className={styles.Nursing_Courses}>
-      <h1>Nursing Courses</h1>
+      <h2>Nursing Courses</h2>
       <Image src={NursingCourses} alt="" loading="eager" />
-      <h2>
+      <h3>
         here are the list of all available courses with materials on our website
-      </h2>
+      </h3>
       <Suspense
         fallback={
           <div className="loading">

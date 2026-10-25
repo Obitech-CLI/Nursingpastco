@@ -91,14 +91,8 @@ button.cancel {
 }
 
 .pdf-overlay {
-  backdrop-filter: blur(50px);
-  position: fixed;
-  inset: 0;
-  padding: 7rem 0 3.7rem;
-  display: flex;
-  flex-direction: column;
-  height: 100dvh;
-  overflow: auto;
+  width: 100%;
+  margin: 8rem 0 8rem;
 }
 
 @media screen and (min-width: 550px) {
@@ -196,7 +190,7 @@ h1 {
 }
 
 h2 {
-  font-family: var(--font-poppins);
+  font-family: var(--font-playfair);
   font-weight: 600;
   text-transform: capitalize;
 }
@@ -205,6 +199,7 @@ h1,
 h2,
 h3 {
   text-transform: capitalize;
+  text-align: center;
 }
 
 h1 {
@@ -212,8 +207,7 @@ h1 {
 }
 
 h2 {
-  color: var(--color-4);
-  text-shadow: 0.2px 0.2px black;
+  color: var(--color-3);
 }
 
 h4 {

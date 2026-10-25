@@ -7,7 +7,8 @@ const PdfViewer = dynamic(() => import("./PdfViewer"), {
   ssr: false,
   loading: () => (
     <div className="loading">
-      <p>Preparing PDF viewer...</p>
+      <h3 style={{ margin: "1rem 0 1rem" }}>Preparing PDF viewer...</h3>
+      <p>hold on! this won't take long</p>
       <ClipLoader size={50} color="var(--bg-txt)" />
     </div>
   ),

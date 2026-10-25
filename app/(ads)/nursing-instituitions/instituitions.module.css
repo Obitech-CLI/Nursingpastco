@@ -16,6 +16,7 @@
   align-items: center;
   gap: 3rem;
   width: 100%;
+  margin-top: 2rem;
 }
 
 .instituitions > article {
@@ -28,6 +29,9 @@
 .instituitions > article h2 {
   text-transform: uppercase;
   color: var(--bg-txt);
+  box-shadow: var(--box-shadow);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
 }
 
 .instituitions > article h3 {
@@ -99,11 +103,11 @@
     grid-template-columns: 2fr 1fr;
   }
 
-  .Nursing_Instituitions > h1 {
+  .Nursing_Instituitions > h2 {
     grid-column: span 2;
   }
 
-  .Nursing_Instituitions > h2 {
+  .Nursing_Instituitions > h3 {
     font-size: 1.8rem;
   }
 

@@ -8,12 +8,12 @@ import { ClipLoader } from "react-spinners";
 export default function Page() {
   return (
     <main className={styles.Nursing_Instituitions}>
-      <h1>Nursing Instituitions</h1>
+      <h2>Nursing Instituitions</h2>
       <Image src={NursingInstituitions} alt="" />
-      <h2>
+      <h3>
         here are the list of available instituitions with materials on our
         website
-      </h2>
+      </h3>
       <Suspense
         fallback={
           <div className="loading">

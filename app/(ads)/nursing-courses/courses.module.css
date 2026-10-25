@@ -63,7 +63,7 @@
     grid-template-columns: 2fr 1fr;
   }
 
-  .Nursing_Courses > h1 {
+  .Nursing_Courses > h2 {
     grid-column: span 2;
   }
 

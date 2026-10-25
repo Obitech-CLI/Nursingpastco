@@ -5,6 +5,7 @@ import { TextbookType } from "../../types/types";
 import { BookOpen, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import PdfViewerWrapper from "../../components/PdfViewerWrapper";
+import { useRouter } from "next/navigation";
 
 type Prop = {
   textbook: TextbookType;
@@ -19,34 +20,24 @@ export function TextBook({ textbook }: Prop) {
       document.body.style.overflow = "auto";
     };
   }, [showPdf]);
+
+  const router = useRouter();
+
+  const handleView = (title: string, url: string) => {
+    router.push(`/read-pdf?title=${title}&url=${encodeURIComponent(url)}`);
+  };
   return (
     <div>
       <Image src={textbook.cover} alt="" width={200} height={270} />
       <div className="book">
         <h4>{textbook.title}</h4>
-        <button type="button" onClick={() => setShowPdf(textbook.id)}>
+        <button
+          type="button"
+          onClick={() => handleView(textbook.title, textbook.pdf)}
+        >
           read <BookOpen />
         </button>
       </div>
-      {showPdf === textbook.id && (
-        <div className="pdf-overlay">
-          <div>
-            <button
-              type="button"
-              onClick={() => {
-                setShowPdf(0);
-              }}
-              className="cancel"
-              style={{ margin: "auto" }}
-            >
-              <X />
-            </button>
-            <div className="viewer">
-              <PdfViewerWrapper url={textbook.pdf} />
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -30,8 +30,12 @@ export function PastQuestion({ pastQuestions, course }: Props) {
       document.body.style.overflow = "auto";
     };
   }, [course]);
+
+  const handleView = (title: string, url: string) => {
+    router.push(`/read-pdf?title=${title}&url=${encodeURIComponent(url)}`);
+  };
   return (
-    <div className="pdf-overlay">
+    <div className="select">
       {pastQuestions.length > 0 && (
         <>
           {!showPdf && (
@@ -45,28 +49,13 @@ export function PastQuestion({ pastQuestions, course }: Props) {
                 key={pastQuestion.id}
                 className={showPdf === pastQuestion.id ? "selected" : ""}
               >
-                {!showPdf && (
-                  <li onClick={() => setShowPdf(pastQuestion.id)}>
-                    {pastQuestion.title}
-                  </li>
-                )}
-                {showPdf === pastQuestion.id && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setShowPdf(0);
-                      }}
-                      className="cancel"
-                      style={{ margin: "auto" }}
-                    >
-                      <X />
-                    </button>
-                    <div className="viewer">
-                      <PdfViewerWrapper url={pastQuestion.pdf} />
-                    </div>
-                  </>
-                )}
+                <li
+                  onClick={() =>
+                    handleView(pastQuestion.title, pastQuestion.pdf)
+                  }
+                >
+                  {pastQuestion.title}
+                </li>
               </div>
             ))}
           </ul>
@@ -74,28 +63,4 @@ export function PastQuestion({ pastQuestions, course }: Props) {
       )}
     </div>
   );
-}
-
-{
-  /*<div
-      key={pastQuestion.id}
-      className="select"
-      style={{
-        padding: "7.8rem 0 4rem",
-      }}
-    >
-      <button
-        type="button"
-        onClick={handleSearch}
-        style={{
-          padding: "0",
-          backgroundColor: "transparent",
-        }}
-      >
-        <X />
-      </button>
-      <h3>{pastQuestion.title}</h3>
-      {/*
-    </div>
-  )*/
 }
