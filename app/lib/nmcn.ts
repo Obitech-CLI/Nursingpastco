@@ -1,7 +1,5 @@
 "use server";
 
-import { NMCNType } from "../types/types";
-import { redis } from "./redis";
 import { supabase1 } from "./supabase/supabase1";
 
 export const getNMCN = async (category?: string) => {
@@ -28,8 +26,8 @@ export const getNMCN = async (category?: string) => {
   } catch (err) {
     console.error(err);
     return {
-      err: "something went wrong. please check your internet connection and try again.",
-      msg: "",
+      error:
+        "something went wrong. please check your internet connection and try again.",
     };
   }
 };

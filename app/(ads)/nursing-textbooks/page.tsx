@@ -6,7 +6,11 @@ import "./textbooks.css";
 export default function Page() {
   return (
     <main className="nursing-textbooks">
-      <h2>nursing textbooks</h2>
+      <h1>nursing textbooks</h1>
+      <h2>
+        explore a collection of nursing textbooks and access study materials
+        covering essential nursing subjects.
+      </h2>
       <Suspense
         fallback={
           <div className="loading">

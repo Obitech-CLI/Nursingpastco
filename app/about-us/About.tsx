@@ -50,7 +50,7 @@ function AboutUs() {
         <p>
           Whether you are preparing for an examination, looking for additional
           learning materials, exploring nursing career opportunities, or simply
-          keeping up with developments in nursing and healthcare, [WEBSITE NAME]
+          keeping up with developments in nursing and healthcare, Nursingpastco
           is built to be a useful resource throughout your journey.
         </p>
       </section>

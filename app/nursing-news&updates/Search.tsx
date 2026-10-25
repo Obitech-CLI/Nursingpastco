@@ -3,9 +3,12 @@
 import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { useSearch } from "../contexts/searchContext";
 
 export function SearchNewsTitles() {
   const [search, setSearch] = useState("");
+
+  const { setShowSearch } = useSearch();
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -16,6 +19,7 @@ export function SearchNewsTitles() {
       params.set("search", search);
     }
     router.replace(`/nursing-news&updates?${params}`);
+    setShowSearch(false);
   };
   return (
     <fieldset>

@@ -47,11 +47,6 @@ export const addCourse = async (prevData: any, formData: FormData) => {
       return { err: "failed to add course, try again", msg: "" };
     }
 
-    await redis.del("allCourses");
-    await redis.del(`courses:${instituition}`);
-    await redis.del(`courses:${level}`);
-    await redis.del(`courses:${instituition}:${level}`);
-
     return { msg: "course added success", err: "" };
   } catch (err) {
     console.error(err);

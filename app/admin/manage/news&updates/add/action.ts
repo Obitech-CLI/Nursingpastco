@@ -4,15 +4,16 @@ import { supabase0 } from "@/app/lib/supabase/supabase0";
 
 export const addNews = async (prevData: any, formData: FormData) => {
   const category = formData.get("category") as string;
-  const title = formData.get("title") as string;
-  const news = formData.get("news") as string;
+  const title = (formData.get("title") as string).trim().toLowerCase();
+  const news = (formData.get("news") as string).trim().toLowerCase();
   const file = formData.get("image") as File;
+  console.log(formData);
   try {
     if (!category || !title || !news) {
       return { err: "empty input field", msg: "" };
     }
 
-    if (!file || file.size) {
+    if (!file || file.size === 0) {
       return { error: "no image uploaded", msg: "" };
     }
 
@@ -42,6 +43,8 @@ export const addNews = async (prevData: any, formData: FormData) => {
     if (insertError) {
       return { err: "failed to add news/update, try again", msg: "" };
     }
+
+    console.log("here");
 
     return { msg: "news/update added success", err: "" };
   } catch (err) {

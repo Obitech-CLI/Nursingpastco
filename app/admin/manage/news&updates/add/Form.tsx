@@ -107,7 +107,7 @@ export function AddNewsForm() {
       </label>
       <label>
         image
-        <input type="file" name="image" />
+        <input type="file" name="image" accept="image/*" />
       </label>
       <label>
         news

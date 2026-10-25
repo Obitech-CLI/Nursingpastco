@@ -32,7 +32,7 @@ export const getNewsCategories = async () => {
     const { data, error } = await supabase0
       .from("news_categories")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: true });
 
     if (error) {
       return { error: "failed to fetch categories. try again" };

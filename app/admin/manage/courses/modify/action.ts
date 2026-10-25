@@ -58,11 +58,6 @@ export const updateCourse = async (prevData: any, formData: FormData) => {
       newLevel: level,
     });
 
-    await redis.del("allCourses");
-    await redis.del(`courses:${data?.instituition}`);
-    await redis.del(`courses:${data?.level}`);
-    await redis.del(`courses:${data?.instituition}:${data?.level}`);
-
     return { msg: "course update success", err: "" };
   } catch (err) {
     console.error(err);
@@ -116,11 +111,6 @@ export const deleteCourse = async (prevData: any, formData: FormData) => {
       course: data?.course,
       level: data?.level,
     });
-
-    await redis.del("allCourses");
-    await redis.del(`courses:${data?.instituition}`);
-    await redis.del(`courses:${data?.level}`);
-    await redis.del(`courses:${data?.instituition}:${data?.level}`);
 
     return { msg: "course deleted success", err: "" };
   } catch (err) {

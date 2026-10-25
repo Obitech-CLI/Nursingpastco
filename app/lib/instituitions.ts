@@ -26,8 +26,6 @@ export const getInstituitions = async (): Promise<Type> => {
       return { error: "no instituition found" };
     }
 
-    await redis.set("instituitions", data);
-
     return { instituitions: data };
   } catch (err) {
     console.error(err);

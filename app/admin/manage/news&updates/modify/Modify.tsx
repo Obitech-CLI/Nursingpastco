@@ -62,15 +62,16 @@ export function ModifyNews({ news }: Props) {
 
         <span>posted by: {news.author}</span>
         <p>{news.news}</p>
+        <div className="btns">
+          <button type="button" onClick={() => setEditing(true)}>
+            <Edit color="blue" />
+          </button>
+          <button type="button" onClick={() => setDeleting(true)}>
+            <Delete color="red" />
+          </button>
+        </div>
       </article>
-      <div className="btns">
-        <button type="button" onClick={() => setEditing(true)}>
-          <Edit color="blue" />
-        </button>
-        <button type="button" onClick={() => setDeleting(true)}>
-          <Delete color="red" />
-        </button>
-      </div>
+
       {editing && (
         <form className="edit-form" action={action}>
           <button

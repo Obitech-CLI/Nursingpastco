@@ -18,7 +18,7 @@ export default async function Page({
   const { instituition, level } = await searchParams;
   return (
     <main className={styles.nursing_pastQuestions}>
-      <h2>Nursing PastQuestions</h2>
+      <h1>Nursing PastQuestions</h1>
       <SearchInstituition instituition={instituition} />
       <SearchLevel level={level} />
       <SearchCourse instituition={instituition} level={level} />

@@ -52,3 +52,14 @@
 .textbooks {
   width: 100%;
 }
+
+@media screen and (min-width: 650px) {
+  .nursing-textbooks > h2 {
+    width: 600px;
+  }
+
+  .nursing-textbooks .retry {
+    width: 600px;
+    margin: auto;
+  }
+}

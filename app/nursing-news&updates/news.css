@@ -4,17 +4,13 @@
 
 .nursing-news > .select-categories > .categories {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 
 .nursing-news > .select-categories > .cat-retry {
   display: flex;
   align-items: center;
-}
-
-.nursing-news > .select-categories > .cat-retry > button {
-  background-color: transparent;
-  padding: 0;
 }
 
 .nursing-news > .select-categories > .cat-loading {
@@ -38,16 +34,38 @@
   background-color: transparent;
   border: var(--border);
   color: var(--bg-txt);
+  white-space: nowrap;
 }
 
 .nursing-news .categories > button.active {
   border: none;
 }
 
+.nursing-news .feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nursing-news .feedback > p {
+  color: blue;
+}
+
 .nursing-news > .news {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+}
+
+.nursing-news .retry > p {
+  white-space: pre-line;
+}
+
+.nursing-news > .news > .new {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .nursing-news > .news article span {
@@ -59,11 +77,22 @@
   text-transform: capitalize;
 }
 
+.nursing-news > .news article > button {
+  align-self: flex-end;
+}
+
 .nursing-news > .news article p {
   text-align: left;
   padding: 0;
   margin: 0;
   width: 100%;
+  height: 50px;
+  overflow: hidden;
+}
+
+.nursing-news > .news article p.show {
+  height: fit-content;
+  overflow: none;
 }
 
 .nursing-news > .news article {
@@ -77,5 +106,26 @@
 
 .nursing-news > .news article img {
   width: 100%;
+  height: 250px;
   object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+}
+
+@media screen and (min-width: 800px) {
+  .nursing-news {
+    width: 780px;
+    margin: 8rem auto 5rem;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 400px) {
+  .nursing-news > .news article img {
+    height: 200px;
+  }
+
+  .nursing-news > .news article span {
+    font-size: 0.8rem;
+  }
 }

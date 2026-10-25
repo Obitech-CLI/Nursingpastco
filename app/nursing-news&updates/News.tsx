@@ -22,13 +22,25 @@ export default async function News({
       )}
 
       {res.news?.length && (
-        <div>
-          {category && !search ? <h3>{res.news[0].category}</h3> : null}
-          {category && search ? <h3>{res.news[0].category}</h3> : null}
-          {res.news.map((news) => (
-            <New key={news.id} news={news} />
-          ))}
-        </div>
+        <>
+          <div className="feedback">
+            {search && !category ? (
+              <p>search result found for {search}</p>
+            ) : null}
+            {category && !search ? <h3>{res.news[0].category}</h3> : null}
+            {category && search ? (
+              <>
+                <h3>{res.news[0].category}</h3>
+                <p>search result found for {search}</p>
+              </>
+            ) : null}
+          </div>
+          <div className="new">
+            {res.news.map((news) => (
+              <New key={news.id} news={news} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

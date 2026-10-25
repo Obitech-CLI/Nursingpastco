@@ -35,7 +35,7 @@ export function AddCategoryForm() {
         <input type="text" name="category" placeholder="enter category..." />
       </label>
       <button type="submit">
-        {pending ? "add" : "adding..."}
+        {pending ? "adding..." : "add"}
         {pending && <ClipLoader size={30} />}
       </button>
     </form>

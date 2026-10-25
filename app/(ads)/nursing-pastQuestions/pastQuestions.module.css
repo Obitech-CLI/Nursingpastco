@@ -30,11 +30,12 @@
   align-items: center;
 }
 
-.searchInstituition .instituition > h3 {
+.searchInstituition .instituition > h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-transform: capitalize;
+  text-align: center;
 }
 
 .searchInstituition .instituition > img {

@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import { NewsType } from "../types/types";
+import { useState } from "react";
 
 type Props = {
   news: NewsType;
 };
 
 export function New({ news }: Props) {
+  const [show, setShow] = useState(false);
   return (
     <article>
       <span>
@@ -23,7 +25,10 @@ export function New({ news }: Props) {
         <Image alt="" src={news.image} width={200} height={200} />
       </div>
       <span>posted by: {news.author}</span>
-      <p>{news.news}</p>
+      <p className={show ? "show" : ""}>{news.news}</p>
+      <button type="button" onClick={() => setShow(!show)}>
+        {show ? "finish reading" : "continue reading"}
+      </button>
     </article>
   );
 }

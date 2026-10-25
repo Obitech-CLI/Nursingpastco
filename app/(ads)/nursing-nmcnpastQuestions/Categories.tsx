@@ -71,6 +71,7 @@ export default function SelectCategories() {
               {error && (
                 <div className="retry">
                   <button type="button" onClick={fetchCategories}>
+                    retry
                     <RotateCcw size={25} />
                   </button>
                 </div>

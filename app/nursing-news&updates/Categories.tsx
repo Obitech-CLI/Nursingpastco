@@ -6,6 +6,7 @@ import { getNewsCategories } from "../lib/categories";
 import { RotateCcw } from "lucide-react";
 import { ClipLoader } from "react-spinners";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useSearch } from "../contexts/searchContext";
 
 export default function SelectCategories() {
   const [categories, setCategories] = useState<CategoryType[]>([]);
@@ -13,6 +14,8 @@ export default function SelectCategories() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const { setShowSearch } = useSearch();
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -41,12 +44,15 @@ export default function SelectCategories() {
     const params = new URLSearchParams(searchParams.toString());
     if (category) {
       params.set("category", category);
+      params.set("search", "");
     }
     router.replace(`/nursing-news&updates?${params}`);
   };
 
   const handleAll = () => {
     router.replace(`/nursing-news&updates`);
+    setCategory("");
+    setShowSearch(false);
   };
 
   return (
@@ -85,9 +91,7 @@ export default function SelectCategories() {
           )}
         </>
       ) : (
-        <div>
-          <ClipLoader size={25} color="var(--bg-txt)" />
-        </div>
+        <ClipLoader size={35} color="var(--bg-txt)" />
       )}
     </div>
   );

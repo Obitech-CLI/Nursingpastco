@@ -22,10 +22,16 @@ export default async function Page({
     search?: string;
   }>;
 }) {
-  await Admin();
   return (
     <main className="nursing-news">
-      <h2>nursing news&updates</h2>
+      <h1>nursing news&updates</h1>
+      <Suspense>
+        <SelectCategories />
+      </Suspense>
+      <h2>
+        stay informed with the latest nursing news, professional updates, career
+        opportunities and important developments in nursing profession.
+      </h2>
       <Suspense
         fallback={
           <div className="loading">
@@ -34,7 +40,6 @@ export default async function Page({
           </div>
         }
       >
-        <SelectCategories />
         <News searchParams={searchParams} />
       </Suspense>
     </main>

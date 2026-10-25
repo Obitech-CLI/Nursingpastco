@@ -41,7 +41,6 @@ form.edit-form {
 .btns {
   display: flex;
   align-items: center;
-  padding: 0.5rem 0;
   gap: 1rem;
 }
 
@@ -49,11 +48,23 @@ form.edit-form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.news > .news-article {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .select-categories > .categories {
   display: flex;
   gap: 0.5rem;
+}
+
+.select-categories > .categories > button {
+  white-space: nowrap;
 }
 
 .select-categories > .cat-retry {

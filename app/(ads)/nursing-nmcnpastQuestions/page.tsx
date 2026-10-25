@@ -13,11 +13,11 @@ export default function Page({
 }) {
   return (
     <main className="nursing-nmcn">
-      <h2>nursing nmcn pastquestions</h2>
+      <h1>nmcn pastquestions</h1>
       <Suspense
         fallback={
           <div className="loading">
-            <p>loading nmcn questions...</p>
+            <p>loading pastquestions...</p>
             <ClipLoader size={50} color="var(--bg-txt)" />
           </div>
         }

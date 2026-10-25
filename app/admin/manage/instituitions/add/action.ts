@@ -66,8 +66,6 @@ export const addInstituition = async (prevData: any, formData: FormData) => {
       return { msg: "failed to add instuition, try again", ok: false };
     }
 
-    await redis.del("instituitions");
-
     return { msg: "instituition added success", ok: true };
   } catch (err) {
     console.error(err);

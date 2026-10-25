@@ -24,7 +24,10 @@ export const getNews = async (category?: string, search?: string) => {
     }
 
     if (data.length === 0) {
-      return { error: "no news&updates found" };
+      return {
+        error: `no news&updates found ${category ? "for " + category : ""}
+        ${search ? "no search result for " + search : ""}`,
+      };
     }
 
     return { news: data };

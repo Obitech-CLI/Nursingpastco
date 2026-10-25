@@ -8,6 +8,7 @@
   --color-1: #002b4c;
   --color-2: #c0ebff;
   --color-3: darkgreen;
+  --color-4: #f59e71;
   --color-h3: #002b4c;
 }
 
@@ -90,7 +91,7 @@ button.cancel {
 }
 
 .pdf-overlay {
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(50px);
   position: fixed;
   inset: 0;
   padding: 7rem 0 3.7rem;
@@ -191,11 +192,12 @@ h1 {
   font-family: var(--font-playfair);
   font-weight: 700;
   text-transform: capitalize;
+  text-align: center;
 }
 
 h2 {
-  font-family: var(--font-playfair);
-  font-weight: 700;
+  font-family: var(--font-poppins);
+  font-weight: 600;
   text-transform: capitalize;
 }
 
@@ -210,7 +212,8 @@ h1 {
 }
 
 h2 {
-  color: var(--color-3);
+  color: var(--color-4);
+  text-shadow: 0.2px 0.2px black;
 }
 
 h4 {

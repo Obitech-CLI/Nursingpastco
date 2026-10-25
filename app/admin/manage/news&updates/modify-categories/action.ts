@@ -3,7 +3,8 @@
 import { supabase0 } from "@/app/lib/supabase/supabase0";
 
 export const updateNewsCategory = async (prevData: any, formData: FormData) => {
-  const category = formData.get("category") as string;
+  const category = (formData.get("category") as string).trim().toLowerCase();
+  const id = formData.get("id") as string;
   try {
     //prevent database from running on an empty input
     if (!category) {
@@ -13,7 +14,7 @@ export const updateNewsCategory = async (prevData: any, formData: FormData) => {
     const { error } = await supabase0
       .from("news_categories")
       .update({ category: category })
-      .eq("category", category);
+      .eq("id", id);
 
     if (error) {
       return { err: "failed to update category. try again", msg: "" };

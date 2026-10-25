@@ -55,6 +55,7 @@ export default async function Courses({
       {res.error && (
         <div className="retry">
           <p>{res.error}</p>
+          <RetryButton />
         </div>
       )}
     </div>

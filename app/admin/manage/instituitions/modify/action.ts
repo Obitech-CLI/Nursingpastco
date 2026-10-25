@@ -114,8 +114,6 @@ export const updateInstituition = async (prevData: any, formData: FormData) => {
       new: instituitionName,
     });
 
-    await redis.del("instituitions");
-
     return { msg: "instituition update success", err: "" };
   } catch (err) {
     console.error(err);
@@ -174,8 +172,6 @@ export const deleteInstituition = async (prevData: any, formData: FormData) => {
       deleted: true,
       instituition: data?.name,
     });
-
-    await redis.del("instituitions");
 
     return { msg: "instituition deleted success", err: "" };
   } catch (err) {

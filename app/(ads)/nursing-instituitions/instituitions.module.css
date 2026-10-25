@@ -5,7 +5,7 @@
   margin-top: -1rem;
 }
 
-.Nursing_Instituitions > h3 {
+.Nursing_Instituitions > h2 {
   text-align: center;
   padding: 0 1rem;
 }
@@ -99,11 +99,11 @@
     grid-template-columns: 2fr 1fr;
   }
 
-  .Nursing_Instituitions > h2 {
+  .Nursing_Instituitions > h1 {
     grid-column: span 2;
   }
 
-  .Nursing_Instituitions > h3 {
+  .Nursing_Instituitions > h2 {
     font-size: 1.8rem;
   }
 

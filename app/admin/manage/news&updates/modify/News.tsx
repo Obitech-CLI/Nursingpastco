@@ -25,7 +25,7 @@ export default async function News({
       <SelectCategories />
 
       {res.news?.length && (
-        <div>
+        <div className="news-article">
           {category && !search ? <h3>{res.news[0].category}</h3> : null}
           {category && search ? <h3>{res.news[0].category}</h3> : null}
           {res.news.map((news) => (
