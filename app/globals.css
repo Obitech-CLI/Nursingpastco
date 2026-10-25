@@ -29,10 +29,18 @@
   font-family: sans-serif;
 }
 
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   background-color: var(--bg);
   color: var(--bg-txt);
-  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .error {
