@@ -1,0 +1,28 @@
+.skeleton.courses {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.skeleton.courses > div {
+  height: 50px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.skeleton.courses > .h3 {
+  width: 40%;
+  height: 35px;
+  margin: 0 auto 0.5rem;
+}
+
+@media screen and (min-width: 900px) {
+  .skeleton.courses {
+    grid-column: span 2;
+  }
+
+  .skeleton.courses > .h3 {
+    width: 20%;
+  }
+}

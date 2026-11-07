@@ -61,6 +61,7 @@ export default function SelectCategories() {
                   handleAll();
                   setCategory("");
                 }}
+                className={!category ? "active" : ""}
               >
                 all
               </button>

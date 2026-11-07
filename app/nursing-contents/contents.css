@@ -25,6 +25,7 @@
 .nursing-contents > .select-categories {
   overflow: auto;
   width: 100%;
+  max-width: fit-content;
   scrollbar-width: none;
   display: flex;
   align-items: center;
@@ -50,6 +51,17 @@
   gap: 2rem;
 }
 
+.nursing-contents > .contents article p.show {
+  height: fit-content;
+  overflow: none;
+}
+
+.nursing-contents > .contents > .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .nursing-contents > .contents article span {
   align-self: flex-start;
   padding: 0.3rem 1rem;
@@ -59,16 +71,30 @@
   text-transform: capitalize;
 }
 
+.nursing-contents > .contents article h3 {
+  text-align: left;
+  box-shadow: var(--box-shadow);
+  padding: 0.5rem;
+  border-radius: 30px;
+}
+
 .nursing-contents > .contents article p {
   text-align: left;
   padding: 0;
   margin: 0;
   width: 100%;
+  box-shadow: var(--box-shadow);
+  padding: 0.8rem;
+  border-radius: 30px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.nursing-contents > .contents article > button {
+  align-self: flex-end;
 }
 
 .nursing-contents > .contents article {
-  box-shadow: var(--box-shadow);
-  padding: 0.5rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -78,4 +104,18 @@
 .nursing-contents > .contents article img {
   width: 100%;
   object-fit: cover;
+  border-radius: 30px;
+}
+
+@media screen and (min-width: 800px) {
+  .nursing-contents {
+    width: 780px;
+    margin: 8rem auto 5rem;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 400px) {
+  .nursing-contents > .contents article img {
+    height: 200px;
+  }
 }

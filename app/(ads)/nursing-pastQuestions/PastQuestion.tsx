@@ -32,7 +32,9 @@ export function PastQuestion({ pastQuestions, course }: Props) {
   }, [course]);
 
   const handleView = (title: string, url: string) => {
-    router.push(`/read-pdf?title=${title}&url=${encodeURIComponent(url)}`);
+    router.push(
+      `/read-pdf?title=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
+    );
   };
   return (
     <div className="select">

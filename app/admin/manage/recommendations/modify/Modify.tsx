@@ -1,12 +1,15 @@
 "use client";
 
 import { RecommendationType } from "@/app/types/types";
-import { Delete, Edit, Link, Link2, X } from "lucide-react";
+import { Delete, Edit, Link2, X } from "lucide-react";
 import Image from "next/image";
 import { useActionState, useEffect, useState } from "react";
 import { UpdateRecommendations } from "./action";
 import { ClipLoader } from "react-spinners";
 import { useErrorModal, useSuccessModal } from "@/app/contexts/modalContexts";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { DeleteRecommendation } from "./Delete";
 
 type Props = {
   recommendation: RecommendationType;
@@ -22,8 +25,11 @@ export function ModifyRecommendations({ recommendation }: Props) {
     UpdateRecommendations,
     initialState,
   );
+
+  const router = useRouter();
   const [editing, setEditing] = useState(false);
   const [deleting, setDeleting] = useState(false);
+
   useEffect(() => {
     document.body.style.overflow = editing ? "hidden" : "auto";
 
@@ -37,6 +43,8 @@ export function ModifyRecommendations({ recommendation }: Props) {
 
   useEffect(() => {
     if (state.msg) {
+      router.refresh();
+      setEditing(false);
       setSuccessMsg(state.msg);
     }
     if (state.err) {
@@ -46,14 +54,6 @@ export function ModifyRecommendations({ recommendation }: Props) {
   return (
     <>
       <article>
-        <span>
-          {new Date(recommendation.created_at).toLocaleDateString("en-US", {
-            day: "numeric",
-            weekday: "short",
-            month: "short",
-            year: "numeric",
-          })}
-        </span>
         <h3>{recommendation.title}</h3>
         <Image
           alt=""
@@ -62,21 +62,19 @@ export function ModifyRecommendations({ recommendation }: Props) {
           height={200}
           loading="eager"
         />
-
-        <span>posted by: {recommendation.author}</span>
         <p>{recommendation.recommendation}</p>
         <Link href={recommendation.link}>
           goto recommendation <Link2 />
         </Link>
+        <div className="btns">
+          <button type="button" onClick={() => setEditing(true)}>
+            <Edit color="blue" />
+          </button>
+          <button type="button" onClick={() => setDeleting(true)}>
+            <Delete color="red" />
+          </button>
+        </div>
       </article>
-      <div className="btns">
-        <button type="button" onClick={() => setEditing(true)}>
-          <Edit color="blue" />
-        </button>
-        <button type="button" onClick={() => setDeleting(true)}>
-          <Delete color="red" />
-        </button>
-      </div>
       {editing && (
         <form className="edit-form" action={action}>
           <button
@@ -86,7 +84,7 @@ export function ModifyRecommendations({ recommendation }: Props) {
           >
             <X />
           </button>
-          <h3>update news&updates</h3>
+          <h3>update recommendation</h3>
           <input type="hidden" name="id" defaultValue={recommendation.id} />
           <input
             type="hidden"
@@ -109,9 +107,9 @@ export function ModifyRecommendations({ recommendation }: Props) {
           <label>
             recommendation
             <textarea
-              name="content"
+              name="recommendation"
               defaultValue={recommendation.recommendation}
-              placeholder="enter news..."
+              placeholder="enter recommendation..."
             />
           </label>
           <label>
@@ -128,6 +126,12 @@ export function ModifyRecommendations({ recommendation }: Props) {
             {pending && <ClipLoader />}
           </button>
         </form>
+      )}
+      {deleting && (
+        <DeleteRecommendation
+          id={recommendation.id}
+          setDeleting={setDeleting}
+        />
       )}
     </>
   );

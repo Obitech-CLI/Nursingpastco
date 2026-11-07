@@ -134,11 +134,11 @@ export default function Home() {
             <span>
               <ClipboardList size={35} color="orange" />
             </span>
-            nmcn past questions
+            council past questions
           </h3>
 
-          <Link href="/nmcnpastQuestions">
-            nmcn questions
+          <Link href="/nursing-council">
+            past questions
             <Link2 />
           </Link>
         </div>
@@ -152,7 +152,7 @@ export default function Home() {
           </h3>
 
           <Link href="/coming-soon">
-            nursing-notes
+            notes
             <Link2 />
           </Link>
         </div>

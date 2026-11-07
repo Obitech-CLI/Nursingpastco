@@ -28,16 +28,18 @@ export function SearchNursingCourses() {
     const params = new URLSearchParams(searchParams.toString());
     if (searchInstituition) {
       params.set("instituition", searchInstituition);
+      params.set("page", "1");
     }
     if (searchLevel) {
       params.set("level", searchLevel);
+      params.set("page", "1");
     }
     router.replace(`/nursing-courses?${params}`);
     setShowSearch(false);
   };
 
   const handleAll = () => {
-    router.push(`/nursing-courses`);
+    router.push(`/nursing-courses?page=${1}`);
     setSearchInstituition("");
     setSearchLevel("");
     setShowSearch(false);

@@ -1,6 +1,8 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import PdfViewerWrapper from "../components/PdfViewerWrapper";
+import { useEffect } from "react";
 
 type Props = {
   url: string;
@@ -8,10 +10,16 @@ type Props = {
 };
 
 export default function ReadPDF({ url, title }: Props) {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!url || !title) {
+      router.back();
+    }
+  }, [router]);
   return (
     <div className="pdf-overlay">
-      <h2>read online</h2>
-      <h3>Read {title}</h3>
+      <h4 style={{ textAlign: "center" }}>{title}</h4>
       <PdfViewerWrapper url={url} />
     </div>
   );

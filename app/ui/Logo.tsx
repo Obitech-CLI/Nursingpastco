@@ -22,6 +22,7 @@ function LogoWithName() {
         width={70}
         height={70}
         style={{ objectFit: "contain" }}
+        loading="eager"
       />
     );
 
@@ -32,6 +33,7 @@ function LogoWithName() {
       width={70}
       height={70}
       style={{ objectFit: "contain" }}
+      loading="eager"
     />
   );
 }

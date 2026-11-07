@@ -54,7 +54,7 @@ export const getRecommendationsCategories = async () => {
     const { data, error } = await supabase0
       .from("recommendations_categories")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: true });
 
     if (error) {
       return { error: "failed to fetch categories. try again" };
@@ -67,7 +67,10 @@ export const getRecommendationsCategories = async () => {
     return { categories: data };
   } catch (err) {
     console.error(err);
-    return { error: "server error" };
+    return {
+      error:
+        "something went wrong. please check your internet connection and try again",
+    };
   }
 };
 
@@ -90,5 +93,55 @@ export const getNMCNCategories = async () => {
   } catch (err) {
     console.error(err);
     return { error: "server error" };
+  }
+};
+
+export const getNMCCountries = async () => {
+  try {
+    const { data, error } = await supabase1
+      .from("nmc_countries")
+      .select("id, country, image, description")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      return { error: "failed to fetch nmc countries. try again" };
+    }
+
+    if (data.length === 0) {
+      return { error: "no nmc country found" };
+    }
+
+    return { countries: data };
+  } catch (err) {
+    console.error(err);
+    return {
+      error:
+        "something went wrong. please check your internet connection and try again",
+    };
+  }
+};
+
+export const getNMCCountry = async (country?: string) => {
+  try {
+    const { data, error } = await supabase1
+      .from("nmc_countries")
+      .select("id, country, image, description")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      return { error: "failed to fetch nmc countries. try again" };
+    }
+
+    if (data.length === 0) {
+      return { error: "no nmc country found" };
+    }
+
+    return { countries: data };
+  } catch (err) {
+    console.error(err);
+    return {
+      error:
+        "something went wrong. please check your internet connection and try again",
+    };
   }
 };

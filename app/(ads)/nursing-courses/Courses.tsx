@@ -3,6 +3,7 @@ import { Course } from "./Course";
 import styles from "./courses.module.css";
 import { RetryButton } from "../../ui/Retry";
 import { CourseType } from "../../types/types";
+import { Pagination } from "./Pagination";
 
 type Type = {
   courses?: CourseType[];
@@ -15,16 +16,22 @@ export default async function Courses({
   searchParams: Promise<{
     instituition?: string;
     level?: string;
+    page: string;
   }>;
 }) {
-  const { instituition, level } = await searchParams;
-  const res: Type = await getCourses(instituition, level);
+  const { instituition, level, page } = await searchParams;
+  const res: Type = await getCourses(instituition, level, page);
   return (
     <div className={styles.courses}>
       {res.courses && (
         <>
           {res.courses.length > 0 && (
             <>
+              {!instituition && !level ? (
+                <div>
+                  <h4>all courses</h4>
+                </div>
+              ) : null}
               {instituition && level ? (
                 <div>
                   <h4>{res.courses[0]?.instituition}</h4>
@@ -51,6 +58,8 @@ export default async function Courses({
           )}
         </>
       )}
+
+      <Pagination ppage={page} />
 
       {res.error && (
         <div className="retry">

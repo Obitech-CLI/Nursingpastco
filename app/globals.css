@@ -10,6 +10,9 @@
   --color-3: darkgreen;
   --color-4: #f59e71;
   --color-h3: #002b4c;
+  --soft: rgba(0, 0, 0, 0.2);
+  --soft-txt: whitesmoke;
+  --txt: rgba(0, 0, 0, 0.9);
 }
 
 [data-theme="dark"] {
@@ -20,6 +23,9 @@
   --border: 1.5px solid white;
   --box-shadow: 0px 0px 2px white;
   --color-h3: #c0ebff;
+  --soft: rgba(225, 225, 225, 0.2);
+  --soft-txt: black;
+  --txt: rgba(225, 225, 225, 0.9);
 }
 
 * {
@@ -68,7 +74,7 @@ h3 {
   font-family: var(--font-poppins);
   font-weight: 600;
   text-transform: capitalize;
-  color: var(--color-h3);
+  color: var(--txt);
 }
 
 button.cancel {
@@ -101,7 +107,11 @@ button.cancel {
 
 .pdf-overlay {
   width: 100%;
-  margin: 8rem 0 8rem;
+  margin: -2rem 0 0;
+}
+
+main.read-online {
+  margin: 8rem 0 10rem;
 }
 
 @media screen and (min-width: 550px) {
@@ -223,6 +233,16 @@ h4 {
   text-transform: capitalize;
 }
 
+form.edit-form {
+  position: fixed;
+  width: 100%;
+  inset: 0;
+  backdrop-filter: blur(5px);
+  padding: 7rem 1rem 5rem;
+  background-color: var(--modal-bg);
+  overflow: auto;
+}
+
 .loading {
   display: flex;
   flex-direction: column;
@@ -234,6 +254,10 @@ h4 {
   align-self: center;
 }
 
+.retry > p {
+  font-size: 0.9rem;
+}
+
 .retry {
   display: flex;
   flex-direction: column;
@@ -241,10 +265,11 @@ h4 {
   gap: 1rem;
   text-transform: capitalize;
   width: 100%;
-  border: var(--border);
   padding: 4rem 2rem;
   border-radius: 100px;
   align-self: center;
+  border-radius: 20px;
+  background-color: var(--soft);
 }
 
 button {
@@ -378,12 +403,36 @@ form > button[type="submit"] {
   width: 150px;
 }
 
+.skeleton > div {
+  background: linear-gradient(90deg, #d1d1d1 25%, #e2e2e2 50%, #d1d1d1 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 6px;
+}
+
+.skeleton section > div {
+  background: linear-gradient(90deg, #d1d1d1 25%, #e2e2e2 50%, #d1d1d1 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 6px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  margin: 8rem 1rem 4rem;
+  margin: 8rem 1rem 5rem;
 }
 
 fieldset input {
@@ -676,4 +725,12 @@ td {
   align-items: center;
   gap: 0.5rem;
   font-size: 1.8rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 5rem 0 2rem;
 }

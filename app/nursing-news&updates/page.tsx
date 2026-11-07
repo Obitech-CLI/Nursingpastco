@@ -24,14 +24,14 @@ export default async function Page({
 }) {
   return (
     <main className="nursing-news">
-      <h1>nursing news&updates</h1>
+      <h2>nursing news&updates</h2>
       <Suspense>
         <SelectCategories />
       </Suspense>
-      <h2>
+      <h3 style={{ color: "var(--bg-txt)" }}>
         stay informed with the latest nursing news, professional updates, career
         opportunities and important developments in nursing profession.
-      </h2>
+      </h3>
       <Suspense
         fallback={
           <div className="loading">

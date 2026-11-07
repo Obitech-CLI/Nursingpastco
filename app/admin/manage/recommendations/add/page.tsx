@@ -5,7 +5,7 @@ import { AddRecommendationsForm } from "./Form";
 export default function Page() {
   return (
     <main>
-      <h2>add news&updates</h2>
+      <h2>add recommendations</h2>
       <Link href="/admin/manage/recommendations/modify">
         <Settings2 />
         modify

@@ -21,6 +21,7 @@
 .nursing-news > .select-categories {
   overflow: auto;
   width: 100%;
+  max-width: fit-content;
   scrollbar-width: none;
   display: flex;
   align-items: center;

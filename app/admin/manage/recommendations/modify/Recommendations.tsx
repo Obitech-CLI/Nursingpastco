@@ -14,7 +14,9 @@ export default async function Recommendations({
   const { category, search } = await searchParams;
   const res = await getRecommendations(category, search);
   return (
-    <div>
+    <div className="recommendations">
+      <SelectCategories />
+
       {res.error && (
         <div className="retry">
           <p>{res.error}</p>
@@ -22,10 +24,8 @@ export default async function Recommendations({
         </div>
       )}
 
-      <SelectCategories />
-
       {res.recommendations?.length && (
-        <div>
+        <div className="recommendation">
           {res.recommendations.map((recommendation) => (
             <ModifyRecommendations
               key={recommendation.id}

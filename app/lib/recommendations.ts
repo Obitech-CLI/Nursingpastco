@@ -5,11 +5,16 @@ import { supabase0 } from "./supabase/supabase0";
 export const getRecommendations = async (
   category?: string,
   search?: string,
+  page?: string,
 ) => {
+  const p = Number(page) || 1;
+  const from = Number(p - 1) * 10;
+  const to = from + 10 - 1;
   try {
     let query = supabase0
       .from("recommendations")
       .select("*")
+      .range(from, to)
       .order("created_at", { ascending: false });
 
     if (category) {
@@ -27,7 +32,10 @@ export const getRecommendations = async (
     }
 
     if (data.length === 0) {
-      return { error: "no recommendation found" };
+      return {
+        error: `no recommendation ${category ? "for " + category : ""} found
+        ${search ? "no search result for " + search : ""}`,
+      };
     }
 
     return { recommendations: data };

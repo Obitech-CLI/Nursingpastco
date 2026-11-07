@@ -49,6 +49,7 @@ export function AddRecommendationsForm() {
 
   useEffect(() => {
     if (state?.msg) {
+      setSelectedCategory("");
       setSuccessMsg(state.msg);
     }
     if (state?.err) {
@@ -72,6 +73,7 @@ export function AddRecommendationsForm() {
               <>
                 {categories.length > 0 ? (
                   <ul>
+                    <h2>select category</h2>
                     {categories.map((category) => (
                       <li
                         key={category.id}

@@ -110,6 +110,27 @@ export interface NotesType {
   pdf: string;
 }
 
+export interface NMCCountryType {
+  id: number;
+  country: string;
+  image: string;
+  description: string;
+}
+
+export interface NMCCourseType {
+  id: number;
+  country: string;
+  course: string;
+}
+
+export interface NMCPastQuestionType {
+  id: number;
+  title: string;
+  country: string;
+  course: string;
+  pdf: string;
+}
+
 export interface NMCNType {
   id: number;
   title: string;

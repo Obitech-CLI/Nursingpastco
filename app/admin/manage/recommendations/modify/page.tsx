@@ -16,7 +16,7 @@ export default async function Page({
 }) {
   await Admin();
   return (
-    <main>
+    <main className="modify-recommendations">
       <h2>Modify Recommendations</h2>
       <Link href="/admin/manage/recommendations/add">
         <Plus />

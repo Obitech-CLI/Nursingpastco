@@ -1,32 +1,20 @@
 import { Admin } from "@/app/lib/admin";
 import Link from "next/link";
-import { Suspense } from "react";
-import { PastQuestionsCount } from "./Count";
-import { Plus, Settings } from "lucide-react";
-import { ClipLoader } from "react-spinners";
+import { Plus, Settings, Settings2 } from "lucide-react";
+import "../../dashboard/dashboard.css";
 
 export default async function Page() {
   await Admin();
   return (
     <main>
       <h2>Manage PastQuestions</h2>
-      <Suspense
-        fallback={
-          <div className="loading">
-            <p>loading..</p>
-            <ClipLoader size={30} color="var(--bg-txt)" />
-          </div>
-        }
-      >
-        <PastQuestionsCount />
-      </Suspense>
-      <nav>
+      <nav className="admin">
         <Link href="/admin/manage/pastQuestions/add">
-          <Plus />
+          <Plus size={50} />
           add pastQuestions
         </Link>
         <Link href="/admin/manage/pastQuestions/modify">
-          <Settings />
+          <Settings2 size={50} />
           modify pastQuestions
         </Link>
       </nav>

@@ -43,6 +43,7 @@ function MenuModal() {
                     className={
                       pathname === "/nursing-instituitions" ? "active" : ""
                     }
+                    prefetch={true}
                   >
                     <span>
                       <School size={25} />
@@ -54,6 +55,7 @@ function MenuModal() {
                     onClick={ResetMenu}
                     href="/nursing-courses"
                     className={pathname === "/nursing-courses" ? "active" : ""}
+                    prefetch={true}
                   >
                     <span>
                       <BookOpen size={25} />
@@ -67,6 +69,7 @@ function MenuModal() {
                     className={
                       pathname === "/nursing-pastQuestions" ? "active" : ""
                     }
+                    prefetch={true}
                   >
                     <span>
                       <ClipboardList size={25} />
@@ -75,15 +78,14 @@ function MenuModal() {
                   </Link>
                   <Link
                     onClick={ResetMenu}
-                    href="/nursing-nmcnpastQuestions"
-                    className={
-                      pathname === "/nursing-nmcnpastQuestions" ? "active" : ""
-                    }
+                    href="/nursing-council"
+                    className={pathname === "/nursing-council" ? "active" : ""}
+                    prefetch={true}
                   >
                     <span>
                       <ClipboardList size={25} />
                     </span>
-                    nmcn pastQuestions
+                    Council past Questions
                   </Link>
 
                   <Link
@@ -92,6 +94,7 @@ function MenuModal() {
                     className={
                       pathname === "/nursing-textbooks" ? "active" : ""
                     }
+                    prefetch={true}
                   >
                     <span>
                       <Book size={25} />
@@ -101,8 +104,23 @@ function MenuModal() {
 
                   <Link
                     onClick={ResetMenu}
+                    href="/nursing-recommendations"
+                    className={
+                      pathname === "/nursing-recommendations" ? "active" : ""
+                    }
+                    prefetch={true}
+                  >
+                    <span>
+                      <BadgeCheck size={25} />
+                    </span>
+                    nursing recommendations
+                  </Link>
+
+                  <Link
+                    onClick={ResetMenu}
                     href="/coming-soon"
                     className={pathname === "" ? "active" : ""}
+                    prefetch={true}
                   >
                     <span>
                       <NotebookPenIcon size={25} />
@@ -117,6 +135,7 @@ function MenuModal() {
                     onClick={ResetMenu}
                     href="/coming-soon"
                     className={pathname === "" ? "active" : ""}
+                    prefetch={true}
                   >
                     <span>
                       <FileText size={25} />
@@ -131,25 +150,12 @@ function MenuModal() {
                     onClick={ResetMenu}
                     href="/coming-soon"
                     className={pathname === "" ? "active" : ""}
+                    prefetch={true}
                   >
                     <span>
                       <RefreshCw size={25} />
                     </span>
                     nursing news & updates
-                    <h6>
-                      coming soon <Clock size={10} />
-                    </h6>
-                  </Link>
-
-                  <Link
-                    onClick={ResetMenu}
-                    href="/coming-soon"
-                    className={pathname === "" ? "active" : ""}
-                  >
-                    <span>
-                      <BadgeCheck size={25} />
-                    </span>
-                    nursing recommendations
                     <h6>
                       coming soon <Clock size={10} />
                     </h6>
@@ -163,6 +169,7 @@ function MenuModal() {
                     onClick={ResetMenu}
                     href="/admin/profile"
                     className={pathname === "/admin/profile" ? "active" : ""}
+                    prefetch={true}
                   >
                     <span>
                       <User2 size={25} />
@@ -176,6 +183,7 @@ function MenuModal() {
                     className={
                       pathname === "/admin/manage/subscribers" ? "active" : ""
                     }
+                    prefetch={true}
                   >
                     <span>
                       <UserCheck2 size={25} />
@@ -189,6 +197,7 @@ function MenuModal() {
                     className={
                       pathname === "/admin/manage/messages" ? "active" : ""
                     }
+                    prefetch={true}
                   >
                     <span>
                       <Inbox size={25} />

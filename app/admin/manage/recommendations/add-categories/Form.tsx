@@ -29,14 +29,14 @@ export function AddCategoryForm() {
     }
   }, [state]);
   return (
-    <form action={action}>
+    <form action={action} className="auth">
       <label>
         <PenBox />
         <input type="text" name="category" placeholder="enter category..." />
       </label>
       <button type="submit">
-        {pending ? "add" : "adding..."}
-        {pending && <ClipLoader size={30} />}
+        {pending ? "adding..." : "add"}
+        {pending && <ClipLoader size={20} />}
       </button>
     </form>
   );

@@ -53,6 +53,35 @@
   width: 100%;
 }
 
+.skeleton.textbooks {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.skeleton.textbooks > section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.skeleton.textbooks > section > div {
+  width: 300px;
+  height: 100px;
+}
+
+.skeleton.textbooks div {
+  border-radius: 20px;
+}
+
+.skeleton.textbooks > section > .img {
+  height: 280px;
+  width: 200px;
+}
+
 @media screen and (min-width: 650px) {
   .nursing-textbooks > h3 {
     width: 600px;

@@ -1,0 +1,17 @@
+.skeleton.courses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skeleton.courses > div {
+  width: 100%;
+  height: 50px;
+  border-radius: 30px;
+}
+
+.skeleton.courses > .h3 {
+  width: 150px;
+  height: 40px;
+}

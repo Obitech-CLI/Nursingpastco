@@ -1,11 +1,13 @@
 "use client";
 
+import { useSearch } from "@/app/contexts/searchContext";
 import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 export function SearchAdminRecommendaionsTitles() {
   const [search, setSearch] = useState("");
+  const { setShowSearch } = useSearch();
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -16,6 +18,7 @@ export function SearchAdminRecommendaionsTitles() {
       params.set("search", search);
     }
     router.replace(`/admin/manage/recommendations/modify?${params}`);
+    setShowSearch(false);
   };
   return (
     <fieldset>

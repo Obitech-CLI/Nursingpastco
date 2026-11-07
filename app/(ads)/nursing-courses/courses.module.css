@@ -1,8 +1,10 @@
 .Nursing_Courses > img {
   width: 100%;
-  height: 100%;
+  height: fit-content;
   object-fit: contain;
   margin-top: -1rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
 }
 
 .Nursing_Courses > h3 {
@@ -68,7 +70,7 @@
   }
 
   .Nursing_Courses > h3 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
   .Nursing_Courses > .courses {

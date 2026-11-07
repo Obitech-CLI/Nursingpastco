@@ -6,7 +6,8 @@ export const updateRecommendationsCategory = async (
   prevData: any,
   formData: FormData,
 ) => {
-  const category = formData.get("category") as string;
+  const id = formData.get("id") as string;
+  const category = (formData.get("category") as string).trim().toLowerCase();
   try {
     //prevent database from running on an empty input
     if (!category) {
@@ -16,7 +17,7 @@ export const updateRecommendationsCategory = async (
     const { error } = await supabase0
       .from("recommendations_categories")
       .update({ category: category })
-      .eq("category", category);
+      .eq("id", id);
 
     if (error) {
       return { err: "failed to update category. try again", msg: "" };
@@ -25,7 +26,10 @@ export const updateRecommendationsCategory = async (
     return { msg: "category update success", err: "" };
   } catch (err) {
     console.error(err);
-    return { err: "server error", msg: "" };
+    return {
+      err: "something went wrong. please check your internet connection and try again",
+      msg: "",
+    };
   }
 };
 

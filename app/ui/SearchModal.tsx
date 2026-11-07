@@ -12,7 +12,9 @@ import { SearchNewsTitles } from "../nursing-news&updates/Search";
 import { SearchAdminContentTitles } from "../admin/manage/contents/modify/Search";
 import { SearchAdminNewsTitles } from "../admin/manage/news&updates/modify/Search";
 import { SearchAdminRecommendaionsTitles } from "../admin/manage/recommendations/modify/Search";
-import { SearchRecommendationsTitles } from "../nursing-recommendations/Search";
+import { SearchRecommendationsTitles } from "../(ads)/nursing-recommendations/Search";
+import { SelectNMCPastQuestions } from "../admin/manage/nmc/modify/Select";
+import { SelectNMCCourses } from "../admin/manage/nmc/modify-course/Select";
 
 export function SearchModal() {
   const { showSearch } = useSearch();
@@ -43,6 +45,12 @@ export function SearchModal() {
           )}
           {pathname === "/admin/manage/pastQuestions/modify" && (
             <SearchPastQuestionsAdmin />
+          )}
+          {pathname === "/admin/manage/nmc/modify" && (
+            <SelectNMCPastQuestions />
+          )}
+          {pathname === "/admin/manage/nmc/modify-course" && (
+            <SelectNMCCourses />
           )}
           {pathname === "/admin/manage/subscribers" && (
             <SearchSubscribersAdmin />

@@ -61,7 +61,11 @@ export default function SelectCategories() {
         <>
           {categories.length > 0 ? (
             <div className="categories">
-              <button type="button" onClick={handleAll}>
+              <button
+                type="button"
+                onClick={handleAll}
+                className={!category ? "active" : ""}
+              >
                 all
               </button>
               {categories.map((c) => (

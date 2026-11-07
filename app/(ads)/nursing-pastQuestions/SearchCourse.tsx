@@ -7,6 +7,7 @@ import { getCourses } from "../../lib/courses";
 import styles from "./pastQuestions.module.css";
 import { CourseType } from "../../types/types";
 import { ClipLoader } from "react-spinners";
+import { CoursesSkeleton } from "./Skeleton";
 
 export function SearchCourse({
   instituition,
@@ -57,10 +58,7 @@ export function SearchCourse({
       {instituition && level ? (
         <div className={styles.courses}>
           {Loading ? (
-            <div className="loading">
-              <p>loading courses...</p>
-              <ClipLoader size={50} color="var(--bg-txt)" />
-            </div>
+            <CoursesSkeleton />
           ) : (
             <>
               {courses.length > 0 && (

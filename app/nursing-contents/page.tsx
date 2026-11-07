@@ -25,6 +25,14 @@ export default async function Page({
   return (
     <main className="nursing-contents">
       <h2>nursing contents</h2>
+      <h3 style={{ color: "var(--bg-txt)" }}>
+        Explore educational nursing videos, tutorials, and other informative
+        content designed to help nursing students learn, understand complex
+        topics, and expand their nursing knowledge.
+      </h3>
+      <Suspense>
+        <SelectCategories />
+      </Suspense>
       <Suspense
         fallback={
           <div className="loading">
@@ -33,7 +41,6 @@ export default async function Page({
           </div>
         }
       >
-        <SelectCategories />
         <Contents searchParams={searchParams} />
       </Suspense>
     </main>

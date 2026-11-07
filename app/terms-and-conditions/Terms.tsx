@@ -296,10 +296,10 @@ function TermsConditions() {
         </p>
 
         <p>
-          {" "}
-          make no warranties or representations regarding the completeness,
+          We make no warranties or representations regarding the completeness,
           accuracy, reliability, availability, or suitability of the Website or
-          its content for any particular purpose.
+          its content for any particular purpose, to the maximum extent
+          permitted by applicable law.
         </p>
 
         <p>

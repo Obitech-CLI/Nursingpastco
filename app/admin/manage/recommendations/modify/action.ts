@@ -114,6 +114,79 @@ export const UpdateRecommendations = async (
     };
   } catch (err) {
     console.error(err);
-    return { err: "server error", msg: "" };
+    return {
+      err: "something went wrong. please check your internet connection and try again",
+      msg: "",
+    };
+  }
+};
+
+export const DeleteRecommendations = async (
+  prevData: any,
+  formData: FormData,
+) => {
+  const id = formData.get("id") as string;
+  const confirm = formData.get("confirm") as string;
+  try {
+    if (!id) {
+      return { err: "invalid request", msg: "" };
+    }
+
+    if (confirm.toLowerCase().trim() !== "i want to delete") {
+      return { err: "invalid confirm message", msg: "" };
+    }
+
+    const { data: recommendations, error: recommendationsError } =
+      await supabase0
+        .from("recommendations")
+        .select("image")
+        .eq("id", id)
+        .single();
+
+    if (!recommendations || recommendationsError) {
+      return {
+        err: "couldnt get recommendation image url. try again",
+        msg: "",
+      };
+    }
+
+    const fileUrl = recommendations.image;
+    const path = decodeURIComponent(
+      fileUrl.split("/recommendations_images/")[1],
+    );
+
+    const { error: storageError } = await supabase0.storage
+      .from("recommendations_images")
+      .remove([path]);
+
+    if (storageError) {
+      return {
+        err: "storage failed to remove recommendation image from storage",
+        msg: "",
+      };
+    }
+
+    const { error } = await supabase0
+      .from("recommendations")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      return {
+        err: "failed to delete recommendation, try again",
+        msg: "",
+      };
+    }
+
+    return {
+      msg: "recommendation deleted success",
+      err: "",
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      err: "something went wrong. please check your internet connection and try again",
+      msg: "",
+    };
   }
 };

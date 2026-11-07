@@ -20,37 +20,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: "https://nursingpastco.com/nursing-courses",
       changeFrequency: "daily",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: "https://nursingpastco.com/nursing-textbooks",
       changeFrequency: "daily",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: "https://nursingpastco.com/nursing-nmcnpastQuestions",
+      url: "https://nursingpastco.com/nursing-council",
       changeFrequency: "daily",
-      priority: 0.8,
+      priority: 0.9,
+    },
+    {
+      url: "https://nursingpastco.com/nursing-recommendations",
+      changeFrequency: "daily",
+      priority: 0.9,
     },
     {
       url: "https://nursingpastco.com/about-us",
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: "https://nursingpastco.com/contact-us",
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.7,
     },
     {
       url: "https://nursingpastco.com/terms-and-condition",
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.7,
     },
     {
       url: "https://nursingpastco.com/privacy-policies",
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.7,
     },
   ];
 }

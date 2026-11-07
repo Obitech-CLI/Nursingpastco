@@ -12,11 +12,16 @@ type Type = {
 export const getCourses = async (
   instituition?: string,
   level?: string,
+  page?: string,
 ): Promise<Type> => {
+  const p = Number(page) || 1;
+  const from = Number(p - 1) * 10;
+  const to = from + 10 - 1;
   try {
     let query = supabase
       .from("courses")
       .select("*")
+      .range(from, to)
       .order("created_at", { ascending: false });
 
     if (instituition) {

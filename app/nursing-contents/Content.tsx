@@ -2,23 +2,17 @@
 
 import Image from "next/image";
 import { ContentType } from "../types/types";
+import { useState } from "react";
 
 type Props = {
   content: ContentType;
 };
 
 export function Content({ content }: Props) {
+  const [show, setShow] = useState(false);
   return (
     <>
       <article>
-        <span>
-          {new Date(content.created_at).toLocaleDateString("en-US", {
-            day: "numeric",
-            weekday: "short",
-            month: "short",
-            year: "numeric",
-          })}
-        </span>
         <h3>{content.title}</h3>
         <div>
           {["mp4", "webm", "mov", "m4v"].includes(
@@ -36,8 +30,10 @@ export function Content({ content }: Props) {
             />
           )}
         </div>
-        <span>posted by: {content.author}</span>
-        <p>{content.content}</p>
+        <p className={show ? "show" : ""}>{content.content}</p>
+        <button type="button" onClick={() => setShow(!show)}>
+          {show ? "finish reading" : "continue reading"}
+        </button>
       </article>
     </>
   );

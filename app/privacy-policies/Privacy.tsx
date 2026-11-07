@@ -41,6 +41,16 @@ function PrivacyPolicy() {
           the Website's educational content.
         </p>
 
+        <h4>Contact Form Information</h4>
+
+        <p>
+          When you contact us through our contact form, we collect the name or
+          username, email address, and message you submit. We use this
+          information to respond to your enquiries, provide support, and address
+          complaints. Contact form submissions are stored in our Supabase
+          database and are accessible only as permitted by our access controls.
+        </p>
+
         <h4>Analytics Information</h4>
 
         <p>
@@ -210,6 +220,13 @@ function PrivacyPolicy() {
           Analytics information may be retained and processed by Google
           according to Google's applicable policies and retention settings.
         </p>
+        <p>
+          We retain contact form submissions for as long as reasonably necessary
+          to respond to enquiries, provide support, resolve disputes, and meet
+          applicable legal obligations. When the information is no longer
+          needed, we take reasonable steps to delete it, subject to any
+          applicable retention requirements.
+        </p>
       </section>
       <section>
         <h3>11. Data Security</h3>
@@ -258,6 +275,12 @@ function PrivacyPolicy() {
           regulations, including the Nigeria Data Protection Act (NDPA) where
           applicable.
         </p>
+        <p>
+          You may also lodge a complaint with the Nigeria Data Protection
+          Commission where applicable. For privacy-related requests or concerns,
+          please contact us through our Contact Us page.
+        </p>
+
         <p>
           We will take reasonable measures to protect and appropriately handle
           personal information collected through the Website.

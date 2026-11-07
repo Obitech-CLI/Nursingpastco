@@ -8,7 +8,7 @@ article span {
 }
 
 article p {
-  text-align: left;
+  text-align: center;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -21,11 +21,14 @@ article {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
+  align-items: center;
 }
 
 article img {
   width: 100%;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 form.edit-form {
@@ -87,8 +90,20 @@ form.edit-form {
   background-color: transparent;
   border: var(--border);
   color: var(--bg-txt);
+  white-space: nowrap;
 }
 
 .categories > button.active {
   border: none;
+}
+
+.modify-recommendations > .recommendations > .recommendation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modify-recommendations > .recommendations {
+  width: 100%;
 }

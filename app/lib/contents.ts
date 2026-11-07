@@ -24,7 +24,11 @@ export const getContents = async (category?: string, search?: string) => {
     }
 
     if (data.length === 0) {
-      return { error: "no content found" };
+      return {
+        error: `no content ${category ? "for " + category : ""} found 
+      ${search ? "no search result for " + search : ""}
+      `,
+      };
     }
 
     return { contents: data };

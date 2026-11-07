@@ -7,6 +7,17 @@ export default async function Page({
 }) {
   const { url, title } = await searchParams;
 
-  if (!url || !title) return <p>PDF URL missing or title</p>;
-  return <ReadPDF url={url} title={title} />;
+  if (!url || !title)
+    return (
+      <main>
+        <h2>read online</h2>
+        <p>something went wrong. go back and try again</p>
+      </main>
+    );
+  return (
+    <main className="read-online">
+      <h3>read online</h3>
+      <ReadPDF url={url} title={title} />
+    </main>
+  );
 }

@@ -1,0 +1,72 @@
+.skeleton.instituitions {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.skeleton.instituitions > section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.skeleton.instituitions > section > div {
+  border-radius: 50px;
+}
+
+.skeleton.instituitions > section > .abbr {
+  height: 50px;
+  width: 20%;
+}
+
+.skeleton.instituitions > section > .img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+}
+
+.skeleton.instituitions > section > .iname {
+  width: 50%;
+  height: 55px;
+}
+
+.skeleton.instituitions > section > .about {
+  height: 200px;
+  width: 100%;
+}
+
+.skeleton.instituitions > section > .btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  align-items: center;
+}
+
+.skeleton.instituitions > section > .btns > div {
+  width: 30%;
+  height: 50px;
+  border-radius: 50px;
+}
+
+@media screen and (min-width: 850px) {
+  .skeleton.instituitions {
+    grid-column: span 2;
+  }
+
+  .skeleton.instituitions > section > .iname {
+    width: 30%;
+  }
+
+  .skeleton.instituitions > section > .abbr {
+    width: 15%;
+  }
+
+  .skeleton.instituitions > section > .about {
+    height: 170px;
+  }
+}

@@ -22,7 +22,7 @@ export default async function Contents({
       )}
 
       {res.contents?.length && (
-        <div>
+        <div className="content">
           {category && !search ? <h3>{res.contents[0].category}</h3> : null}
           {category && search ? <h3>{res.contents[0].category}</h3> : null}
           {res.contents.map((content) => (

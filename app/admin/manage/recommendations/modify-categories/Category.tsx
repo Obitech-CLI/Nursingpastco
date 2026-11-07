@@ -45,6 +45,7 @@ export function Category({ category }: Props) {
   return (
     <>
       <form action={action}>
+        <input type="hidden" name="id" defaultValue={category.id} />
         <label>
           <h3>{category.category}</h3>
           {edit && (
@@ -59,7 +60,11 @@ export function Category({ category }: Props) {
               <Edit2 color="blue" size={25} />
               {edit ? "cancel" : "edit"}
             </button>
-            <button type="button" disabled={edit}>
+            <button
+              type="button"
+              disabled={edit}
+              onClick={() => setDeleting(true)}
+            >
               <Delete size={25} color="red" />
               delete
             </button>

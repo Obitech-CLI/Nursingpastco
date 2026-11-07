@@ -4,6 +4,7 @@ import NursingInstituitions from "@/public/NursingInstituitions.png";
 import styles from "./instituitions.module.css";
 import Image from "next/image";
 import { ClipLoader } from "react-spinners";
+import { InstituitionSkeleton } from "./Skeleton";
 
 export default function Page() {
   return (
@@ -14,14 +15,7 @@ export default function Page() {
         here are the list of available instituitions with materials on our
         website
       </h3>
-      <Suspense
-        fallback={
-          <div className="loading">
-            <p>loading instituitions...</p>
-            <ClipLoader size={50} color="var(--bg-txt)" />
-          </div>
-        }
-      >
+      <Suspense fallback={<InstituitionSkeleton />}>
         <Instituitions />
       </Suspense>
     </main>
