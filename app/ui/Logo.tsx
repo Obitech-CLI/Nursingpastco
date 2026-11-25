@@ -14,7 +14,7 @@ function LogoWithName() {
     setMounted(true);
   }, []);
 
-  if (!mounted)
+  if (mounted)
     return (
       <Image
         src={DarkLogo}
@@ -26,16 +26,29 @@ function LogoWithName() {
       />
     );
 
-  return (
-    <Image
-      src={theme === "light" ? DarkLogo : LightLogo}
-      alt=""
-      width={70}
-      height={70}
-      style={{ objectFit: "contain" }}
-      loading="eager"
-    />
-  );
+  if (theme === "light")
+    return (
+      <Image
+        src={LightLogo}
+        alt=""
+        width={70}
+        height={70}
+        style={{ objectFit: "contain" }}
+        loading="eager"
+      />
+    );
+
+  if (theme === "dark")
+    return (
+      <Image
+        src={DarkLogo}
+        alt=""
+        width={70}
+        height={70}
+        style={{ objectFit: "contain" }}
+        loading="eager"
+      />
+    );
 }
 
 export { LogoWithName };

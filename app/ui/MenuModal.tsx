@@ -76,6 +76,23 @@ function MenuModal() {
                     </span>
                     nursing pastQuestions
                   </Link>
+
+                  <Link
+                    onClick={ResetMenu}
+                    href="/nursing-midwifery-pastQuestions"
+                    className={
+                      pathname === "/nursing-midwifery-pastQuestions"
+                        ? "active"
+                        : ""
+                    }
+                    prefetch={true}
+                  >
+                    <span>
+                      <ClipboardList size={25} />
+                    </span>
+                    midwifery pastQuestions
+                  </Link>
+
                   <Link
                     onClick={ResetMenu}
                     href="/nursing-council"

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PastQuestionType } from "../../types/types";
-import PdfViewerWrapper from "../../components/PdfViewerWrapper";
 
 type Props = {
   pastQuestions: PastQuestionType[];

@@ -18,6 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: "https://nursingpastco.com/nursing-midwifery-pastQuestions",
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
       url: "https://nursingpastco.com/nursing-courses",
       changeFrequency: "daily",
       priority: 0.9,

@@ -1,7 +1,6 @@
 "use server";
 
 import { InstitutionType } from "../types/types";
-import { redis } from "./redis";
 import { supabase } from "./supabase/supabase";
 
 type Type = {

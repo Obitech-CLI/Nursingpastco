@@ -29,7 +29,7 @@ export function SubscribeForm() {
        My email: ${email}
        Thank you.`,
     );
-    window.location.href = `mailto:yourcompany@example.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:nursingpastco@gmail.com?subject=${subject}&body=${body}`;
   };
 
   useEffect(() => {

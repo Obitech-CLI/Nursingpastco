@@ -103,7 +103,7 @@ export default function Home() {
           </h3>
           <p>we recommend career development and essential tools.</p>
 
-          <Link href="/coming-soon">
+          <Link href="/nursing-recommendations">
             recommendations
             <Link2 />
           </Link>

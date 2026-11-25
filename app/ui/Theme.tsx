@@ -9,6 +9,8 @@ function AppTheme() {
 
   const [showTheme, setShowTheme] = useState(false);
 
+  console.log(theme);
+
   return (
     <>
       <button onClick={() => setShowTheme(!showTheme)}>

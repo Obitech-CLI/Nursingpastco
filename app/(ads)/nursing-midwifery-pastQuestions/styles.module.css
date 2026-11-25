@@ -1,0 +1,62 @@
+.selectInstituition {
+  width: 100%;
+}
+
+.selectInstituition .instituition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selectInstituition .instituition > h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.selectInstituition .instituition > img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  box-shadow: var(--box-shadow);
+  border-radius: 50%;
+}
+
+.dummy {
+  height: 100px;
+  width: 100px;
+  box-shadow: var(--box-shadow);
+  border-radius: 50%;
+}
+
+.pastQuestions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.pastQuestion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.pastQuestion > button {
+  background-color: transparent;
+  border: 1.5px solid var(--color-2);
+  box-shadow: var(--box-shadow);
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
+  justify-content: space-between;
+  color: var(--bg-txt);
+}
+
+@media screen and (min-width: 550px) {
+  .pastQuestions {
+    width: 500px;
+  }
+}

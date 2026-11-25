@@ -17,6 +17,10 @@ export function Nav() {
         <Settings2 size={60} />
         manage pastQuestions
       </Link>
+      <Link href="/admin/manage/midwifery">
+        <Settings2 size={60} />
+        manage midwifery pastQuestions
+      </Link>
       <Link href="/admin/manage/textbooks">
         <Settings2 size={60} />
         manage textbooks

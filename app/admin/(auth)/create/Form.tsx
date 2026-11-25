@@ -1,11 +1,11 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { CreateAdmin } from "./action";
 import { ClipLoader } from "react-spinners";
 import { useErrorModal, useSuccessModal } from "@/app/contexts/modalContexts";
 import { useRouter } from "next/navigation";
-import { Lock, Mail, User2 } from "lucide-react";
+import { Eye, EyeClosed, Lock, Mail, User2 } from "lucide-react";
 
 const initialState = {
   err: "",
@@ -17,6 +17,8 @@ export function CreateForm() {
 
   const { setSuccessMsg } = useSuccessModal();
   const { setErrorMsg } = useErrorModal();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
 
@@ -41,9 +43,26 @@ export function CreateForm() {
         <Mail />
         <input type="email" name="email" placeholder="enter email" />
       </label>
-      <label>
+      <label style={{ position: "relative" }}>
         <Lock />
-        <input type="password" name="password" placeholder="enter password" />
+        <input
+          type={showPassword ? "text" : "password"}
+          name="password"
+          placeholder="enter password"
+        />
+        <span
+          onClick={() => setShowPassword(!showPassword)}
+          style={{
+            position: "absolute",
+            right: "0.5rem",
+            transform: "translateX(-50%)",
+            display: "flex",
+            height: "fit-content",
+            alignItems: "center",
+          }}
+        >
+          {showPassword ? <Eye /> : <EyeClosed />}
+        </span>
       </label>
       <button type="submit" disabled={pending}>
         {pending ? "creating..." : "create"}

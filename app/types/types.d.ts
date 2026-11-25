@@ -39,6 +39,20 @@ export interface PastQuestionType {
   pdf: any;
 }
 
+export interface MidwiferyCoursesType {
+  id: number;
+  instituition: string;
+  course: string;
+}
+
+export interface MidwiferyPastQuestionType {
+  id: number;
+  instituition: string;
+  course: string;
+  title: string;
+  pdf: any;
+}
+
 export interface CourseType {
   id: number;
   instituition: string;

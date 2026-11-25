@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useState } from "react";
 import { LoginAdmin } from "./action";
-import { Lock, User2 } from "lucide-react";
+import { Eye, EyeClosed, Lock, User2 } from "lucide-react";
 import { useErrorModal, useSuccessModal } from "@/app/contexts/modalContexts";
 import { useRouter } from "next/navigation";
 import { ClipLoader } from "react-spinners";
@@ -14,6 +14,8 @@ export function LoginForm() {
     username: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const [remember, setRemember] = useState(false);
   const [state, action, pending] = useActionState(LoginAdmin, initialState);
@@ -69,10 +71,10 @@ export function LoginForm() {
           }
         />
       </label>
-      <label>
+      <label style={{ position: "relative" }}>
         <Lock />
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           name="password"
           defaultValue={formData.password}
           placeholder="enter password"
@@ -80,6 +82,19 @@ export function LoginForm() {
             setFormData((prev) => ({ ...prev, password: e.target.value }))
           }
         />
+        <span
+          onClick={() => setShowPassword(!showPassword)}
+          style={{
+            position: "absolute",
+            right: "0.5rem",
+            transform: "translateX(-50%)",
+            display: "flex",
+            height: "fit-content",
+            alignItems: "center",
+          }}
+        >
+          {showPassword ? <Eye /> : <EyeClosed />}
+        </span>
       </label>
       <div className="remember-me">
         <span>remember me</span>

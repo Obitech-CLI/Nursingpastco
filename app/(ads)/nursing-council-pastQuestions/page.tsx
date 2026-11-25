@@ -16,7 +16,7 @@ export default async function Page({
 }) {
   const { country, banner, description } = await searchParams;
 
-  if (!country || !banner || !description) redirect("/nursing-nmc-countries");
+  if (!country || !banner || !description) redirect("/nursing-council");
   return (
     <main className="nmc-pastQuestions">
       <h2>nmc{country.at(0)} Past Questions</h2>

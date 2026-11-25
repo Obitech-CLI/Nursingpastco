@@ -13,6 +13,7 @@ export function InstituitionSkeleton() {
         <section className="btns">
           <div></div>
           <div></div>
+          <div></div>
         </section>
       </section>
 
@@ -24,6 +25,7 @@ export function InstituitionSkeleton() {
         <section className="btns">
           <div></div>
           <div></div>
+          <div></div>
         </section>
       </section>
 
@@ -33,6 +35,7 @@ export function InstituitionSkeleton() {
         <div className="iname"></div>
         <div className="about"></div>
         <section className="btns">
+          <div></div>
           <div></div>
           <div></div>
         </section>

@@ -13,10 +13,10 @@ export function Socials() {
         <>
           <div className="socials">
             <div>
-              <Link href="">
+              <Link href="/">
                 <FaTiktok size={25} color="#000000" />
               </Link>
-              <Link href="">
+              <Link href="/">
                 <FaYoutube size={25} color="red" />
               </Link>
               <Link href="https://wa.me/2330592235166">

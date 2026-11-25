@@ -17,13 +17,19 @@ export function Instituition({ instituition }: Props) {
     const params = new URLSearchParams(searchParams.toString());
     params.set("instituition", instituition.name);
 
-    router.replace(`/nursing-courses?${params}`);
+    router.push(`/nursing-courses?${params}`);
   };
   const handleInstituition = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("instituition", instituition.name);
 
-    router.replace(`/nursing-pastQuestions?${params}`);
+    router.push(`/nursing-pastQuestions?${params}`);
+  };
+  const handleMidwifery = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("instituition", instituition.name);
+
+    router.push(`/nursing-midwifery-pastQuestions?${params}`);
   };
   return (
     <article>
@@ -45,6 +51,10 @@ export function Instituition({ instituition }: Props) {
         <button type="button" onClick={handleInstituition}>
           <Clipboard />
           pastQuestions
+        </button>
+        <button type="button" onClick={handleMidwifery}>
+          <Clipboard />
+          midwifery pastQuestions
         </button>
       </div>
     </article>

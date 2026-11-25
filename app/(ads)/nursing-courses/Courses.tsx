@@ -23,6 +23,13 @@ export default async function Courses({
   const res: Type = await getCourses(instituition, level, page);
   return (
     <div className={styles.courses}>
+      {res.error && (
+        <div className="retry">
+          <p>{res.error}</p>
+          <RetryButton />
+        </div>
+      )}
+
       {res.courses && (
         <>
           {res.courses.length > 0 && (
@@ -56,16 +63,8 @@ export default async function Courses({
               ))}
             </>
           )}
+          <Pagination ppage={page} />
         </>
-      )}
-
-      <Pagination ppage={page} />
-
-      {res.error && (
-        <div className="retry">
-          <p>{res.error}</p>
-          <RetryButton />
-        </div>
       )}
     </div>
   );

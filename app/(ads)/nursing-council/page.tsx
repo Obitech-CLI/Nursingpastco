@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import Countries from "./Countries";
 import "./style.css";
-import { ClipLoader } from "react-spinners";
 import Image from "next/image";
 import banner from "@/public/nmc-banner.png";
 import { CountriesSkeleton } from "../nursing-council-pastQuestions/Skeleton";
