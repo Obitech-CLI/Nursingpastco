@@ -26,6 +26,18 @@ function LogoWithName() {
       />
     );
 
+  if (!mounted)
+    return (
+      <Image
+        src={DarkLogo}
+        alt=""
+        width={70}
+        height={70}
+        style={{ objectFit: "contain" }}
+        loading="eager"
+      />
+    );
+
   if (theme === "light")
     return (
       <Image
